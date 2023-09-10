@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTELLITEX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="./js/d3DrawIcon.js"></script>
+
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            /* font-family: 'Katibeh', cursive; */
+            /* font-family: 'Caveat', cursive; */
+            /* font-family: 'Vollkorn', serif; */
+            font-family: 'DM Serif Display', serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+        }
+
+        h3 {
+            /* font-family: 'Katibeh', cursive; */
+            /* font-family: 'Caveat', cursive; */
+            /* font-family: 'Vollkorn', serif; */
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+
+            position: relative;
+            /* 设置定位为相对定位，使 ::after 伪元素相对于 h3 元素定位 */
+            display: inline-block;
+            /* 将 h3 元素设置为行内块元素，以使下划线只出现在文本的底部 */
+            cursor: pointer;
+            /* 添加一个指针样式，以显示可以点击 */
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+
+            position: relative;
+            /* 设置定位为相对定位，使 ::after 伪元素相对于 h3 元素定位 */
+            display: inline-block;
+            /* 将 h3 元素设置为行内块元素，以使下划线只出现在文本的底部 */
+        }
+
+        h3::after {
+            content: "";
+            /* 必须设置 content 属性，否则伪元素不会显示 */
+            position: absolute;
+            /* 设置定位为绝对定位，相对于 h3 元素定位 */
+            bottom: -3px;
+            /* 距离文本底部的距离，根据需要调整 */
+            left: 0;
+            /* 设置伪元素的位置在文本最左边 */
+            width: 100%;
+            /* 设置下划线宽度为 h3 元素的宽度 */
+            height: 2px;
+            /* 设置下划线高度，根据需要调整 */
+            background-color: #030303;
+            /* 设置下划线颜色，根据需要调整 */
+            transform: scaleX(0);
+            /* 设置初始状态下划线宽度为 0，即不显示 */
+            transition: transform 0.3s;
+            /* 添加过渡效果，使下划线显示时有动画效果 */
+        }
+
+        h3:hover::after {
+            transform: scaleX(1);
+            /* 鼠标悬停时显示下划线，将宽度设置为 1，即与 h3 元素宽度一致 */
+        }
+
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: #030303;
+            font-size: 1rem;
+        }
+
+        .img-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-container img {
+            max-height: 130%;
+            max-width: 100%;
+            height: auto;
+            width: auto;
+        }
+
+        .row,
+        .col {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col">
+            <!-- <div style="display: flex; align-items: center;">
+                <div id="icon"></div>
+                <p class="h3StylePTag">INTELLITEX</p>
+            </div> -->
+            <div style="display: flex; align-items: center; height: 100%;">
+                <div style="padding: 0 4rem 0 10rem;">
+                    <div style="margin-bottom: 4rem;">
+                        <h1 style="text-align: center; margin-bottom: 2rem;">IntelliTex Document</h1>
+                        <p style="text-align: center;">Customize washable and reusable functional textiles using the double-coating method,
+                            with low-cost and high-accessibility. </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 8rem;">
+                        <div style="display: flex; margin-bottom: 1rem;">
+                            <a href="pages/2nd_pages_four/stepbystep.html">
+                                <h3 style="margin-right: 2rem;">Fabrication Workflow</h3>
+                            </a>
+                            <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
+                        </div>
+                        <div style="display: flex; margin-bottom: 1rem;">
+                            <a href="pages/2nd_pages_four/sensorToolkit.html">
+                                <h3 style="margin-right: 2rem;">Fabric Input Library</h3>
+                            </a>
+                            <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
+                        </div>
+                        <div style="display: flex; margin-bottom: 1rem;">
+                            <a href="pages/2nd_pages_four/sampleProj.html">
+                                <h3 style="margin-right: 2rem;">Sample Projects</h3>
+                            </a>
+                            <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
+                        </div>
+                        <!-- <div style="display: flex; margin-bottom: 1rem;">
+                            <a href="pages/2nd_pages_four/FAQ.html">
+                                <h3 style="margin-right: 2rem;">FAQ</h3>
+                            </a>
+                            <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col img-container" style="height: 100%;">
+            <img src="resources/img/mainViz.png" alt="" class="img-fluid"> <!-- 使用 img-fluid 类来实现自动等比例缩放 -->
+        </div>
+    </div>
+
+    <script>
+        drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
+    </script>
+
+</body>
+
+</html>
