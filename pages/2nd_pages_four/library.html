@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Toolkit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="../../js/d3DrawIcon.js"></script>
+
+    <!-- outline Import CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css"> -->
+    <!-- outline Import the library -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
+    <!-- <script src="js/DocumentOutline.js"></script> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        html,
+        body {
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h1StylePTag {
+            font-family: 'DM Serif Display', serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: #030303;
+            font-size: 1rem;
+            margin: 1rem 0 0.2rem 0;
+        }
+
+        div.btn-container {
+            display: flex;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        div.btn-container i {
+            display: inline-block;
+            position: relative;
+            top: -9px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #424242;
+            font-weight: 500;
+        }
+
+        .btn-color-mode-switch {
+            display: inline-block;
+            margin: 0px;
+            position: relative;
+        }
+
+        .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+            margin: 0px;
+            width: 8rem;
+            height: 2rem;
+            background: #E0E0E0;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            /*box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;*/
+            display: block;
+        }
+
+        .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+            content: attr(data-on);
+            position: absolute;
+            font-size: 0.8rem;
+            font-family: 'ZCOOL XiaoWei';
+            top: 0.3rem;
+            right: 1.2rem;
+
+        }
+
+        .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+            content: attr(data-off);
+            width: 4rem;
+            height: 1.6rem;
+            background: #fff;
+            border-radius: 2rem;
+            position: absolute;
+            left: 0.2rem;
+            top: 0.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            box-shadow: 0px 0px 6px -2px #111;
+            font-family: 'ZCOOL XiaoWei';
+            padding: .1rem 0px;
+        }
+
+        .btn-color-mode-switch>.alert {
+            display: none;
+            background: #FF9800;
+            border: none;
+            color: #fff;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"] {
+            cursor: pointer;
+            width: 4rem;
+            height: 1.6rem;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            margin: 0px;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner {
+            background: #3b3b3b;
+            color: #fff;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
+            content: attr(data-on);
+            left: 3.8rem;
+            background: #5d5d5d;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+            content: attr(data-off);
+            right: auto;
+            left: 20px;
+        }
+
+        /* .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner {
+            background: #66BB6A;
+            color: #fff;
+        } */
+
+        .btn-color-mode-switch input[type="checkbox"]:checked~.alert {
+            display: block;
+        }
+
+        /* header 毛玻璃 */
+        .glassmorphismHeader {
+            background: rgba(249, 249, 249, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+        }
+
+        .card {
+            /* width: 300px; */
+            /* 调整卡片宽度 */
+            background-color: #F9F8F8;
+            border-radius: 0 2rem 0rem 0;
+            /* 设置右下角圆角，顺序为左上、右上、右下、左下 */
+            box-shadow: 0 4px 50px #03030317;
+            /* 添加阴影效果 */
+            padding: 2rem;
+            border: none;
+            margin: 0 2rem;
+            cursor: pointer;
+            /* 设置鼠标指针样式为 pointer 形式 */
+
+        }
+
+        .card img {
+            width: 100%;
+            /* 图片宽度填充卡片 */
+            border-radius: 10px;
+        }
+
+
+
+        .card::after {
+            content: "";
+            /* 添加 ::after 伪元素的内容，必须要有内容才能显示伪元素 */
+            position: absolute;
+            /* 设置伪元素绝对定位 */
+            bottom: 0px;
+            /* 将伪元素位置设置到卡片底部 */
+            left: 0;
+            /* 将伪元素位置设置在卡片左侧 */
+            width: 100%;
+            /* 伪元素宽度与卡片宽度相同 */
+            height: 3px;
+            /* 设置下划线的高度 */
+            background-color: #000;
+            /* 设置下划线颜色 */
+            transform: scaleX(0);
+            /* 初始状态下划线不可见 */
+            transition: transform 0.3s ease-in-out;
+            /* 添加过渡效果 */
+        }
+
+        .card:hover::after {
+            transform: scaleX(1);
+            /* 鼠标悬浮时显示下划线 */
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html">
+        <div class="glassmorphismHeader"
+            style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 20rem 0.4rem 20rem;">
+            <div style="display: flex; align-items: center;">
+                <div id="icon"></div>
+                <p class="h3StylePTag">INTELLITEX</p>
+            </div>
+
+            <!-- 语言切换 -->
+            <!-- <div class="btn-container" style="justify-content: flex-end;">
+                <label class="switch btn-color-mode-switch">
+                    <input type="checkbox" name="language_toggle" id="language_toggle" value="1">
+                    <label for="language_toggle" data-on="CN" data-off="EN" class="btn-color-mode-switch-inner"></label>
+                </label>
+            </div> -->
+        </div>
+    </a>
+
+    <div style="margin: 6rem 20rem 0 20rem;">
+        <p class="h1StylePTag" style="margin: 0 0 6rem 0;">
+            Fabric Input Library</p>
+
+        <!-- pressure div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/pressureIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>pressure</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 4rem 0 4rem 0;">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="../../resources/img/inputDemo/n:sFabricPressure.png" alt="Image"
+                                    style="width: 100%; padding:2rem 2rem 0 0;">
+                            </div>
+                            <div class="col-8">
+                                <h3 style="margin: 0rem 0 1rem 0;">nylon/spandex fabric</h3>
+                                <p class="content" data-lan="en" data-cn="材料：上下两层:涤纶布料；中间层:海绵"
+                                    data-en="Material: top and bottom layers: polyester fabric, center layer: sponge">
+                                    Material: top
+                                    and bottom layers: polyester fabric, center layer: sponge</p>
+                                <p class="content" data-lan="en" data-cn="厚度：3mm或更厚"
+                                    data-en="Thickness: 3mm or thicker">Thickness:
+                                    3mm or thicker</p>
+                                <p class="content" data-lan="en" data-cn="手感：上下两层为普通布料触感，纵向上有一定的按压弹性"
+                                    data-en="Feels like: upper and lower layers are normal fabric touch, with some pressing elasticity in the longitudinal direction">
+                                    Feels like: upper and lower layers are normal fabric touch, with some pressing
+                                    elasticity in the
+                                    longitudinal direction</p>
+                                <p class="content" data-lan="en" data-cn="交互特点：" data-en="Interaction features:"
+                                    style="margin-bottom: 0.2rem;">Interaction features:</p>
+                                <ul>
+                                    <li class="content" data-lan="en" data-cn="能够进行大面积传感"
+                                        data-en="capable of large area sensing">
+                                        capable of large area sensing</li>
+                                    <li class="content" data-lan="en" data-cn="按压会使得接入电路部分的电阻变小，当触摸面积更大时，电阻变小的幅度会更大"
+                                        data-en="pressing makes the resistance of the fabric that is connected to the circuit smaller, and when the touch area is larger, the resistance becomes smaller more significantly">
+                                        pressing: smaller fabric resistance; larger touch area: smaller resistance more
+                                        significantly</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- stretch div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/strechIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>stretch</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 4rem 0 4rem 0;">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="../../resources/img/pressure materials/sponge_before.png"
+                                    src_before="../../resources/img/pressure materials/sponge_before.png"
+                                    src_after="../../resources/img/pressure materials/sponge_after.png" alt="Image"
+                                    style="width: 100%; padding:2rem 2rem 0 0;">
+                            </div>
+                            <div class="col-8">
+                                <h3 class="content" data-lan="en" data-cn="复合海绵布料" data-en="Composite Sponge Cloth"
+                                    style="margin: 0rem 0 1rem 0;">Composite Sponge Cloth</h3>
+                                <p class="content" data-lan="en" data-cn="材料：上下两层:涤纶布料；中间层:海绵"
+                                    data-en="Material: top and bottom layers: polyester fabric, center layer: sponge">
+                                    Material: top
+                                    and bottom layers: polyester fabric, center layer: sponge</p>
+                                <p class="content" data-lan="en" data-cn="厚度：3mm或更厚"
+                                    data-en="Thickness: 3mm or thicker">Thickness:
+                                    3mm or thicker</p>
+                                <p class="content" data-lan="en" data-cn="手感：上下两层为普通布料触感，纵向上有一定的按压弹性"
+                                    data-en="Feels like: upper and lower layers are normal fabric touch, with some pressing elasticity in the longitudinal direction">
+                                    Feels like: upper and lower layers are normal fabric touch, with some pressing
+                                    elasticity in the
+                                    longitudinal direction</p>
+                                <p class="content" data-lan="en" data-cn="交互特点：" data-en="Interaction features:"
+                                    style="margin-bottom: 0.2rem;">Interaction features:</p>
+                                <ul>
+                                    <li class="content" data-lan="en" data-cn="能够进行大面积传感"
+                                        data-en="capable of large area sensing">
+                                        capable of large area sensing</li>
+                                    <li class="content" data-lan="en" data-cn="按压会使得接入电路部分的电阻变小，当触摸面积更大时，电阻变小的幅度会更大"
+                                        data-en="pressing makes the resistance of the fabric that is connected to the circuit smaller, and when the touch area is larger, the resistance becomes smaller more significantly">
+                                        pressing: smaller fabric resistance; larger touch area: smaller resistance more
+                                        significantly</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- bend div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/bendIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>bend</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- temp&humi div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/tempIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 0rem 0 0;">
+                    <img src="../../resources/img/icons/humidityIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>temp & humidity</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- slider div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/slideIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>slider</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- switch div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/switchIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>switch</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- button div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/buttonIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>button</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- joystick div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/joystickIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>joystick</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- identification div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/identifyIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>identification</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- logic div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/logicIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>logic</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- touch/hover div -->
+        <div class="divToggle" onclick="detailItem(this)">
+            <div class="divHeader"
+                style="display: flex; align-items: center; border-bottom: 2px solid #030303; justify-content: space-between;">
+                <div style="display: flex; align-items: center; ">
+                    <img src="../../resources/img/icons/touchIcon.png" alt="Image"
+                        style="width: 10rem; margin: 0 4rem 0 0;">
+                    <h2>touch / hover</h2>
+                </div>
+                <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
+                    style="width: 6rem; margin: 0 3rem 0 0;">
+
+            </div>
+
+            <div class="divToggleContent">
+
+            </div>
+        </div>
+
+        <!-- down margin -->
+        <div style="margin: 16rem 0 0 0;"></div>
+
+
+    </div>
+
+    <!-- 绘制图标 -->
+    <script>
+        drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
+    </script>
+
+    <script>
+        function detailItem(obj) {
+            // obj是当前选择的div
+            // console.log($(obj).find(".hiddenDetailedSug").display)
+            if ($(obj).find(".divToggleContent").css('display') == "none") // 如果现在看不到
+            {
+                $(obj).find(".divToggleContent").delay(0).slideDown(500); // 打开折叠内容，在obj下面寻找class=hiddenDetailedSug的div
+                $(obj).find(".divHeader").find(".moreLessIcon").attr("src", "../../resources/img/icons/lessIcon.png"); // 三角形变成向上的
+            }
+            else {
+                $(obj).find(".divToggleContent").delay(0).slideUp(500); // 收起折叠内容在obj下面寻找class=hiddenDetailedSug的div
+                $(obj).find(".divHeader").find(".moreLessIcon").attr("src", "../../resources/img/icons/moreIcon.png"); // 三角形变成向上的
+            }
+        }
+    </script>
+
+</body>
+
+</html>
