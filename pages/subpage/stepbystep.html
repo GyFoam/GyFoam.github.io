@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrication Workflow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="../../js/d3DrawIcon.js"></script>
+
+
+    <!-- outline Import CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
+    <!-- outline Import the library -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
+    <script src="../../js/DocumentOutline.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'DM Serif Display', serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        div.btn-container {
+            display: flex;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        div.btn-container i {
+            display: inline-block;
+            position: relative;
+            top: -9px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #424242;
+            font-weight: 500;
+        }
+
+        .btn-color-mode-switch {
+            display: inline-block;
+            margin: 0px;
+            position: relative;
+        }
+
+        .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+            margin: 0px;
+            width: 8rem;
+            height: 2rem;
+            background: #E0E0E0;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            /*box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;*/
+            display: block;
+        }
+
+        .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+            content: attr(data-on);
+            position: absolute;
+            font-size: 0.8rem;
+            font-family: 'ZCOOL XiaoWei';
+            top: 0.3rem;
+            right: 1.2rem;
+
+        }
+
+        .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+            content: attr(data-off);
+            width: 4rem;
+            height: 1.6rem;
+            background: #fff;
+            border-radius: 2rem;
+            position: absolute;
+            left: 0.2rem;
+            top: 0.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            box-shadow: 0px 0px 6px -2px #111;
+            font-family: 'ZCOOL XiaoWei';
+            padding: .1rem 0px;
+        }
+
+        .btn-color-mode-switch>.alert {
+            display: none;
+            background: #FF9800;
+            border: none;
+            color: #fff;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"] {
+            cursor: pointer;
+            width: 4rem;
+            height: 1.6rem;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            margin: 0px;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner {
+            background: #3b3b3b;
+            color: #fff;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
+            content: attr(data-on);
+            left: 3.8rem;
+            background: #5d5d5d;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+            content: attr(data-off);
+            right: auto;
+            left: 20px;
+        }
+
+        /* .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner {
+            background: #66BB6A;
+            color: #fff;
+        } */
+
+        .btn-color-mode-switch input[type="checkbox"]:checked~.alert {
+            display: block;
+        }
+
+        /* header 锚泊咯 */
+        .glassmorphismHeader {
+            background: rgba(249, 249, 249, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader"
+        style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 20rem 0.4rem 30rem;">
+        <a href="../../index.html">
+            <div style="display: flex; align-items: center;">
+                <div id="icon"></div>
+                <p class="h3StylePTag">INTELLITEX</p>
+            </div>
+        </a>
+
+    </div>
+
+    <div style="margin: 6rem 20rem 0 30rem;">
+        <p class="h1StylePTag content" data-lan="en" data-en="Step-by-step Guide" style="margin: 0 0 8rem 0;">
+            Fabrication Workflow</p>
+        <!-- <button onclick="toggleLanguage()">切换语言</button> -->
+
+        <!-- <p class="content" data-lan="en" data-cn="你好，世界！" data-en="Hello, World!">Hello, World!</p> -->
+        <h2 class="content" data-lan="en" data-en="1. Draw the Low-Fi Designs" style="margin: 2rem 0;">Create Fabric
+            Inputs: Double Coating Process</h2>
+
+        <img src="../../resources/img/workflow/doublecoat.png" alt="" style="width: 100%; margin-bottom: 2rem;">
+
+        <p>Various fabric inputs can be fabricated using the double coating process:</p>
+
+        <!-- <ul> -->
+        <!-- <li> -->
+        <h3 style="margin: 2rem 0 1rem 0;"><i>Coat with carbon black ink</i></h3>
+        <p>
+            First choose the fabric material to be coated. It can whether be off-the-shelf garments or fabric
+            sheets.
+            For fabric sheets, the shapes were designed with CAD and cut out with laser cutter. Then coat the
+            fabric
+            with carbon black ink (234A carbon ink, Shanghai Hero Ltd.). Absorb excessive ink with filter paper
+            or
+            tissues. Then heat and dry the fabric at 80°C, 20min. This step endows fabric with conductivity and
+            therefore input functionalities. Coating methods include:</p>
+        <ul>
+            <li>dip-coating: immerse entire fabric in ink for 1min.</li>
+            <li>partially-dip-coating: immerse parts of the fabric in ink for 1min.</li>
+            <li>brush-coating: draw with brush 2-3 times until fibers are evenly coated. Chinese brush is
+                recommended, because its unique tapered structure can steadily hold liquid inside, making the
+                liquid transfer steady and controllable.</li>
+        </ul>
+        <!-- </li> -->
+        <!-- <li> -->
+        <h3 style="margin: 2rem 0 1rem 0;"><i>Coat with PU</i></h3>
+        <p>Coat the fabric with 50% polyurethane water dispersion (F0402, Jitian Chemical Co., Ltd, China)
+            using the same three coating methods above. The chosen ink and PU coating method should be the same.
+            Absorb excessive PU with filter paper or tissues. Then heat and dry the fabric at 80°C, 20min. This
+            step improves the fabric inputs' washability and abrasion resistivity.</p>
+
+        <!-- </li> -->
+        <!-- </ul> -->
+
+
+        <h2 style="margin: 6rem 0 2rem 0;">
+            Utilize Fabric Inputs to Create Interactive Textiles</h2>
+        <figure>
+            <img src="../../resources/img/workflow/fabricationflow.png" alt="" style="width: 100%;">
+            <figcaption>Fabrication pipeline of interactive textiles using fabric inputs fabricated by the
+                double-coating process.</figcaption>
+        </figure>
+
+        <p>We proposed a pipeline to build integrated interactive textiles using fabric inputs fabricated with the
+            double-coating process.</p>
+        <h3 style="margin: 2rem 0 1rem 0;">Draw Low-fidelity Design</h3>
+        <p>If the fabric input is implemented on laser-cut fabrics, we recommend to also use laser to mark places (cut
+            at low laser power) for wiring, output component area, fabric input area and processor area. If the base
+            fabric is off-the-shelf garment (e.g. gloves), erasable pen along with acrylic templates of output and
+            processor components are recommended to draw sketches for the low-fidelity design. </p>
+        <h3 style="margin: 2rem 0 1rem 0;">Iron Conductive Traces</h3>
+        <p>Iron serpentine-shaped silver fabric segments(0.6 Ω/cm) with mesh TPU backing, which guarantees good
+            conductive contact between layers and great adhesiveness on fabrics, onto the base fabric. Serpentine wire
+            segments not only have good elasticity and resistance stability, but can also be bent in different
+            directions to accommodate various wiring paths. </p>
+
+        <h3 style="margin: 2rem 0 1rem 0;">Fabricate & Connect Fabric inputs</h3>
+        <p>Coat fabrics with carbon black ink and polyurethane. Then, use the mesh TPU film to iron the fabric input
+            onto the base fabric. For some three-dimensional fabric inputs, sewing may be needed to connect the input.
+        </p>
+
+        <h3 style="margin: 2rem 0 1rem 0;">Connect Outputs and Processor</h3>
+        <p>Connect output components (if any), and a voltage divider circuit based on microcomputer ESP32C3 onto the
+            fabric using metal button. We provide several output components to support a
+            wider range of expression possibilities for users, including LEDs, vibrators, and buzzers. </p>
+
+        <div style="margin-top: 10rem;"></div>
+    </div>
+
+    <!-- 绘制图标 -->
+    <script>
+        drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
+    </script>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+    </script>
+
+
+</body>
+
+</html>
