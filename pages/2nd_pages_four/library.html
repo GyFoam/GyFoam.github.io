@@ -19,6 +19,12 @@
     <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
     <!-- <script src="js/DocumentOutline.js"></script> -->
 
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入 Bootstrap JavaScript 和 Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -286,44 +292,144 @@
 
             </div>
 
+            <!-- 普通小面积压力 -->
             <div class="divToggleContent">
                 <a href="pressureMatSponge.html" style="text-decoration: none;">
-                    <div class="card image-container" style="margin: 4rem 0 4rem 0;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-5">
                                 <img src="../../resources/img/inputDemo/n:sFabricPressure.png" alt="Image"
-                                    style="width: 100%; padding:2rem 2rem 0 0;">
+                                    style="width: 100%;">
                             </div>
-                            <div class="col-8">
+                            <div class="col-7" style="padding-left: 6rem;">
                                 <h3 style="margin: 0rem 0 1rem 0;">nylon/spandex fabric</h3>
-                                <p class="content" data-lan="en" data-cn="材料：上下两层:涤纶布料；中间层:海绵"
-                                    data-en="Material: top and bottom layers: polyester fabric, center layer: sponge">
-                                    Material: top
-                                    and bottom layers: polyester fabric, center layer: sponge</p>
-                                <p class="content" data-lan="en" data-cn="厚度：3mm或更厚"
-                                    data-en="Thickness: 3mm or thicker">Thickness:
-                                    3mm or thicker</p>
-                                <p class="content" data-lan="en" data-cn="手感：上下两层为普通布料触感，纵向上有一定的按压弹性"
-                                    data-en="Feels like: upper and lower layers are normal fabric touch, with some pressing elasticity in the longitudinal direction">
-                                    Feels like: upper and lower layers are normal fabric touch, with some pressing
-                                    elasticity in the
-                                    longitudinal direction</p>
-                                <p class="content" data-lan="en" data-cn="交互特点：" data-en="Interaction features:"
-                                    style="margin-bottom: 0.2rem;">Interaction features:</p>
-                                <ul>
-                                    <li class="content" data-lan="en" data-cn="能够进行大面积传感"
-                                        data-en="capable of large area sensing">
-                                        capable of large area sensing</li>
-                                    <li class="content" data-lan="en" data-cn="按压会使得接入电路部分的电阻变小，当触摸面积更大时，电阻变小的幅度会更大"
-                                        data-en="pressing makes the resistance of the fabric that is connected to the circuit smaller, and when the touch area is larger, the resistance becomes smaller more significantly">
-                                        pressing: smaller fabric resistance; larger touch area: smaller resistance more
-                                        significantly</li>
-                                </ul>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3;">
+                                </div>
+                                <p>small area pressure sensing</p>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
+
+            <!-- 羊毛大面积压力 -->
+            <div class="divToggleContent">
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/woolFabricPressure.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">wool-like fabric</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="partially-dip-coating">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3;">
+                                </div>
+                                <p>small area pressure sensing</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 羊毛大面积压力 -->
+            <div class="divToggleContent">
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/nylonSpringPressure.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">nylon spring fabric</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="partially-dip-coating">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3;">
+                                </div>
+                                <p>high pressure sensing</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 矩阵压力 -->
+            <div class="divToggleContent">
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/matrixPressure.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">striped organza fabric</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3;">
+                                </div>
+                                <p>pressure matrix sensing</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 羊毛球捏压力 -->
+            <div class="divToggleContent">
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/ballPressure.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">wool-yarn ball</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="partially-dip-coating">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3;">
+                                </div>
+                                <p>high pressure sensing</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
         </div>
 
         <!-- stretch div -->
@@ -341,46 +447,63 @@
             </div>
 
             <div class="divToggleContent">
-                <a href="pressureMatSponge.html" style="text-decoration: none;">
-                    <div class="card image-container" style="margin: 4rem 0 4rem 0;">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="../../resources/img/pressure materials/sponge_before.png"
-                                    src_before="../../resources/img/pressure materials/sponge_before.png"
-                                    src_after="../../resources/img/pressure materials/sponge_after.png" alt="Image"
-                                    style="width: 100%; padding:2rem 2rem 0 0;">
-                            </div>
-                            <div class="col-8">
-                                <h3 class="content" data-lan="en" data-cn="复合海绵布料" data-en="Composite Sponge Cloth"
-                                    style="margin: 0rem 0 1rem 0;">Composite Sponge Cloth</h3>
-                                <p class="content" data-lan="en" data-cn="材料：上下两层:涤纶布料；中间层:海绵"
-                                    data-en="Material: top and bottom layers: polyester fabric, center layer: sponge">
-                                    Material: top
-                                    and bottom layers: polyester fabric, center layer: sponge</p>
-                                <p class="content" data-lan="en" data-cn="厚度：3mm或更厚"
-                                    data-en="Thickness: 3mm or thicker">Thickness:
-                                    3mm or thicker</p>
-                                <p class="content" data-lan="en" data-cn="手感：上下两层为普通布料触感，纵向上有一定的按压弹性"
-                                    data-en="Feels like: upper and lower layers are normal fabric touch, with some pressing elasticity in the longitudinal direction">
-                                    Feels like: upper and lower layers are normal fabric touch, with some pressing
-                                    elasticity in the
-                                    longitudinal direction</p>
-                                <p class="content" data-lan="en" data-cn="交互特点：" data-en="Interaction features:"
-                                    style="margin-bottom: 0.2rem;">Interaction features:</p>
-                                <ul>
-                                    <li class="content" data-lan="en" data-cn="能够进行大面积传感"
-                                        data-en="capable of large area sensing">
-                                        capable of large area sensing</li>
-                                    <li class="content" data-lan="en" data-cn="按压会使得接入电路部分的电阻变小，当触摸面积更大时，电阻变小的幅度会更大"
-                                        data-en="pressing makes the resistance of the fabric that is connected to the circuit smaller, and when the touch area is larger, the resistance becomes smaller more significantly">
-                                        pressing: smaller fabric resistance; larger touch area: smaller resistance more
-                                        significantly</li>
-                                </ul>
+
+                <div class="divToggleContent">
+
+                    <!-- 大范围拉伸 -->
+                    <a href="pressureMatSponge.html" style="text-decoration: none;">
+                        <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                            <div class="row">
+                                <div class="col-5">
+                                    <img src="../../resources/img/inputDemo/bandStretch.png" alt="Image"
+                                        style="width: 100%;">
+                                </div>
+                                <div class="col-7" style="padding-left: 6rem;">
+                                    <h3 style="margin: 0rem 0 1rem 0;">elastic band</h3>
+                                    <div>
+                                        <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                            style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                            title="dip-coating">
+                                        <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                            style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                        <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                            style="width: 2rem; opacity: 0.3;">
+                                    </div>
+                                    <p>highly elastic (3x)</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+
+                    <!-- 中等拉伸 -->
+                    <a href="pressureMatSponge.html" style="text-decoration: none;">
+                        <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                            <div class="row">
+                                <div class="col-5">
+                                    <img src="../../resources/img/inputDemo/n:sFabricStretch.png" alt="Image"
+                                        style="width: 100%;">
+                                </div>
+                                <div class="col-7" style="padding-left: 6rem;">
+                                    <h3 style="margin: 0rem 0 1rem 0;">nylon/spandex fabric</h3>
+                                    <div>
+                                        <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                            style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                            title="dip-coating">
+                                        <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                            style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                        <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                            style="width: 2rem; opacity: 0.3;">
+                                    </div>
+                                    <p>medium elastic (1.5x)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
             </div>
+
         </div>
 
         <!-- bend div -->
@@ -394,10 +517,57 @@
                 </div>
                 <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
                     style="width: 6rem; margin: 0 3rem 0 0;">
-
             </div>
 
             <div class="divToggleContent">
+
+                <!-- 可穿戴增强 -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/wearableBend.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">wearable accessories </h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="dip-coating">
+                                </div>
+                                <p>augment off-the-shelf garments</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 弹性粘性绷带 -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/bandageBend.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">elastic bandage</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <p>strong skin-adhesion, suitable for on-skin applications</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
             </div>
         </div>
@@ -415,10 +585,33 @@
                 </div>
                 <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
                     style="width: 6rem; margin: 0 3rem 0 0;">
-
             </div>
 
             <div class="divToggleContent">
+
+                <!-- 氨纶尼龙蛇形 -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/n:sFabricTempHumi.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">nylon/spandex fabric</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <!-- <p>strong skin-adhesion, suitable for on-skin applications</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
             </div>
         </div>
@@ -439,6 +632,54 @@
 
             <div class="divToggleContent">
 
+                <!-- 拉链 -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/zipperSlide.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">zipper</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3;">
+                                </div>
+                                <!-- <p>strong skin-adhesion, suitable for on-skin applications</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 皮带 -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/beltSlide.png" alt="Image" style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">belt</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <!-- <p>strong skin-adhesion, suitable for on-skin applications</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </div>
 
@@ -458,6 +699,56 @@
 
             <div class="divToggleContent">
 
+                <!-- 旋转switch -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/n:sFabricSwitch.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">nylon/spandex fabric</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3">
+                                </div>
+                                <p>rotate interaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- buckle switch -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/buckleSwitch.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">various buckles</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3">
+                                </div>
+                                <p>buckle interaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </div>
 
@@ -472,10 +763,58 @@
                 </div>
                 <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
                     style="width: 6rem; margin: 0 3rem 0 0;">
-
             </div>
 
             <div class="divToggleContent">
+                <!-- fish button -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/fish-skinButton.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">fish skin-like fabric</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="partially-dip-coating">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <p>interesting push haptic</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ironed embossed fabric -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/ironButton.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">ironed embossed fabric</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="partially-dip-coating">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <p>interesting push haptic</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
             </div>
         </div>
@@ -496,6 +835,32 @@
 
             <div class="divToggleContent">
 
+                <!-- wool ball joystick -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/ballJoystick.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">wool-yarn ball</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="partially-dip-coating">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt=""
+                                        style="width: 2rem; opacity: 0.3;">
+                                </div>
+                                <p>joystick input</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </div>
 
@@ -510,11 +875,33 @@
                 </div>
                 <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
                     style="width: 6rem; margin: 0 3rem 0 0;">
-
             </div>
 
             <div class="divToggleContent">
-
+                <!-- identification -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/identifyVelcro.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">Velcro</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <p>velcro identification</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -529,11 +916,32 @@
                 </div>
                 <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
                     style="width: 6rem; margin: 0 3rem 0 0;">
-
             </div>
 
             <div class="divToggleContent">
-
+                <!-- logic gate -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/logic.png" alt="Image" style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">Velcro</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem; opacity: 0.3;">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <p>AND & OR gate</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -548,11 +956,34 @@
                 </div>
                 <img class="moreLessIcon" src="../../resources/img/icons/lessIcon.png" alt="Image"
                     style="width: 6rem; margin: 0 3rem 0 0;">
-
             </div>
 
             <div class="divToggleContent">
-
+                <!-- ironed embossed fabric -->
+                <a href="pressureMatSponge.html" style="text-decoration: none;">
+                    <div class="card image-container" style="margin: 2rem 0 2rem 0;">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="../../resources/img/inputDemo/touch.png" alt="Image"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-7" style="padding-left: 6rem;">
+                                <h3 style="margin: 0rem 0 1rem 0;">augment arbitrary textile</h3>
+                                <div>
+                                    <img src="../../resources/img/icons/dipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="dip-coating">
+                                    <img src="../../resources/img/icons/partiallydipcoatIcon.png" alt=""
+                                        style="width: 2rem; margin-right: 0.5rem;" data-toggle="tooltip"
+                                        title="partially-dip-coating">
+                                    <img src="../../resources/img/icons/pendrawIcon.png" alt="" style="width: 2rem;"
+                                        data-toggle="tooltip" title="brush-coating">
+                                </div>
+                                <p>augment arbitrary textile</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -581,6 +1012,13 @@
                 $(obj).find(".divHeader").find(".moreLessIcon").attr("src", "../../resources/img/icons/moreIcon.png"); // 三角形变成向上的
             }
         }
+    </script>
+
+    <!-- 初始化工具提示 -->
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
 
 </body>
