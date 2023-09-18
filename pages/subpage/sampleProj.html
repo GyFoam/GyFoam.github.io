@@ -287,7 +287,7 @@
             <div class="card image-container" style="margin: 2rem 0 4rem 0;">
                 <div class="row">
                     <div class="col-5">
-                        <img src="../../resources/img/sample projects/rehab_glove/cover.png" alt="Image"
+                        <img src="../../resources/img/sample projects/firefighter/cover.png" alt="Image"
                             style="width: 100%;">
                     </div>
                     <div class="col-7" style="padding-left: 4rem;">
@@ -353,47 +353,6 @@
     <script>
         drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
     </script>
-
-    <!-- 切换显示语言 -->
-    <script>
-        $("#language_toggle").on("change", function () {
-            toggleLanguage();
-        })
-
-        function toggleLanguage() {
-            const contentElements = document.getElementsByClassName("content");
-
-            if (contentElements[0].dataset.lan == "en") // 如果现在是英语
-            {
-                for (let i = 0; i < contentElements.length; i++) {
-                    contentElements[i].textContent = contentElements[i].dataset.cn;
-
-                    // 如果是title，需要更改字体
-                    if (contentElements[i].tagName === "H1" || contentElements[i].tagName === "H2" || contentElements[i].tagName === "H3" ||
-                        contentElements[i].classList.contains("h1StylePTag") || contentElements[i].classList.contains("h2StylePTag") || contentElements[i].classList.contains("h3StylePTag")) {
-                        // 如果是 <h3> 标签，则更换其字体为 'Noto Sans', sans-serif
-                        contentElements[i].style.fontFamily = "'Noto Sans', sans-serif";
-                    }
-                }
-                contentElements[0].dataset.lan = "cn";
-            }
-            else //如果现在是中文
-            {
-                for (let i = 0; i < contentElements.length; i++) {
-                    contentElements[i].textContent = contentElements[i].dataset.en;
-
-                    // 如果是title，需要更改字体
-                    if (contentElements[i].tagName === "H1" || contentElements[i].tagName === "H2" || contentElements[i].tagName === "H3" ||
-                        contentElements[i].classList.contains("h1StylePTag") || contentElements[i].classList.contains("h2StylePTag") || contentElements[i].classList.contains("h3StylePTag")) {
-                        // 如果是 <h3> 标签，则更换其字体为 'DM Serif Display', serif
-                        contentElements[i].style.fontFamily = "'DM Serif Display', serif";
-                    }
-                }
-                contentElements[0].dataset.lan = "en";
-            }
-        }
-    </script>
-
 </body>
 
 </html>
