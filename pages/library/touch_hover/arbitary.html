@@ -74,6 +74,7 @@
         }
 
         p,
+        a,
         li {
             font-family: 'Noto Sans', sans-serif;
             color: #030303;
@@ -253,8 +254,7 @@
     </a>
 
     <div style="margin: 6rem 20rem 0 30rem;">
-        <img src="../../../resources/img/inputDemo/touch.png" alt=""
-            style="width: 100%; margin-bottom: 2rem;">
+        <img src="../../../resources/img/inputDemo/touch/touch.png" alt="" style="width: 100%; margin-bottom: 2rem;">
 
         <p class="h1StylePTag" style="margin: 0 0 6rem 0;">
             Touch / Hover - Arbitary Double-coated Fabrics
@@ -262,18 +262,48 @@
 
         <h2 style="margin-bottom: 2rem;">What
             does the sensor do?</h2>
-        <p>Buckle on-off switches.</p>
+
+        <p>
+            It can be used to augment arbitary textiles with touch and hover sensing capabilities.
+        </p>
+
+        <h2 style="margin: 4rem 0 2rem 0;"> How it works?</h2>
+        <img src="../../../resources/img/inputDemo/touch/mechanism.png" alt="" style="width: 80%; margin-bottom: 2rem;">
+        <p>
+            Double-coated textiles are also
+            capable of capacitive-based sensing, including touch and proximity sensing. Self-capacitance is used in our
+            research to realize capacitive sensing. When voltage is applied to conductive fabrics, the fabrics and the
+            earth's surface can be viewed as a parallel-plate capacitor, generating an electric field around it. If body
+            parts are brought close to conductive fabrics, this electric field and the capacitance of conductive fabrics
+            will be changed, which can be detected as proximity or touch events. The advantage of using double-coated
+            textiles instead of off-the-shelf conductive fabrics is that arbitrary textiles can be transformed into a
+            touch-sensitive interface, retaining their original structures and hand feel. We will demonstrate this
+            advantage later in the application section.
+        </p>
 
         <h2 style="margin: 4rem 0 2rem 0;">You will need:</h2>
         <ul>
-            <li> carbon black ink </li>
-            <li> any double-coated fabrics</li>
+            <li> carbon black ink and polyurethane </li>
+            <li> arbitary fabrics </li>
             <li> conductive silver fabric </li>
         </ul>
 
-        <h2 style="margin: 4rem 0 2rem 0;">Sensor structure</h2>
-        <h2 style="margin: 4rem 0 2rem 0;">Fabrication steps</h2>
-        <h2 style="margin: 4rem 0 2rem 0;">Application scenarios</h2>
+        <h2 style="margin: 4rem 0 2rem 0;">Sensor structure & Fabrication steps</h2>
+        <ul>
+            <li> Laser fabrics. </li>
+            <li> Dip-coat / partially-dip-coat / brush-coat the Velcro with carbon black ink and then polyurethane.</li>
+            <li> Connect with silver fabric segments. Double-coated fabrics only need to be connected to one I/O port of
+                the Arduino using the silver fabric.</li>
+        </ul>
+        <p>Coding and wiring connection details can refer to <a
+                href="https://www.arduino.cc/reference/en/libraries/capacitivesensor/">capsense library of Arduino</a>
+        </p>
+        <img src="../../../resources/img/inputDemo/touch/Structure.png" alt="" style="width: 100%; ">
+
+        <!-- <h2 style="margin: 4rem 0 2rem 0;">Application scenarios</h2>
+            <p>It can be used in scenarios where stretch sensing over a large range is required. For example, it can be used
+                to sense stretches in stretching exercises after workouts.</p> -->
+        <div style="margin-top: 6rem;"></div>
 
     </div>
 

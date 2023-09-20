@@ -73,7 +73,7 @@
             margin: 0;
         }
 
-        p,
+        p, a,
         li {
             font-family: 'Noto Sans', sans-serif;
             color: #030303;
@@ -264,17 +264,42 @@
             does the sensor do?</h2>
         <p>Temperature & humidity sensing.</p>
 
+        <h2 style="margin: 4rem 0 2rem 0;"> How it works?</h2>
+        <img src="../../../resources/img/inputDemo/temp_humi/mechanism.png" alt=""
+            style="width: 60%; margin-bottom: 2rem;">
+        <p>
+            When temperature increases, the possibility of thermally activated electrons "jumping" across the potential
+            barrier between carbon black particles on the fabric will increase, leading to lower resistance. On the
+            other hand, when exposed to high-humidity environments, fabric fibers will absorb water molecules and swell,
+            increasing the distance between carbon black particles and resistance.
+        </p>
+
+        <p>
+            Notably, the piezoresistive effect can still exist in the electrode connection areas. To reduce this effect,
+            the fabric to be coated with carbon black should be thin (e.g., 0.3mm single-layered nylon spandex fabrics),
+            and the resistance of conductive fabric should be relatively large (empirically at least 500kΩ) by
+            incorporating serpentine shapes. As a result, the resistance change caused by the piezoresistive effect will
+            be insignificant compared to the change caused by temperature or humidity.
+        </p>
+
         <h2 style="margin: 4rem 0 2rem 0;">You will need:</h2>
         <ul>
-            <li> carbon black ink </li>
-            <li> nylon/spandex fabric</li>
+            <li> carbon black ink and polyurethane </li>
+            <li> nylon spandex fabrics </li>
             <li> conductive silver fabric </li>
         </ul>
 
-        <h2 style="margin: 4rem 0 2rem 0;">Sensor structure</h2>
-        <h2 style="margin: 4rem 0 2rem 0;">Fabrication steps</h2>
-        <h2 style="margin: 4rem 0 2rem 0;">Application scenarios</h2>
+        <h2 style="margin: 4rem 0 2rem 0;">Sensor structure & Fabrication steps</h2>
+        <ul>
+            <li> Laser cut nylon spandex fabrics incorporating serpentine shapes. </li>
+            <li> Dip-coat the fabric.</li>
+            <li> Connect with silver fabric segments. </li>
+        </ul>
+        <img src="../../../resources/img/inputDemo/temp_humi/Structure.png" alt="" style="width: 100%; ">
 
+        <h2 style="margin: 4rem 0 2rem 0;">Application scenarios</h2>
+        <p> Suitable for temperature or/and humidity sensing purposes. See <a href="../../sampleProj/pressureUlcer.html">wearable sensor patch for pressure ulcer prevention</a>.</p>
+        <div style="margin-top: 6rem;"></div>
     </div>
 
     <!-- 绘制图标 -->
