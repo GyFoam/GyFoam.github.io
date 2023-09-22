@@ -279,8 +279,8 @@
             Fabric Input Library</p>
 
         <!-- pressure div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/pressureIcon.png" alt="Image"
@@ -434,8 +434,8 @@
         </div>
 
         <!-- stretch div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/strechIcon.png" alt="Image"
@@ -508,8 +508,8 @@
         </div>
 
         <!-- bend div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/bendIcon.png" alt="Image"
@@ -574,8 +574,8 @@
         </div>
 
         <!-- temp&humi div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/tempIcon.png" alt="Image"
@@ -618,8 +618,8 @@
         </div>
 
         <!-- slider div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/slideIcon.png" alt="Image"
@@ -685,8 +685,8 @@
         </div>
 
         <!-- switch div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/switchIcon.png" alt="Image"
@@ -754,8 +754,8 @@
         </div>
 
         <!-- button div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle" >
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/buttonIcon.png" alt="Image"
@@ -821,8 +821,8 @@
         </div>
 
         <!-- joystick div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/joystickIcon.png" alt="Image"
@@ -866,8 +866,8 @@
         </div>
 
         <!-- identification div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/identifyIcon.png" alt="Image"
@@ -907,8 +907,8 @@
         </div>
 
         <!-- logic div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/logicIcon.png" alt="Image"
@@ -947,8 +947,8 @@
         </div>
 
         <!-- touch/hover div -->
-        <div class="divToggle" onclick="detailItem(this)">
-            <div class="divHeader"
+        <div class="divToggle">
+            <div class="divHeader" onclick="detailItem(this)"
                 style="display: flex; align-items: center; border-bottom: 3px solid #030303; justify-content: space-between;">
                 <div style="display: flex; align-items: center; ">
                     <img src="../../resources/img/icons/touchIcon.png" alt="Image"
@@ -1003,14 +1003,14 @@
         function detailItem(obj) {
             // obj是当前选择的div
             // console.log($(obj).find(".hiddenDetailedSug").display)
-            if ($(obj).find(".divToggleContent").css('display') == "none") // 如果现在看不到
+            if ($(obj).parent().find(".divToggleContent").css('display') == "none") // 如果现在看不到
             {
-                $(obj).find(".divToggleContent").delay(0).slideDown(500); // 打开折叠内容，在obj下面寻找class=hiddenDetailedSug的div
-                $(obj).find(".divHeader").find(".moreLessIcon").attr("src", "../../resources/img/icons/lessIcon.png"); // 三角形变成向上的
+                $(obj).parent().find(".divToggleContent").delay(0).slideDown(500); // 打开折叠内容，在obj下面寻找class=hiddenDetailedSug的div
+                $(obj).parent().find(".divHeader").find(".moreLessIcon").attr("src", "../../resources/img/icons/lessIcon.png"); // 三角形变成向上的
             }
             else {
-                $(obj).find(".divToggleContent").delay(0).slideUp(500); // 收起折叠内容在obj下面寻找class=hiddenDetailedSug的div
-                $(obj).find(".divHeader").find(".moreLessIcon").attr("src", "../../resources/img/icons/moreIcon.png"); // 三角形变成向上的
+                $(obj).parent().find(".divToggleContent").delay(0).slideUp(500); // 收起折叠内容在obj下面寻找class=hiddenDetailedSug的div
+                $(obj).parent().find(".divHeader").find(".moreLessIcon").attr("src", "../../resources/img/icons/moreIcon.png"); // 三角形变成向上的
             }
         }
     </script>
