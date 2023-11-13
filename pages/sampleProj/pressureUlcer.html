@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Projects</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -92,6 +96,13 @@
         p {
             font-family: 'Noto Sans', sans-serif;
             color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
             font-size: 1rem;
             margin-bottom: 1rem;
         }
@@ -242,25 +253,233 @@
         <p>PU has three main causes: prolonged high pressure, high skin temperature or humidity. However, PU prevention
             products nowadays can only respond to pressure, ignoring other PU triggers.</p>
 
-        <h2 style="margin-bottom: 2rem; margin-top: 6rem;">OUTCOME</h2>
-        <p>Based on these problems, this application designed and developed a wearable fabric sensor patch and an
-            according front-end monitoring system. The fabric sensor is capable of monitoring pressure, humidity, and temperature
-            of PU-prone areas of the care recipient's body: shoulder blade-upper arm area, elbow area, and sacrum-hip area.</p>
+        <h2 style="margin-bottom: 2rem; margin-top: 6rem;">DESIGN DETAILS</h2>
+        <p>I wrote <a href="../../resources/model/pressure ulcer/serpentine wire.gh" download>
+                this grasshopper script (rhino 7)
+            </a> to generate serpentine-shaped wires from any chosen base curve. Users can try
+            to adjust different parameters to get different serpentine results (e.g. change the width, amplitute,
+            period, etc.). With this script, users can not only use straight segments of pre-cut serpentine-shaped
+            silver fabric as
+            mentioned in the <a href="../subpage/stepbystep.html">workflow page</a>, but also tailor any "pre-curved"
+            silver fabric traces according to their designs. In this application, because the silver fabric traces need
+            to cover a long distance, the segment methods can be less productive, so we just used this script to
+            generate tailored traces and cut it out using the laser-cutter.
+        </p>
+        <img src="../../resources/img/sample projects/pressure ulcer/serpentine gh.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+        <p>
+            I also wrote <a href="../../resources/model/pressure ulcer/voronoi.gh" download>
+                this grasshopper script (rhino 7)
+            </a> to generate voronoi patterns in any given curve boundaries (users need to first identify a large
+            "bounding" rectangle, then select/draw a curve that falls absolutely within that rectangle). Users can try
+            to adjust different parameters to get different voronoi patterns.
+        </p>
+        <img src="../../resources/img/sample projects/pressure ulcer/voronoi gh.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+        <p>
+            Because the laser cutter we used is not large enough to cut the entire patch at one time, we separated the
+            patch into four different areas: shoulder, left elbow, right elbow, and hip.
+        </p>
+        <p>
+            The entire patch design (including silver fabric layer, base fabric layer, and double-coated fabric layer),
+            can be <a href="../../resources/model/pressure ulcer/patch design.dxf" download>downloaded here</a>. To
+            reduce the number of IO ports used, two humidity&temperature sensing sub-areas are connected in series for
+            every sensing area.
+        </p>
+        <img src="../../resources/img/sample projects/pressure ulcer/svg overview.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
-        <img src="../../resources/img/sample projects/pressure ulcer/wearing.png" alt="" style="width: 100%; margin-bottom: 4rem;">
+        <p>For each sensing area, it constitutes of two sensing "sub-areas": pressure sensing and humidity&temperature
+            sensing. Pressure sensing area is made of double-coated 0.6mm nylon spandex fabric and large silver fabric
+            electrodes underneath. Humidity&temperature sensing area is made of double-coated 0.3mm nylon spandex fabric
+            and small silver fabric electrodes that goes with sewing connection to provide better stability over washing
+            cycles and thus more robust connection.
+        </p>
+        <img src="../../resources/img/sample projects/pressure ulcer/sub area.png" alt=""
+            style="width: 100%; margin-bottom: 2rem;">
+        <p>
+            For this application, we used an older version of PCB for the MCU, which had magnet connection. This PCB is
+            the same with our <a href="../subpage/processor_output.html">current version</a> except for the distance
+            between soldering pads. If you want to use our current PCB design, you might need to manually change the
+            soldering pads distance and relative positions in the <a
+                href="../../resources/model/pressure ulcer/patch design.dxf" download>dxf file</a> we provided.
+        </p>
+
+
+        <h2 style="margin-bottom: 2rem; margin-top: 6rem;">TECH DETAILS</h2>
+        <p>Visit our <a href="https://anonymous.4open.science/r/pressure-ulcer-application-6C9F">anonymous GitHub
+                repository</a> of this application to view all source code.</p>
+
+        <h3 style="margin-bottom: 1.4rem;">Crosstalk</h3>
+        <p>The first question that comes with the patch design is that it can lead to crosstalks. Specifically, the
+            pressure sensor will also respond to humidity and temperature; and when exposed to both high humidity and
+            high temperature, the humidity&temperature sensing sub-area can only report that high humidity is detected
+            (this
+            is because the resistance decrease caused by rising temperature is neglectable compared to the resistance
+            increase caused by rising humidity degrees).
+        </p>
+        <p>
+            In this specific application scenario, however, this crosstalk is not a problem. Our design wants to provide
+            altert to caregivers when the wearer has high PU risks. And we want the alert to happen: immediately when
+            high humidity or temperature is detected (high-priority variables); or, if high pressure in certain area
+            lasts for prolonged time (e.g. 2 hrs, low-priority variables). Therefore, if high humidity or high
+            temperature is detected by the humidity&temperature sensing sub-area, alert will immediately be given,
+            neglecting the crosstalk of pressure sensor reading. If both high humidity and temperature occurs, high
+            humidity alert will immediately be given to the caregiver, and when the caregiver offers tailored care to
+            the wearer (e.g. change his/her body position, clean body, etc.), the high temperature problem can also be
+            addressed.
+        </p>
+        <p>
+            We created a table to illustrate all possible scenarios of crosstalks and according actions.
+        </p>
+        <img src="../../resources/img/sample projects/pressure ulcer/crosstalk table.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+
+        <h3 style="margin-bottom: 1.4rem;">ESP32C3 - Arduino</h3>
+        <p>The MCU reads the voltage on the fabric sensor every 2s and send the value to the server via WiFi. Due to the
+            lack of Analog ports in the ESP32C3 chip, we used one ESP32C3 for every sensing area (in total 5 used,
+            referring to the dxf file of our design). However, this can be easily improved by using an alternative MCU
+            with more Analog pins. Example code for the left-elbow sensing area are provided below. The code for
+            different sensing areas are very similar and the only thing that needs to be reconfigured is the mapping
+            relation of pin A0, A1, and A2 to humidity&temperature sensing, back pressure sensing, and side pressure
+            sensing.
+        </p>
+        <pre>
+            <code class="language-c">
+                #include < WiFi.h >
+                #include < HTTPClient.h >
+                #include < ArduinoJson.h >
+                
+                const char* ssid     = "name_of_WiFi";
+                const char* password = "Password_of_WiFi";
+                const char* server = "xxx.xx.xx.x"; // IP address of server
+                const int port = 80; // port of server
+                
+                void setup()
+                {
+                    pinMode(A0, INPUT);
+                    pinMode(A1, INPUT);
+                    pinMode(A2, INPUT);
+                    Serial.begin(115200);
+                
+                    // try to connect to WiFi
+                    WiFi.begin(ssid, password);
+                    while (WiFi.status() != WL_CONNECTED) {
+                    delay(1000);
+                    Serial.println("Connecting to WiFi...");
+                    }
+                    Serial.print("Connected to WiFi:");
+                    Serial.println(WiFi.localIP());
+                }
+
+                void loop()
+                {
+                    if ((WiFi.status() == WL_CONNECTED))
+                    {
+                        HTTPClient http;
+                        // Here, different mapping relations might applies to different sensing areas
+                        int val0 = analogReadMilliVolts(A1); // back pressure sensor reading
+                        int val1 = analogReadMilliVolts(A2); // side pressure sensor reading
+                        int val2 = analogReadMilliVolts(A3); // humidity&temperature sensor reading     
+                
+                        // organize data into json format
+                        DynamicJsonDocument json(100);
+                        json["patch"] = "elbowL"; // id of the json (which part of the body the data represents)
+                        json["tempHumi"] = val2; // humidity&temperature data record
+                        json["backPressure"] = val0; // back pressure data record
+                        json["sidePressure"] = val1; // side pressure data record
+                
+                        String jsonData;
+                        serializeJson(json, jsonData); // json to String
+                        String url = "http://" + String(server) + "/sendData?data=" + jsonData; // reformat datan String to a GET request String sending to the server 
+                        Serial.println(url);
+                    
+                        // using the GET request String to send data to the server
+                        http.begin(url);
+                        int httpCode = http.GET();
+                        if (httpCode > 0) // error catch
+                        {
+                            String payload = http.getString();
+                            Serial.println(httpCode);
+                            Serial.println(payload);
+                        }
+                        else
+                        {
+                            Serial.println("Error on HTTP request");
+                        }
+                        http.end();
+                    }
+                    delay(2000); // sample every 2s
+                }
+                    
+            </code>
+        </pre>
+
+        <h3 style="margin-bottom: 1.4rem;">Web - backend and frontend</h3>
+        <p>
+            All front-end, back-end, along with Arduino code can be accessed <a
+                href="https://anonymous.4open.science/r/pressure-ulcer-application-6C9F">here</a>. For better anonymity,
+            we used anonymous GitHub repository.
+        </p>
+
+        <p>
+            We used Node.js to implement the server, which constantly compares sensor readings to high PU risk baselines
+            to decide whether to give alert to caregivers and what customized care suggestions to provide. Window
+            filtering was adopted for pressure readings, and Kalman filtering was adopted for humidity&temperature
+            reading.
+        </p>
+
+        <p>
+            We used Three.js to render the 3D human body on the browser, and users can click to view data reading from
+            different body areas. D3.js was used to draw linegraph of the resistance change of sensors overtime (this
+            reading can be counterintuitive, e.g. for pressure sensors, lower values represent smaller resistance but
+            higher pressure. Thus, if the linegraph of pressure sensor goes down, it means the pressure rises).
+        </p>
+        <video width="100%" controls>
+            <source src="../../resources/video/pressure ulcer/front-end application.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2 style="margin-bottom: 2rem; margin-top: 6rem;">OUTCOME</h2>
+        <p>After the wearable fabric sensor patch is made, we used mesh TPU to heat-iron it onto a shirt. As mentioned
+            before, we also developed an according front-end monitoring system. The fabric sensor is capable of
+            monitoring pressure, humidity, and temperature
+            of PU-prone areas of the care recipient's body: shoulder blade-upper arm area, elbow area, and sacrum-hip
+            area.</p>
+
+        <img src="../../resources/img/sample projects/pressure ulcer/wearing.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
         <p>Shoulder blade-upper arm area sensor patch ⬇️</p>
-        <img src="../../resources/img/sample projects/pressure ulcer/shoulder.png" alt="" style="width: 100%; margin-bottom: 4rem;">
+        <img src="../../resources/img/sample projects/pressure ulcer/shoulder.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
         <p>Elbow area sensor patch ⬇️</p>
-        <img src="../../resources/img/sample projects/pressure ulcer/elbow.png" alt="" style="width: 100%; margin-bottom: 4rem;">
+        <img src="../../resources/img/sample projects/pressure ulcer/elbow.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
         <p>sacrum-hip area sensor patch ⬇️</p>
-        <img src="../../resources/img/sample projects/pressure ulcer/hip.png" alt="" style="width: 100%; margin-bottom: 4rem;">
+        <img src="../../resources/img/sample projects/pressure ulcer/hip.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
         <p>When factors leading to high PU risk is detected, the caregiver will receive a warning message and
             corresponding recommendations for care operations on the front-end system.</p>
-        <img src="../../resources/img/sample projects/pressure ulcer/webpage.png" alt="" style="width: 100%; margin-bottom: 8rem;">
+        <img src="../../resources/img/sample projects/pressure ulcer/webpage.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+
+
+        <h2 style="margin-bottom: 2rem; margin-top: 6rem;">IMPLEMENTATION</h2>
+        <p>
+            All sensors, hardwares, the server, and the front-end application were implemented (refer to the video
+            below, where the usb-c to usb-c cable only functions as power supply source, but not a data transfer cable:
+            all the data were transfered via WiFi directely to the server).
+        </p>
+        <video width="100%" controls>
+            <source src="../../resources/video/pressure ulcer/implementation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div style="margin-bottom: 10rem;"></div>
 
     </div>
 
@@ -268,6 +487,9 @@
     <script>
         drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
     </script>
+
+    <script>hljs.highlightAll();</script>
+
 
 </body>
 
