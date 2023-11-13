@@ -79,18 +79,13 @@
 
         .card {
             /* width: 300px; */
-            /* 调整卡片宽度 */
             background-color: #F9F8F8;
             border-radius: 0 2rem 0rem 0;
-            /* 设置右下角圆角，顺序为左上、右上、右下、左下 */
             box-shadow: 0 4px 50px #03030317;
-            /* 添加阴影效果 */
             padding: 2rem;
             border: none;
             margin: 0 2rem;
             cursor: pointer;
-            /* 设置鼠标指针样式为 pointer 形式 */
-
         }
 
         p {
@@ -215,7 +210,7 @@
             display: block;
         }
 
-        /* header 锚泊咯 */
+        /* header */
         .glassmorphismHeader {
             background: rgba(249, 249, 249, 0.6);
             -webkit-backdrop-filter: blur(10px);
@@ -241,6 +236,12 @@
             style="margin: 0 0 6rem 0;">
             Wearable pressure ulcer prevention sensor patches</p>
 
+        <a href="https://anonymous.4open.science/r/pressure-ulcer-application-6C9F"
+            style="display: inline-block; border: 0.1rem solid #ccc; border-radius: 0.8rem; padding: 1rem 6rem 1rem 6rem; text-align: center; cursor: pointer; text-decoration: underline; color: inherit; margin-bottom: 3rem;">
+            <p style="margin: 0;">Anonymous GitHub repo</p>
+        </a>
+
+
         <h2 style="margin-bottom: 2rem;">CHALLENGE</h2>
         <p>Pressure ulcer(PU) is a skin ulcer caused by ischemia and necrosis. It is estimated that about 1-2% of the
             population in developed countries experience PU in their lifetime. In the United States alone, more than 2.5
@@ -254,7 +255,7 @@
             products nowadays can only respond to pressure, ignoring other PU triggers.</p>
 
         <h2 style="margin-bottom: 2rem; margin-top: 6rem;">DESIGN DETAILS</h2>
-        <p>I wrote <a href="../../resources/model/pressure ulcer/serpentine wire.gh" download>
+        <p>We wrote <a href="../../resources/model/pressure ulcer/serpentine wire.gh" download>
                 this grasshopper script (rhino 7)
             </a> to generate serpentine-shaped wires from any chosen base curve. Users can try
             to adjust different parameters to get different serpentine results (e.g. change the width, amplitute,
@@ -268,7 +269,7 @@
         <img src="../../resources/img/sample projects/pressure ulcer/serpentine gh.png" alt=""
             style="width: 100%; margin-bottom: 4rem;">
         <p>
-            I also wrote <a href="../../resources/model/pressure ulcer/voronoi.gh" download>
+            We also wrote <a href="../../resources/model/pressure ulcer/voronoi.gh" download>
                 this grasshopper script (rhino 7)
             </a> to generate voronoi patterns in any given curve boundaries (users need to first identify a large
             "bounding" rectangle, then select/draw a curve that falls absolutely within that rectangle). Users can try
