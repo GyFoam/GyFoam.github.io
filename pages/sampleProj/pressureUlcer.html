@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
     <!-- outline Import the library -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
-    <!-- <script src="js/DocumentOutline.js"></script> -->
+    <script src="../../js/DocumentOutline.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -236,7 +236,7 @@
         </div>
     </a>
 
-    <div style="margin: 6rem 26rem 0 26rem;">
+    <div style="margin: 6rem 20rem 0 30rem;">
         <p class="h1StylePTag content" data-lan="en" data-cn="案例项目" data-en="Sample Projects"
             style="margin: 0 0 6rem 0;">
             Wearable pressure ulcer prevention sensor patches</p>
@@ -489,7 +489,18 @@
     </script>
 
     <script>hljs.highlightAll();</script>
-
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+    </script>
 
 </body>
 
