@@ -10,14 +10,16 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
     <script src="https://d3js.org/d3.v6.js"></script>
     <script src="../../js/d3DrawIcon.js"></script>
 
     <!-- outline Import CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
     <!-- outline Import the library -->
-    <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
-    <!-- <script src="js/DocumentOutline.js"></script> -->
+    <script src="../../js/DocumentOutline.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,6 +96,13 @@
             color: rgba(3, 3, 3, 0.7);
             font-size: 1rem;
             margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
         div.btn-container {
@@ -222,14 +231,6 @@
                 <div id="icon"></div>
                 <p class="h3StylePTag">INTELLITEX</p>
             </div>
-
-            <!-- 语言切换 -->
-            <!-- <div class="btn-container" style="justify-content: flex-end;">
-                <label class="switch btn-color-mode-switch">
-                    <input type="checkbox" name="language_toggle" id="language_toggle" value="1">
-                    <label for="language_toggle" data-on="CN" data-off="EN" class="btn-color-mode-switch-inner"></label>
-                </label>
-            </div> -->
         </div>
     </a>
 
@@ -238,20 +239,191 @@
             style="margin: 0 0 6rem 0;">
             Interactive fluffy piano pillow</p>
 
-        <p style="margin-bottom: 2rem;">Utilizing the textile's special and pleasant hand feel, we created an
-            interactive fluffy piano pillow. We used dip-coated and
-            partially-dip-coated wool-like fabric for black and white keys and attached them to a pillow.
-            Partially-dip-coating endows electric functionalities to textiles while not undermining the original
-            fabrics' appearance. Capacitive sensing is utilized to capture touching and approaching events. We
-            demonstrated that arbitrary textiles can be transformed to touch-sensing interfaces using the double-coating
-            process and thus provide engaging tactile feedback and special emotional connection.
+        <h2 style="margin-bottom: 2rem;">OVERVIEW</h2>
+        <p>Utilizing the textile's special and pleasant hand feel, we augmented an off-the-shelf pillow and created an
+            interactive fluffy piano pillow. We demonstrated that textiles can be transformed to touch-sensing
+            interfaces using the double-coating process and thus provide engaging tactile feedback and special emotional
+            connection.
         </p>
+        <div style="margin-bottom: 6rem;"></div>
 
+        <h2 style="margin-bottom: 2rem;">DESIGN DETAILS</h2>
+        <p>
+            We used dip-coated and partially-dip-coated (<a href="../subpage/stepbystep.html">details here</a>)
+            wool-like fabric for black and white keys and attached them to a pillow (with mesh TPU and ironing).
+            Partially-dip-coating endows electric functionalities to textiles while not undermining the original
+            fabrics' appearance (in this scenario, we kept the white surface of the fabric to be the white keys of the
+            piano). Download our laser-cut files for the piano keys <a href="../../resources/model/piano/piano.dxf"
+                download="">here</a>. What we did is a simple geometry of regular piano key shapes depending on the size
+            of the pillow itself, you may want to adjust the size of our design to suit your pillow case, or design you
+            own radical instrumental interfaces (it does not need to look like a piano at all!).
+        </p>
+        <div style="margin-bottom: 2rem;"></div>
         <img src="../../resources/img/sample projects/piano/coat.png" alt="" style="width: 100%; margin-bottom: 4rem;">
 
-        <img src="../../resources/img/sample projects/piano/piano_play1.png" alt="" style="width: 100%; margin-bottom: 4rem;">
+        <div style="margin-bottom: 4rem;"></div>
 
-        <img src="../../resources/img/sample projects/piano/piano_play2.png" alt="" style="width: 100%; margin-bottom: 8rem;">
+        <h2 style="margin-bottom: 2rem;">TECH DETAILS</h2>
+        <p>
+            Capacitive sensing is utilized to capture touching and approaching events. Self-capacitance can be used to
+            realize capacitive sensing. When voltage is applied to conductive fabrics, the fabrics and the
+            earth's surface can be viewed as a parallel-plate capacitor, generating an electric field around it. If body
+            parts are brought close to conductive fabrics, this electric field and the capacitance of conductive fabrics
+            will be changed, which can be detected as proximity or touch events. This capacitive sensing mechanism is
+            shared across all types of conductive materials (copper, aluminum, carbon, etc.), but not only our coated
+            fabrics. In fact, bare conductive provides a great and inspiring <a
+                href="https://www.bareconductive.com/blogs/blog/the-touch-board-uses-capacitive-sensing-what-is-it">article</a>
+            on how this type of sensing works.
+        </p>
+
+        <p>
+            We can build a simple low-pass filter and use this <a
+                href="https://playground.arduino.cc/Main/CapacitiveSensor/">capacitive sensing Arduino library</a> to
+            measure the
+            capacitance change caused by human body interactions present at the coated fabrics. In the diagram
+            below, if human hands are brought close to (or touch) the fabric, there would be a add-on capacitance
+            between pin 2 and the GND (marked with shaded and dashed capacitor). This capacitance change can be sensed
+            by measuring the time delay of the state change between the send pin and the receive pin, which is
+            determined by the RC time constant, i.e. R * C, where C includes the additional capacitance caused by touch
+            or hover. The <code>capacitiveSensor()</code> function in the capacitive sensing Arduino library can keeps
+            track of the lowest baseline (unsensed) capacitance, and subtracts that from the sensed capacitance,
+            therefore only return the "added" capacitance caused by touching/hovering.
+        </p>
+        <img src="../../resources/img/sample projects/piano/capArdDiag.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+        <p>
+            The arduino code to sense the touch events looks like:
+        </p>
+        <pre>
+            <code class="language-c">
+                #include < CapacitiveSensor.h >
+                    /*
+                    * modified from CapitiveSense Library Demo Sketch
+                    * by Paul Badger 2008
+                    */
+
+                    CapacitiveSensor   cs_4_2 = CapacitiveSensor(4,2);        // 1 MOhm resistor between pins 4 & 2, pin 2 is sensor pin, connect conductive fabric
+                    
+                    void setup()                    
+                    {
+                       cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);     // turn off autocalibrate on channel 1
+                       Serial.begin(9600);
+                    }
+                    
+                    void loop()                    
+                    {
+                        long total1 =  cs_4_2.capacitiveSensor(30);
+                        Serial.println(total1);                  // print sensor output 1
+                        delay(10);                             
+                    }
+            </code>
+        </pre>
+        <p>
+            The result serial plotting would look like:
+        </p>
+        <img src="../../resources/img/sample projects/piano/touch plot.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+
+        <p>We implemented the code and the circuit with Arduino ⬇️. One thing exciting about having our coated fabric
+            instead of other conductive materials, say, copper foil, is that with coated thick fabrics, our
+            capacitance-based sensing is also capable of sensing pressure.</p>
+        
+            <video width="100%" controls>
+                <source src="../../resources/video/piano/mechanism_cap.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        <p>
+            To sense the hovering interaction, we can replace the 1MOhm resistor to a larger one (e.g. 5MOhm), and the
+            arduino code looks like (we added a window filtering to produce smoother readings):
+        </p>
+        <pre>
+            <code class="language-c">
+                #include <CapacitiveSensor.h>
+
+                    /*
+                    * modified from CapitiveSense Library Demo Sketch
+                    * by Paul Badger 2008
+                    * and also the Arduino smoothing example
+                    * https://docs.arduino.cc/built-in-examples/analog/Smoothing
+                    */
+                    
+                    const int numReadings = 10;  // window filter length
+                    int readings[numReadings];   // the readings from the analog input
+                    int readIndex = 0;           // the index of the current reading
+                    int total = 0;               // the running total
+                    int average = 0;             // the average
+                    
+                    CapacitiveSensor cs_4_2 = CapacitiveSensor(4, 2);  // 10 megohm resistor between pins 4 & 2, pin 2 is sensor pin, add wire, foil
+                    
+                    void setup() {
+                    
+                      cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);  // turn off autocalibrate on channel 1 - just as an example
+                      Serial.begin(9600);
+                      for (int i = 0; i < numReadings; i++) {
+                        readings[i] = 0;
+                      }
+                    }
+                    
+                    void loop() {
+                      // subtract the last reading:
+                      total = total - readings[readIndex];
+                      // read capacitance
+                      long cap = cs_4_2.capacitiveSensor(80);
+                      readings[readIndex] = cap;
+                      
+                      // add the reading to the total:
+                      total = total + readings[readIndex];
+                      // advance to the next position in the array:
+                      readIndex = readIndex + 1;
+                    
+                      // if we're at the end of the array...
+                      if (readIndex >= numReadings) {
+                        // ...wrap around to the beginning:
+                        readIndex = 0;
+                      }
+                    
+                      // calculate the average:
+                      average = total / numReadings;
+                      // send it to the computer as ASCII digits
+                      Serial.println(average);
+                    
+                      delay(10);  // arbitrary delay to limit data to serial port
+                    }
+            </code>
+        </pre>
+
+        <p>
+            The result serial plotting would look like:
+        </p>
+        <img src="../../resources/img/sample projects/piano/hover plot.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+
+        <p style="margin-bottom: 2rem;">
+            You can definitely build this application using the method of Arduino. But we used a much simpler
+            arlternative... the <a href="https://www.bareconductive.com/products/touch-board">Touch Board</a> by bare
+            conductive! It's much more expansive and often sold-out, but it's simple and easy to use. You can find the
+            tutorial <a href="https://www.bareconductive.com/pages/touch-board-get-started">here</a>. We just use silver
+            fabric segments to connect pads from the board to our coated fabric. This board only has 12 pads, so we did
+            not connect all coated fabrics on our pillow -- just middle ones are connected.
+        </p>
+        <img src="../../resources/img/sample projects/piano/piano back.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+
+
+        <div style="margin-bottom: 4rem;"></div>
+
+        <h2 style="margin-bottom: 2rem;">OUTCOME</h2>
+
+        <video width="100%" controls>
+            <source src="../../resources/video/piano/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <img src="../../resources/img/sample projects/piano/piano_play1.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+
+        <img src="../../resources/img/sample projects/piano/piano_play2.png" alt=""
+            style="width: 100%; margin-bottom: 8rem;">
 
     </div>
 
@@ -260,7 +432,19 @@
         drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
     </script>
 
-
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+    </script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

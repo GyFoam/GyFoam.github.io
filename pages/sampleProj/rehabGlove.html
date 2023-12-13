@@ -16,8 +16,8 @@
     <!-- outline Import CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
     <!-- outline Import the library -->
-    <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
-    <!-- <script src="js/DocumentOutline.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script>
+    <script src="../../js/DocumentOutline.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +89,8 @@
 
         }
 
-        p {
+        p,
+        li {
             font-family: 'Noto Sans', sans-serif;
             color: rgba(3, 3, 3, 0.7);
             font-size: 1rem;
@@ -97,7 +98,10 @@
         }
 
         a {
-            text-decoration: none;
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
         div.btn-container {
@@ -238,6 +242,39 @@
         <p>Rehabilitation exercises can be repetitive, tedious, and boring. Besides, it is challenging to perform right
             exercise forms for novices without professional guidance.</p>
 
+        <h2 style="margin: 6rem 0 2rem 0;">DESIGN DETAILS</h2>
+        <p>Unlike our pressure ulcer prevention wearable patch application, which is mostly digitaly designed and
+            fabricated, this glove application represents a more DIY approach of our fabrication workflow.</p>
+        <p>We used an off-the-self fingerless glove (mainly nylon spandex fabrics) with
+            thumb hole as the base double-coating fabric and the brush-coating method to coat areas according to hands'
+            joint places.</p>
+
+        <p>
+            Since this application cannot be 100% digitally quantified and gloves vary, we do not have a CAD design file
+            for this design as the pressure ulcer prevention sensor patch application. But the <i>workflow</i> we used can be
+            the same even with different gloves:
+        </p>
+        <ul>
+            <li>wear the glove on your hand(s), mark areas of joints (in our case, we marked three areas) that you want
+                to sense bending with an erasable pen</li>
+            <li>take off the glove, brush-coat these areas using our <a href="../subpage/stepbystep.html">method</a>
+            </li>
+            <li>connect conductive silver fabric and processor&output components according to the diagram below (we used
+                the vibrator for the output, while you can choose alternatives from our <a
+                    href="../subpage/processor_output.html">output components list</a>)</li>
+        </ul>
+
+        <p style="margin-bottom: 2rem;">
+
+        </p>
+
+        <img src="../../resources/img/sample projects/rehab_glove/diagram.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+
+
+        <h2 style="margin: 6rem 0 2rem 0;">TECH DETAILS</h2>
+
+
         <h2 style="margin-bottom: 2rem; margin-top: 6rem;">OUTCOME</h2>
         <p style="margin-bottom: 2rem;">Through this application we show that everyday textile accessories can easily be
             endowed with input functionalities
@@ -248,8 +285,7 @@
             alert the user. Personalized exercise sequences can be tailored by customizing game maps, making dull
             rehabilitation training more engaging.</p>
 
-        <img src="../../resources/img/sample projects/rehab_glove/glove_hand.png" alt=""
-            style="width: 100%; margin-bottom: 4rem;">
+
 
         <img src="../../resources/img/sample projects/rehab_glove/function demon.png" alt=""
             style="width: 100%; margin-bottom: 8rem;">
@@ -259,6 +295,19 @@
     <!-- 绘制图标 -->
     <script>
         drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
+    </script>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
     </script>
 
 
