@@ -16,8 +16,8 @@
     <!-- outline Import CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
     <!-- outline Import the library -->
-    <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
-    <!-- <script src="js/DocumentOutline.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script>
+    <script src="js/DocumentOutline.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +89,8 @@
 
         }
 
-        p, a {
+        p,
+        a {
             font-family: 'Noto Sans', sans-serif;
             color: rgba(3, 3, 3, 0.7);
             font-size: 1rem;
@@ -230,6 +231,10 @@
             style="margin: 0 0 6rem 0;">
             Firefighter neck-wear with heat warning</p>
 
+        <a href="https://anonymous.4open.science/r/firefighter-neckwear-application-0345" target="_blank"
+            style="display: inline-block; border: 0.1rem solid #ccc; border-radius: 0.8rem; padding: 1rem 6rem 1rem 6rem; text-align: center; cursor: pointer; text-decoration: underline; color: inherit; margin-bottom: 3rem;">
+            <p style="margin: 0;">Anonymous GitHub repo</p>
+        </a>
 
         <h2 style="margin-bottom: 2rem;">CHALLENGE</h2>
         <p>We also demonstrate the potential applications of workwear for special occupations, such as firefighters.
@@ -240,12 +245,20 @@
                 influenced by turnout gear</a>). Besides, firefighters can
             lose track of the temperature and even pain with the adrenaline rush.</p>
 
-
-        <h2 style="margin-bottom: 2rem; margin-top: 6rem;">OUTCOME</h2>
+        <h2 style="margin: 6rem 0 2rem 0;">DESIGN DETAILS</h2>
         <p style="margin-bottom: 2rem;">Therefore, we designed an intelligent neck-wear worn inside the heat-insulating
             jacket that can alert firefighters to dangerous temperatures next to the skins: when
             temperatures hit 60°C, the neck-wear will start buzzing and vibrating. The
             fabric base is water-proof to avoid the humidity influence from sweat on the fabric temperature sensor. </p>
+
+
+
+        <h2 style="margin: 6rem 0 2rem 0;">IMPLEMENTATION</h2>
+
+
+
+        <h2 style="margin-bottom: 2rem; margin-top: 6rem;">OUTCOME</h2>
+
 
         <img src="../../resources/img/sample projects/firefighter/output_1.png" alt=""
             style="width: 100%; margin-bottom: 4rem;">
@@ -261,6 +274,19 @@
     <!-- 绘制图标 -->
     <script>
         drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
+    </script>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
     </script>
 
 

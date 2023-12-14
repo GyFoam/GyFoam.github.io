@@ -16,8 +16,8 @@
     <!-- outline Import CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
     <!-- outline Import the library -->
-    <!-- <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
-    <!-- <script src="js/DocumentOutline.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/DocumentOutline.js"></script> -->
+    <script src="js/DocumentOutline.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,6 +238,11 @@
             style="margin: 0 0 6rem 0;">
             Pinball game input</p>
 
+        <a href="https://anonymous.4open.science/r/pinball-application-1189" target="_blank"
+            style="display: inline-block; border: 0.1rem solid #ccc; border-radius: 0.8rem; padding: 1rem 6rem 1rem 6rem; text-align: center; cursor: pointer; text-decoration: underline; color: inherit; margin-bottom: 3rem;">
+            <p style="margin: 0;">Anonymous GitHub repo</p>
+        </a>
+
         <p style="margin-bottom: 2rem;">Taking advantage of the flexibility and elasticity of textiles, we combined our
             approach with concepts of textile sculpture and fabricated an interface using highly elastic fabrics. Four
             layers of elastic fabric are combined to sense a wider range of push
@@ -247,11 +252,14 @@
             force simulator for pressing the spring in the virtual game.
         </p>
 
-        <img src="../../resources/img/sample projects/pinball/setting.png" alt="" style="width: 100%; margin-bottom: 4rem;">
+        <img src="../../resources/img/sample projects/pinball/setting.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
-        <img src="../../resources/img/sample projects/pinball/compress.png" alt="" style="width: 100%; margin-bottom: 4rem;">
+        <img src="../../resources/img/sample projects/pinball/compress.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
-        <img src="../../resources/img/sample projects/pinball/eject.png" alt="" style="width: 100%; margin-bottom: 8rem;">
+        <img src="../../resources/img/sample projects/pinball/eject.png" alt=""
+            style="width: 100%; margin-bottom: 8rem;">
 
 
     </div>
@@ -261,6 +269,18 @@
         drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
     </script>
 
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+    </script>
 
 </body>
 

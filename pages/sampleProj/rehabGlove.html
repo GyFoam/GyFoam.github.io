@@ -238,6 +238,11 @@
             style="margin: 0 0 6rem 0;">
             Glove input for gamified wrist rehablitation</p>
 
+        <a href="https://anonymous.4open.science/r/rehab-glove-application-1480" target="_blank"
+            style="display: inline-block; border: 0.1rem solid #ccc; border-radius: 0.8rem; padding: 1rem 6rem 1rem 6rem; text-align: center; cursor: pointer; text-decoration: underline; color: inherit; margin-bottom: 3rem;">
+            <p style="margin: 0;">Anonymous GitHub repo</p>
+        </a>
+
         <h2 style="margin-bottom: 2rem;">CHALLENGE</h2>
         <p>Rehabilitation exercises can be repetitive, tedious, and boring. Besides, it is challenging to perform right
             exercise forms for novices without professional guidance.</p>
@@ -251,7 +256,8 @@
 
         <p>
             Since this application cannot be 100% digitally quantified and gloves vary, we do not have a CAD design file
-            for this design as the pressure ulcer prevention sensor patch application. But the <i>workflow</i> we used can be
+            for this design as the pressure ulcer prevention sensor patch application. But the <i>workflow</i> we used
+            can be
             the same even with different gloves:
         </p>
         <ul>
@@ -262,6 +268,12 @@
             <li>connect conductive silver fabric and processor&output components according to the diagram below (we used
                 the vibrator for the output, while you can choose alternatives from our <a
                     href="../subpage/processor_output.html">output components list</a>)</li>
+            <ul>
+                <li>The <i>A0</i> is for strain sensing of the metacarpophalangeal joint</li>
+                <li>The <i>A1</i> is for the output signal of the glove (to drive the vibration motor, in our case)</li>
+                <li>The <i>A2</i> is for strain sensing of the side wrist joint</li>
+                <li>The <i>A3</i> is for strain sensing of the back wrist joint</li>
+            </ul>
         </ul>
 
         <p style="margin-bottom: 2rem;">
@@ -272,7 +284,23 @@
             style="width: 100%; margin-bottom: 4rem;">
 
 
-        <h2 style="margin: 6rem 0 2rem 0;">TECH DETAILS</h2>
+        <h2 style="margin: 6rem 0 2rem 0;">IMPLEMENTATION</h2>
+        <p>
+            As shown before, we used three analog pins on the processor to read the resistance of three brush-coated
+            strain sensing
+            areas. We used Arduino and Processing visualize this sensing process:
+        </p>
+        <p>Video here</p>
+        <p>
+            We also further used its sensing property and implemented it to a Unity game, where holding the right
+            gesture for a pre-difined time is needed to guide the rabbit to eat a carrot. The map of the maze can also
+            be tailored to realize different excercise sequences.
+            Using this game, we hope to make the wrist rehabilitation more interesting.
+        </p>
+        <p>Video here</p>
+        <p>All source code for Arduino demonstration and the Unity game can be found on the <a
+                href="https://anonymous.4open.science/r/rehab-glove-application-1480/README.md" target="_blank">Github repository</a> of
+            this application.</p>
 
 
         <h2 style="margin-bottom: 2rem; margin-top: 6rem;">OUTCOME</h2>
@@ -281,7 +309,7 @@
             using brush-coating. A glove is brush-coated to augment it into a wearable bend input for gamified
             rehabilitation training. It can capture exercise motions and thus control game
             objects, such as moving a rabbit to eat carrots. When wrong motions or incorrect exercise forms are
-            detected, the glove will vibrate to
+            detected, the glove can be set to vibrate to
             alert the user. Personalized exercise sequences can be tailored by customizing game maps, making dull
             rehabilitation training more engaging.</p>
 
