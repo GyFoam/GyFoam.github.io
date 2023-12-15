@@ -89,12 +89,18 @@
 
         }
 
-        p,
-        a {
+        p {
             font-family: 'Noto Sans', sans-serif;
             color: rgba(3, 3, 3, 0.7);
             font-size: 1rem;
             margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
         div.btn-container {
@@ -246,19 +252,46 @@
             lose track of the temperature and even pain with the adrenaline rush.</p>
 
         <h2 style="margin: 6rem 0 2rem 0;">DESIGN DETAILS</h2>
-        <p style="margin-bottom: 2rem;">Therefore, we designed an intelligent neck-wear worn inside the heat-insulating
+        <p>Therefore, we designed an intelligent neck-wear worn inside the heat-insulating
             jacket that can alert firefighters to dangerous temperatures next to the skins: when
             temperatures hit 60°C, the neck-wear will start buzzing and vibrating. The
             fabric base is water-proof to avoid the humidity influence from sweat on the fabric temperature sensor. </p>
-
-
+        <p>
+            The neck wear base was a hand-cut and sewed piece, but it could also be off-the-shelf garments. The
+            temperature sensing area was laser-cut double-coated 0.3mm thick nylon spandex fabrics. The dxf file of the
+            temperature sensing area we used is available in the <a
+                href="https://anonymous.4open.science/r/firefighter-neckwear-application-0345/design%20files/temp_sensing%20area.dxf">github
+                repo</a> of this project
+        </p>
+        <p style="margin-bottom: 2rem;">
+            With the processor component, we implemented it by connecting the fabric sensor to one analog pin, with
+            buzzer and vibration motor separately connected to two other pins.
+        </p>
+        <img src="../../resources/img/sample projects/firefighter/schematic.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
+        <img src="../../resources/img/sample projects/firefighter/connected.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
         <h2 style="margin: 6rem 0 2rem 0;">IMPLEMENTATION</h2>
-
+        <video width="100%" controls>
+            <source src="../../resources/video/fire neck/function.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div style="margin-bottom: 6rem;"></div>
+        <video width="100%" controls>
+            <source src="../../resources/video/fire neck/arduino demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div style="margin-bottom: 6rem;"></div>
+        <video width="100%" controls>
+            <source src="../../resources/video/fire neck/dmm demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
 
         <h2 style="margin-bottom: 2rem; margin-top: 6rem;">OUTCOME</h2>
-
+        <img src="../../resources/img/sample projects/firefighter/fire_wear.png" alt=""
+            style="width: 100%; margin-bottom: 4rem;">
 
         <img src="../../resources/img/sample projects/firefighter/output_1.png" alt=""
             style="width: 100%; margin-bottom: 4rem;">
