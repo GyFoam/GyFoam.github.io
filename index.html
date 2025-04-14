@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntelliTex - Fabrication of functional textiles using double-coating process</title>
-    <meta property="og:title" content="IntelliTex - Fabrication of functional textiles using double-coating process">
+    <title>GyFoam - Fabrication of Large and Lattice-structured Objects</title>
+    <meta property="og:title" content="Fabrication of Large and Lattice-structured Objects">
     <meta property="og:locale" content="en_US">
     <link rel="canonical" href="https://intellitex-doublecoat.github.io">
     <meta property="og:url" content="https://intellitex-doublecoat.github.io">
@@ -18,10 +18,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
-
-    <script src="https://d3js.org/d3.v6.js"></script>
-    <script src="./js/d3DrawIcon.js"></script>
-
+    <!-- 添加新字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         html,
@@ -29,45 +27,112 @@
             height: 100%;
             background-color: #fdfdfd;
             font-size: calc(1728vw / 1728);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* 防止水平滚动 */
+        }
+
+        /* 添加动画关键帧 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 背景图片动画 */
+        .bg-image {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        /* 半透明背景动画 */
+        .content-bg {
+            opacity: 0;
+            animation: fadeIn 1.2s ease-in-out 0.3s forwards;
+        }
+
+        /* 标题动画 */
+        .title-animation {
+            opacity: 0;
+            animation: slideInRight 1s ease-out 0.8s forwards;
+        }
+
+        /* 描述文字动画 */
+        .desc-animation {
+            opacity: 0;
+            animation: slideInRight 1s ease-out 1s forwards;
+        }
+
+        /* 菜单项动画 */
+        .menu-item {
+            opacity: 0;
+        }
+        .menu-item:nth-child(1) {
+            animation: slideInUp 0.6s ease-out 1.2s forwards;
+        }
+        .menu-item:nth-child(2) {
+            animation: slideInUp 0.6s ease-out 1.4s forwards;
+        }
+        .menu-item:nth-child(3) {
+            animation: slideInUp 0.6s ease-out 1.6s forwards;
+        }
+        .menu-item:nth-child(4) {
+            animation: slideInUp 0.6s ease-out 1.8s forwards;
+        }
+        .menu-item:nth-child(5) {
+            animation: slideInUp 0.6s ease-out 2s forwards;
         }
 
         h1 {
-            /* font-family: 'Katibeh', cursive; */
-            /* font-family: 'Caveat', cursive; */
-            /* font-family: 'Vollkorn', serif; */
-            font-family: 'DM Serif Display', serif;
+            /* 更换标题字体为Raleway */
+            font-family: 'Raleway', sans-serif;
             color: #030303;
             font-size: 4.5rem;
             margin: 0;
         }
 
         h3 {
-            /* font-family: 'Katibeh', cursive; */
-            /* font-family: 'Caveat', cursive; */
-            /* font-family: 'Vollkorn', serif; */
-            font-family: 'DM Serif Display', serif;
+            /* 更换菜单项字体 */
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
+            font-weight: 600;
             color: #030303;
             margin: 0;
 
             position: relative;
-            /* 设置定位为相对定位，使 ::after 伪元素相对于 h3 元素定位 */
             display: inline-block;
-            /* 将 h3 元素设置为行内块元素，以使下划线只出现在文本的底部 */
             cursor: pointer;
-            /* 添加一个指针样式，以显示可以点击 */
         }
 
         .h3StylePTag {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
             color: #030303;
             margin: 0;
 
             position: relative;
-            /* 设置定位为相对定位，使 ::after 伪元素相对于 h3 元素定位 */
             display: inline-block;
-            /* 将 h3 元素设置为行内块元素，以使下划线只出现在文本的底部 */
         }
 
         h3::after {
@@ -97,7 +162,7 @@
         }
 
         p {
-            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: #030303;
             font-size: 1rem;
         }
@@ -127,63 +192,59 @@
 </head>
 
 <body>
-    <div class="row">
+    <div class="row g-0" style="position: relative; width: 100%; margin: 0;">
+        <!-- 背景图片 -->
+        <div style="position: absolute; width: 100%; height: 100%; z-index: 0; overflow: hidden; left: 0; top: 0;">
+            <img src="resources/img/MainImage.png" alt="" style="width: 100%; height: 100%; object-fit: cover;" class="bg-image">
+        </div>
+        
         <div class="col">
-            <!-- <div style="display: flex; align-items: center;">
-                <div id="icon"></div>
-                <p class="h3StylePTag">INTELLITEX</p>
-            </div> -->
-            <div style="display: flex; align-items: center; height: 100%;">
-                <div style="padding: 0 8rem 0 10rem;">
-                    <div style="margin-bottom: 4rem;">
-                        <h1 style="text-align: center; margin-bottom: 2rem;">GyFoam Document</h1>
-                        <p style="text-align: center;">Customize washable and reusable functional textiles using the double-coating method,
-                            with low-cost and high-accessibility. </p>
+            <div style="display: flex; align-items: center; height: 100%; position: relative; z-index: 1;">
+                <div style="padding: 0 2rem 0 4rem; background: linear-gradient(to right, rgba(240, 240, 240, 0.2), rgba(240, 240, 240, 0)); border-radius: 10px; height: 100%; display: flex; flex-direction: column; justify-content: center; width: 55%;" class="content-bg">
+                    <div style="margin-bottom: 4rem; padding-right: 2rem;">
+                        <h1 style="text-align: right; margin-bottom: 1rem; font-size: 5rem; font-weight: 580; line-height: 1.2;" class="title-animation">GyFoam Document</h1>
+                        <p style="text-align: right;margin-bottom: 2rem; font-size: 0.9rem;" class="desc-animation">Fabricating Foam Materials for Large-Scale and Lattice-structured Objects with Customizable Stiffness. </p>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 8rem;">
-                        <div style="display: flex; margin-bottom: 1rem;">
-                            <a href="pages/subpage/stepbystep.html">
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 2rem;">
+                        <!-- 菜单项添加动画类 -->
+                        <div style="display: flex; margin-bottom: 1rem;" class="menu-item">
+                            <a>
+                                <h3 style="margin-right: 2rem;">DesignTool Demonstration</h3>
+                            </a>
+                            <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
+                        </div>
+                        <div style="display: flex; margin-bottom: 1rem;" class="menu-item">
+                            <a>
                                 <h3 style="margin-right: 2rem;">Fabrication Workflow</h3>
                             </a>
                             <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
                         </div>
-                        <div style="display: flex; margin-bottom: 1rem;">
-                            <a href="pages/subpage/library.html">
-                                <h3 style="margin-right: 2rem;">Fabric Input Library</h3>
+                        <!-- 为其余菜单项添加menu-item类 -->
+                        <div style="display: flex; margin-bottom: 1rem;" class="menu-item">
+                            <a>
+                                <h3 style="margin-right: 2rem;">Stiffness & Morphing</h3>
                             </a>
                             <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
                         </div>
-                        <div style="display: flex; margin-bottom: 1rem;">
-                            <a href="pages/subpage/processor_output.html">
-                                <h3 style="margin-right: 2rem;">Processor & Outputs</h3>
+                        <div style="display: flex; margin-bottom: 1rem;" class="menu-item">
+                            <a>
+                                <h3 style="margin-right: 2rem;">Application Projects</h3>
                             </a>
                             <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
                         </div>
-                        <div style="display: flex; margin-bottom: 1rem;">
-                            <a href="pages/subpage/sampleProj.html">
-                                <h3 style="margin-right: 2rem;">Sample Projects</h3>
-                            </a>
-                            <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
-                        </div>
-                        <div style="display: flex; margin-bottom: 1rem;">
-                            <a href="https://github.com/IntelliTex-doublecoat">
+                        <div style="display: flex; margin-bottom: 1rem;" class="menu-item">
+                            <a>
                                 <h3 style="margin-right: 2rem;">GitHub</h3>
                             </a>
                             <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
                         </div>
-                        <!-- <div style="display: flex; margin-bottom: 1rem;">
-                            <a href="pages/subpage/FAQ.html">
-                                <h3 style="margin-right: 2rem;">FAQ</h3>
-                            </a>
-                            <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
-                        </div> -->
                     </div>
                 </div>
             </div>
 
         </div>
         <!-- <div class="col img-container" style="height: 100%;">
-            <img src="resources/img/mainViz.png" alt="" class="img-fluid"> 
+            <img src="resources/img/MainImage.png" alt="" class="img-fluid"> 
         </div> -->
     </div>
 
