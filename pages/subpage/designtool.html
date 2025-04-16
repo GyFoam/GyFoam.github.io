@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesignTool Demonstration - GyFoam</title>
+    <meta property="og:title" content="DesignTool Demonstration - GyFoam">
+    <meta property="og:locale" content="en_US">
+    <link rel="canonical" href="https://intellitex-doublecoat.github.io/pages/designtool.html">
+    <meta property="og:url" content="https://intellitex-doublecoat.github.io/pages/designtool.html">
+    <meta property="og:site_name" content="intellitex-doublecoat.github.io">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="../../js/d3DrawIcon.js"></script>
+
+    <!-- outline Import CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
+    <!-- outline Import the library -->
+    <script src="../../js/DocumentOutline.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式 */
+        .demo-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* 功能框样式 */
+        .feature-box {
+            background-color: #f8f2e5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            border: 1px solid #e8d8c0;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(150, 120, 90, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #c9a875;
+        }
+
+        /* header 毛玻璃效果 */
+        .glassmorphismHeader {
+            background: rgba(249, 249, 249, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader"
+        style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 20rem 0.4rem 28rem;">
+        <a href="../../index.html">
+            <div style="display: flex; align-items: center;">
+                <div id="icon"></div>
+                <p class="h3StylePTag">GyFoam</p>
+            </div>
+        </a>
+    </div>
+
+    <div style="margin: 6rem 10rem 0 28rem;">
+        <!-- 修改前 -->
+        <!-- <p class="h1StylePTag" style="margin: 0 0 8rem 0;">DesignTool Demonstration</p> -->
+
+        <!-- 修改后 -->
+        <p class="h1StylePTag" style="margin: 0 0 6rem 0; font-size: 4.2rem;">DesignTool Demonstration</p>
+
+        <h2 id="overview" style="margin: 2rem 0;">Overview of DesignTool</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <p>To accommodate users' personalized and diverse needs,
+                    we have developed design tools deployed across two software platforms.
+                    For novice users, we established a tool based on <i>Rhino and Grasshopper</i> for modeling simple
+                    geometries and previewing deformation effects by adjusting
+                    geometric parameters.
+                    For more advanced users and requirements, we developed a modeling assistant based on <i>nTop</i>,
+                    which enables more complex structural designs and facilitates optimized mold generation.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Key parameters of the Gyroid structure — Cell Size and Wall Thickness — should satisfy the
+                        following Inequality:</p>
+                    <div style="text-align: center; margin: 1rem 0;">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                            <mi>Cellsize</mi>
+                            <mo>-</mo>
+                            <mn>2</mn>
+                            <mo>×</mo>
+                            <mi>Wall Thickness</mi>
+                            <mo>></mo>
+                            <mn>2</mn>
+                        </math>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2 id="features" style="margin: 5rem 0 2rem 0;">1. Rhino-based DesignTool</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <p>The Rhino and Grasshopper-based design tool is primarily aimed at beginners and rapid prototyping.
+                    It uses HumanUI as the user interface, providing an intuitive parameter control panel that allows
+                    users
+                    to easily adjust geometric parameters and preview basic deformations. This tool is especially
+                    suitable for creating simple geometric shapes and basic Gyroid structure, without the need for an
+                    in-depth understanding of complex parametric modeling techniques.</p>
+            </div>
+        </div>
+
+        <h3 style="margin: 2rem 0 1rem 0;"><i>Step 1: Select or Import</i></h3>
+        <p>Users can begin by choosing from our predefined
+            base models as the bounding box for Gyroid structure. Experienced 3D modeling
+            users with specific designs can also freely import their own closed
+            polygonal objects, such as STL files.</p>
+        <img src="../../resources/img/DesignTool/Rhino_1.jpg" alt="Step1: Select or Import" class="demo-image"
+            style="margin-top: 0.5rem;">
+
+        <h3 style="margin: 2rem 0 1rem 0;"><i>Step 2: Customize Gyroid Structure</i></h3>
+        <p>To design suitable Gyroid structures and achieve desired deformation, users can adjust the global
+            parameters of Gyroid structure, including cell size and wall thickness.</p>
+        <img src="../../resources/img/DesignTool/Rhino_2.jpg" alt="Step2: Customize Gyroid Structure" class="demo-image"
+            style="margin-top: 0.5rem;">
+
+        <h3 style="margin: 2rem 0 1rem 0;"><i>Step 3: Set Material Concentration and Preview</i></h3>
+        <p>Users can achieve different deformation effects by adjusting material concentration and preview the results.
+            After changing the concentration, users must click the simulation button again to refresh the
+            deformation preview.</p>
+        <img src="../../resources/img/DesignTool/Rhino_3.jpg" alt="Step3: Material Concentration Preview"
+            class="demo-image" style="margin-top: 0.5rem;">
+        <img src="../../resources/video/DesignTool/Rhino_3_deformation.gif" alt="Step3: deformation" class="demo-image">
+
+        <h3 style="margin: 2rem 0 1rem 0;"><i>Step 4: Export Mold for 3D Printing</i></h3>
+        <p>Finally, users can preview and export the mold model files for creating the Gyroid structure.
+        </p>
+        <img src="../../resources/img/DesignTool/Rhino_4.jpg" alt="Step4: Export Mold for 3D Printing"
+            class="demo-image" style="margin-top: 0.5rem;">
+        <img src="../../resources/video/DesignTool/Rhino_4_mold.gif" alt="Step4: Export" class="demo-image">
+
+
+        <h2 id="ntop" style="margin: 5rem 0 2rem 0;">2. nTop-based DesignTool</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <p>nTop is a software tailored for lattice structure modeling.
+                    We've developed useful templates to support users.
+                    While its workflow is similar to Rhino and Grasshopper, nTop offers faster computation and greater
+                    efficiency for complex structures.
+                    We also created two advanced techniques with nTop: Gradient Gyroid Modeling and Eggshell Mold
+                    Generation.
+                    Mold models can be exported directly for 3D printing.</p>
+            </div>
+        </div>
+        <h3 style="margin: 2rem 0 1rem 0;"><i>Basic Modeling Process</i></h3>
+        <p><i>Step 1: Create the initial model.</i> Users can create simple geometries in nTop or import their own model
+            files.</p>
+        <img src="../../resources/img/DesignTool/nTop_1.jpg" alt="Step1" class="demo-image" style="margin-top: 0.2rem;">
+
+        <p><i>Step 2: Customize Gyroid structure.</i> Users can generate different Gyroid structures parametrically and
+            preview them in real time.</p>
+        <img src="../../resources/img/DesignTool/nTop_2.jpg" alt="Step2" class="demo-image" style="margin-top: 0.2rem;">
+
+        <p><i>Step 3: Generate mold model and export.</i> Based on the generated lattice structures, users can perform
+            Boolean operations to create corresponding mold files and export them for 3D printing.</p>
+        <img src="../../resources/img/DesignTool/nTop_3.jpg" alt="Step3" class="demo-image" style="margin-top: 0.2rem;">
+
+        <h3 style="margin: 2rem 0 1rem 0;">Advanced Modeling 1: Gradient Gyroid modeling</h3>
+        <p>Research in mechanical engineering
+            has shown that lattice structures with gradient variations exhibit
+            enhanced mechanical properties. We implemented the design
+            and modeling of such gradient Gyroid structures in nTop and provided
+            a sample file to help users better understand the process and
+            support their own modeling efforts.</p>
+        <img src="../../resources/img/DesignTool/nTop_3.jpg" alt="Gradient" class="demo-image" style="margin-top: 0.2rem;">
+
+        <h3 style="margin: 2rem 0 1rem 0;">Advanced Modeling 2: Eggshell-structured mold modeling</h3>
+        <p>To reduce PVA material usage, we optimized the mold design using an eggshell-inspired method.
+            This approach creates thin-walled molds instead of solid ones, cutting down material consumption.
+            The thin PVA shell also increases water contact area, speeding up dissolution.
+            Users can refer to the sample file to assess whether this method suits their needs.
+            We recommend it especially for larger models.</p>
+        <img src="../../resources/img/DesignTool/nTop_3.jpg" alt="Eggshell" class="demo-image" style="margin-top: 0.2rem;">
+
+        <h2 id="faq" style="margin: 6rem 0 2rem 0;">Q&A</h2>
+        <p style="margin: 2rem 0 1rem 0; font-weight: bold; font-size: 1.3rem;">1. Will there be any design
+            templates or
+            sample cases provided?</p>
+        <p>Of course! We're happy to share our design cases and have prepared a set of template files to help
+            beginner
+            users quickly get started with modeling and create their own GyFoam pieces. All files will be
+            gradually
+            open-sourced on GitHub.</p>
+
+        
+        <p style="margin: 2rem 0 1rem 0; font-weight: bold; font-size: 1.3rem;">2. Can all deformation effects
+            be
+            previewed using our Rhino designtool?</p>
+        <p>Sorry, users can only preview basic deformation effects based on simple geometric shapes using our
+            Rhino
+            plugin. For more complex and customized deformations, professional simulation software such as Ansys
+            or
+            COMSOL is recommended. We are also actively exploring ways to integrate these simulation tools to
+            enable
+            more advanced deformation previews.</p>
+
+        <p style="margin: 2rem 0 1rem 0; font-weight: bold; font-size: 1.3rem;">3. When should users use the
+            Eggshell method to create mold models?</p>
+        <p>The eggshell method is an excellent approach for mold modeling. It is particularly suitable when
+            there are
+            specific size requirements and the mold needs to have a defined wall thickness. If the thickness
+            doesn't
+            meet the requirements, the system will generate a fully solid mold instead. Therefore, we strongly
+            recommend
+            using the eggshell modeling method, as it can significantly speed up the subsequent fabrication
+            process.</p>
+
+        <div style="margin-top: 10rem;"></div>
+    </div>
+
+    <!-- 绘制图标 -->
+    <script>
+        drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
+    </script>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true,
+            width: '320px'  // 增加宽度，从280px调整为320px
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+    </script>
+</body>
+
+</html>

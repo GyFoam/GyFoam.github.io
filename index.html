@@ -63,25 +63,25 @@
         /* 背景图片动画 */
         .bg-image {
             opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
+            animation: fadeIn 0.6s ease-in-out forwards;  /* 从1s改为0.6s */
         }
 
         /* 半透明背景动画 */
         .content-bg {
             opacity: 0;
-            animation: fadeIn 1.2s ease-in-out 0.3s forwards;
+            animation: fadeIn 0.5s ease-in-out 0.1s forwards;  /* 从0.8s改为0.5s，延迟从0.2s改为0.1s */
         }
 
         /* 标题动画 */
         .title-animation {
             opacity: 0;
-            animation: slideInRight 1s ease-out 0.8s forwards;
+            animation: slideInRight 0.4s ease-out 0.3s forwards;  /* 从0.7s改为0.4s，延迟从0.5s改为0.3s */
         }
 
         /* 描述文字动画 */
         .desc-animation {
             opacity: 0;
-            animation: slideInRight 1s ease-out 1s forwards;
+            animation: slideInRight 0.4s ease-out 0.4s forwards;  /* 从0.7s改为0.4s，延迟从0.7s改为0.4s */
         }
 
         /* 菜单项动画 */
@@ -89,19 +89,19 @@
             opacity: 0;
         }
         .menu-item:nth-child(1) {
-            animation: slideInUp 0.6s ease-out 1.2s forwards;
+            animation: slideInUp 0.3s ease-out 0.5s forwards;  /* 从0.5s改为0.3s，延迟从0.9s改为0.5s */
         }
         .menu-item:nth-child(2) {
-            animation: slideInUp 0.6s ease-out 1.4s forwards;
+            animation: slideInUp 0.3s ease-out 0.6s forwards;  /* 从0.5s改为0.3s，延迟从1s改为0.6s */
         }
         .menu-item:nth-child(3) {
-            animation: slideInUp 0.6s ease-out 1.6s forwards;
+            animation: slideInUp 0.3s ease-out 0.7s forwards;  /* 从0.5s改为0.3s，延迟从1.1s改为0.7s */
         }
         .menu-item:nth-child(4) {
-            animation: slideInUp 0.6s ease-out 1.8s forwards;
+            animation: slideInUp 0.3s ease-out 0.8s forwards;  /* 从0.5s改为0.3s，延迟从1.2s改为0.8s */
         }
         .menu-item:nth-child(5) {
-            animation: slideInUp 0.6s ease-out 2s forwards;
+            animation: slideInUp 0.3s ease-out 0.9s forwards;  /* 从0.5s改为0.3s，延迟从1.3s改为0.9s */
         }
 
         h1 {
@@ -208,7 +208,7 @@
                     <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 2rem;">
                         <!-- 菜单项添加动画类 -->
                         <div style="display: flex; margin-bottom: 1rem;" class="menu-item">
-                            <a>
+                            <a href="pages/subpage/designtool.html">
                                 <h3 style="margin-right: 2rem;">DesignTool Demonstration</h3>
                             </a>
                             <img src="resources/svg/rightArrow.svg" alt="" style="width: 2rem;">
