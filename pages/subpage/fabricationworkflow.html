@@ -215,6 +215,11 @@
                     objects with customizable stiffness.</p>
                 <p>The entire process can be divided into Four main stages: Molds Preparation, Material Preparation and
                     Casting, Assembly of Modular Mold, Post-Processing</p>
+                <p>
+                    We propose a modular mold fabrication method that may involve iterative processes across these
+                    stages. Thus, we provide simple decision points where users can choose different workflows
+                    based on their needs, and the page will automatically navigate to the corresponding stage.
+                </p>
                 <img src="../../resources/img/Fabrication/FabricationWorkflow.jpg" alt="workflow" class="demo-image"
                     style="margin-top: 0.5rem;">
             </div>
@@ -223,7 +228,9 @@
         <h2 id="materials" style="margin: 5rem 0 2rem 0;">Required Materials & Equipment</h2>
 
         <div class="material-card">
-            <h3 style="margin-bottom: 0.5rem;">Mold Materials</h3>
+            <p
+                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
+                Mold Materials</p>
             <ul>
                 <li>Polyvinyl Alcohol filament (Bamboo, PVA)</li>
                 <li>Polylactic Acid filament (Bamboo, PLA)</li>
@@ -231,7 +238,9 @@
         </div>
 
         <div class="material-card">
-            <h3 style="margin-bottom: 0.5rem;">Foam Materials</h3>
+            <p
+                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
+                Foam Materials</p>
             <ul>
                 <li>Silicone base (Ecoflex 00-30 or similar)</li>
                 <li>Thermo-Expandable Microspheres (TEM) (EMH204, SEKISUI CHEMICAL
@@ -242,7 +251,9 @@
         </div>
 
         <div class="material-card">
-            <h3 style="margin-bottom: 0.5rem;">Tools & Equipment</h3>
+            <p
+                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
+                Tools & Equipment</p>
             <ul>
                 <li>Digital scale</li>
                 <li>Mixing containers</li>
@@ -288,7 +299,7 @@
 
 
 
-        <h3 style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 2: Material Preparation and Casting</h3>
+        <h3 id="stage2" style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 2: Material Preparation and Casting</h3>
 
         <div class="workflow-step">
             <div class="step-number">1</div>
@@ -389,8 +400,56 @@
             </div>
         </div>
 
+        <!-- 添加流程判断板块 -->
+        <div
+            style="margin: 3rem 0; padding: 2rem; background-color: #f8f2e5; border-radius: 10px; box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);">
+            <p
+                style="margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; font-family: 'DM Serif Display', serif; color: #030303; font-weight: bold;">
+                Decision Point: Have All Molds Been Successfully Filled?</p>
 
-        <h3 style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 3: Assembly of Modular Mold</h3>
+            <div style="display: flex; justify-content: space-around; margin-top: 2rem;">
+                <div style="text-align: center; width: 45%;">
+                    <div
+                        style="background-color: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        <p style="color: #c9a875; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;"><i>Yes -
+                                All molds are filled</i></p>
+                        <p>If all molds are successfully filled and cured, proceed directly to Stage 4 for
+                            post-processing.</p>
+
+                        <div style="margin-top: 1.5rem;">
+                            <a href="#stage4" onclick="scrollToElement('stage4'); return false;"
+                                style="display: inline-block; padding: 0.8rem 1.5rem; background-color: #c9a875; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+                                Proceed to Stage 4 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; width: 45%;">
+                    <div
+                        style="background-color: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        <p style="color: #c9a875; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;"><i>No -
+                                Molds Require Assembly</i></p>
+                        <p>If molds require assembly, proceed to Stage 3 for modular assembly first, then return to
+                            Stage 2.</p>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="#stage3" onclick="scrollToElement('stage3'); return false;"
+                                style="display: inline-block; padding: 0.8rem 1.5rem; background-color: #c9a875; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+                                Proceeding to Stage 3 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 1rem; text-align: center;">
+                <p style="font-style: italic; font-size: 0.8rem;">Note: After completing Stage 3, you need to return to Stage 2 to repeat
+                    the filling process until all molds are filled.</p>
+            </div>
+        </div>
+
+
+        <h3 id="stage3" style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 3: Assembly of Modular Mold</h3>
 
         <div class="workflow-step">
             <div class="step-number">5</div>
@@ -411,8 +470,28 @@
             </div>
         </div>
 
+        <!-- 添加返回Stage 2的提示 -->
+        <div
+            style="margin: 0.5rem 0; padding: 2rem; background-color: #f8f2e5; border-radius: 10px; box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);">
+            <p
+                style="margin-bottom: 0.2rem; text-align: left; font-size: 1.5rem; font-family: 'DM Serif Display', serif; color: #030303;">
+                Return to Stage 2 After Assembly
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <p style="color: rgba(3, 3, 3, 0.7); margin-bottom: 0; flex: 1;">After completing the modular assembly,
+                    return to Stage 2 to continue with material preparation and casting, ensuring all molds are fully
+                    filled.</p>
+                <div style="margin-left: 2rem;">
+                    <a href="#stage2" onclick="scrollToElement('stage2'); return false;"
+                        style="display: inline-block; padding: 0.8rem 1.5rem; background-color: #c9a875; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+                        Return to Stage 2 ↑
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        <h3 style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 4: Post-Processing</h3>
+
+        <h3 id="stage4" style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 4: Post-Processing</h3>
 
         <div class="workflow-step">
             <div class="step-number">6</div>
@@ -480,6 +559,34 @@
         });
         d3.select(".outline-nav")
             .style("z-index", "99")
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            }
+        });
     </script>
 </body>
 
