@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrication Workflow - GyFoam</title>
+    <meta property="og:title" content="Fabrication Workflow - GyFoam">
+    <meta property="og:locale" content="en_US">
+    <link rel="canonical" href="https://intellitex-doublecoat.github.io/pages/fabricationworkflow.html">
+    <meta property="og:url" content="https://intellitex-doublecoat.github.io/pages/fabricationworkflow.html">
+    <meta property="og:site_name" content="intellitex-doublecoat.github.io">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="../../js/d3DrawIcon.js"></script>
+
+    <!-- outline Import CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
+    <!-- outline Import the library -->
+    <script src="../../js/DocumentOutline.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式 */
+        .demo-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* 功能框样式 */
+        .feature-box {
+            background-color: #f8f2e5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            border: 1px solid #e8d8c0;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(150, 120, 90, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #c9a875;
+        }
+
+        /* header 毛玻璃效果 */
+        .glassmorphismHeader {
+            background: rgba(249, 249, 249, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+        }
+
+        /* 工作流程步骤样式 */
+        .workflow-step {
+            display: flex;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #c9a875;
+            margin-right: 2rem;
+            min-width: 4rem;
+            text-align: center;
+        }
+
+        .step-content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .step-text {
+            flex: 1;
+        }
+
+        .step-image {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        /* 材料卡片样式 */
+        .material-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #c9a875;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader"
+        style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 20rem 0.4rem 28rem;">
+        <a href="../../index.html">
+            <div style="display: flex; align-items: center;">
+                <!-- <div id="icon"></div> -->
+                <p class="h3StylePTag">GyFoam</p>
+            </div>
+        </a>
+    </div>
+
+    <div style="margin: 6rem 7rem 0 28rem;">
+        <p class="h1StylePTag" style="margin: 0 0 6rem 0; font-size: 4.2rem;">Fabrication Workflow</p>
+
+        <h2 id="overview" style="margin: 2rem 0;">Overview of Fabrication Process</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <p>GyFoam allows general users to use common FDM 3D
+                    printers, standard filaments, commercially available Thermal-Expandable Microspheres and silicone
+                    to easily fabricate large-scale, lightweight, lattice-structured
+                    objects with customizable stiffness.</p>
+                <p>The entire process can be divided into Four main stages: Molds Preparation, Material Preparation and
+                    Casting, Assembly of Modular Mold, Post-Processing</p>
+                <img src="../../resources/img/Fabrication/FabricationWorkflow.jpg" alt="workflow" class="demo-image"
+                    style="margin-top: 0.5rem;">
+            </div>
+        </div>
+
+        <h2 id="materials" style="margin: 5rem 0 2rem 0;">Required Materials & Equipment</h2>
+
+        <div class="material-card">
+            <h3 style="margin-bottom: 0.5rem;">Mold Materials</h3>
+            <ul>
+                <li>Polyvinyl Alcohol filament (Bamboo, PVA)</li>
+                <li>Polylactic Acid filament (Bamboo, PLA)</li>
+            </ul>
+        </div>
+
+        <div class="material-card">
+            <h3 style="margin-bottom: 0.5rem;">Foam Materials</h3>
+            <ul>
+                <li>Silicone base (Ecoflex 00-30 or similar)</li>
+                <li>Thermo-Expandable Microspheres (TEM) (EMH204, SEKISUI CHEMICAL
+                    Co., Ltd.)</li>
+                <li>Silicone thinner (optional, for viscosity adjustment)</li>
+                <li>Silicone colorant (optional)</li>
+            </ul>
+        </div>
+
+        <div class="material-card">
+            <h3 style="margin-bottom: 0.5rem;">Tools & Equipment</h3>
+            <ul>
+                <li>Digital scale</li>
+                <li>Mixing containers</li>
+                <li>Stirring tools</li>
+                <li>Vacuum chamber (for degassing)</li>
+                <li>Heat source (oven, heat gun, or heat lamp)</li>
+                <li>Heated Water Bath</li>
+                <li>Protective gloves and eyewear</li>
+            </ul>
+        </div>
+
+        <h2 id="workflow" style="margin: 5rem 0 2rem 0;">Detailed Fabrication Workflow</h2>
+
+        <h3 style="margin: 2rem 0 1.5rem 0;font-size: 1.8rem;">Stage 1: Molds Preparation</h3>
+
+        <div class="workflow-step">
+            <div class="step-number">0</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Slice & Print Mold Model File</i></h4>
+                    <p>
+                        Import the mold model file generated by DesignTool into 3D printing software (Bamboo Studio).
+                        Users can segment the model according to their needs. Finally, proceed with slicing.
+                        We use the basic Bamboo A1 mini 3D printer and commercially available PVA filament for printing.
+
+                    </p>
+                    <p>
+                        To avoid print failures, here are some recommended print settings:
+                    <ul>
+                        <li>Bed Temperature: Increase appropriately, such as 65-70°C.</li>
+                        <li>Print Speed: Reduce, recommended 50-80mm/s.</li>
+                        <li>Brim: Add brim printing to ensure mold stability and durability.</li>
+                        <li>Wall Loop: Minimum 3-4 layers to prevent fluid leakage from the mold</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_0.jpg" alt="mold slice and print" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <h3 style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 2: Material Preparation and Casting</h3>
+
+        <div class="workflow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Prepare TEM-silicone Composite</i></h4>
+                    <p>
+                        Similar to traditional silicone preparation, we mix equal amounts of silicone components A and B
+                        with a specified amount of TEM.
+                    </p>
+                    <p>
+                        There are a few points that need to be clarified:
+                    <ul>
+                        <li>Concentration of TEM-silicone Composite: We recommend composite concentrations below
+                            40%. When the concentration exceeds 40%, the composite material may fail to solidify.</li>
+                        <li>Viscosity: Higher concentrations lead to higher viscosity of the composite. When viscosity
+                            becomes too high and causes troubles, we recommend adding silicone oil to
+                            increase the flowability of the composite.</li>
+
+                        </p>
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_1.jpg" alt="prepare composite" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="workflow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Stir and Vacuum</i></h4>
+                    <p>
+                        Thoroughly stir with a glass rod to ensure complete mixing of TEM and silicone. Then, place the
+                        mixture in a vacuum chamber to remove residual air.
+                    </p>
+                    <p>
+                        Complete the composite preparation process quickly to maintain its flowability. Extended mixing
+                        time will cause premature curing and increased viscosity, making it difficult to pour into
+                        molds.
+                    </p>
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_2.jpg" alt="Stir" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="workflow-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Cast and Vacuum</i></h4>
+                    <p>
+                        We cast the composite onto the mold, allowing it to flow and fill the mold cavity. Next,
+                        the mold is placed in a vacuum chamber to remove any remaining air and ensure the mold is
+                        completely filled with the composite.
+                    </p>
+                    <p> Here are some suggestions:
+                    <ul>
+                        <li>The higher the concentration, the more times we recommend performing the casting and
+                            vacuuming process.
+                        </li>
+                        <li> After vacuuming, the mold may not be fully filled. It is recommended to cast again to
+                            ensure complete filling.
+                        </li>
+                        <li>It is advisable to use a scraper to remove the composite from the surface of the mold for
+                            simple surface treatment, facilitating subsequent processing.</li>
+                        </p>
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_3.jpg" alt="Cast" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="workflow-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Wait for Curing and Clean the Surface</i></h4>
+                    <p>
+                        After complete filling, the mold needs to be placed on a horizontal surface to wait for the
+                        composite to solidify. Slightly increasing the temperature (below 70°C) is recommended to
+                        accelerate the curing process.
+                        After curing, we can use tools to remove the remaining composite from the mold surface
+                        to facilitate subsequent operations.
+                    </p>
+
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_4.jpg" alt="Cure" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+
+        <h3 style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 3: Assembly of Modular Mold</h3>
+
+        <div class="workflow-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Moisten and Adhere Molds</i></h4>
+                    <p>We moisten the PVA mold surfaces, causing the PVA to transition into a
+                        sticky gel state. The two molds are then carefully aligned and pressed together. Users should
+                        maintain pressure until the PVA changes from gel back to a solid state, completing the bonding
+                        process. We also recommend applying pressure by placing a heavy object on the mold. It is
+                        crucial to keep the mold or composite surfaces clean and smooth to
+                        ensure effective adhesion of the PVA.</p>
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_5.jpg" alt="Assembly" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+
+        <h3 style="margin: 4rem 0 1.5rem 0;font-size: 1.8rem">Stage 4: Post-Processing</h3>
+
+        <div class="workflow-step">
+            <div class="step-number">6</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Dissolve PVA Mold</i></h4>
+                    <p>After completing the casting process, we recommend using a water bath maintained at 60°C, with
+                        either continuous agitation or ultrasonic vibration (e.g., an ultrasonic cleaner), to
+                        effectively accelerate the dissolution of PVA. Additionally, it is advisable to periodically
+                        replace the liquid in the container to prevent the concentration of dissolved PVA from becoming
+                        too high, which may slow down the dissolution process.</p>
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_6.jpg" alt="dissolve" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="workflow-step">
+            <div class="step-number">7</div>
+            <div class="step-content">
+                <div class="step-text">
+                    <h4 style="margin-bottom: 1rem;"><i>Heat and Thermally Trigger</i></h4>
+                    <p>Once the mold has fully dissolved, we retrieve the stable TEM-silicone composite, followed by
+                        thorough cleaning and drying. The foaming process is then initiated using heating tools such as
+                        ovens, thermostatic drying chambers, or heat guns.</p>
+                    <p>Several recommendations are as follows:
+                    <ul>
+                        <li>We recommend a heating temperature of 150°C.</li>
+                        <li>Controlling the heating duration is crucial to prevent overheating.</li>
+                        <li>Since the expansion occurs so rapidly, we suggest users monitor the process to appreciate
+                            the
+                            dynamic transformation. </li>
+                        <li>During heating, it is advisable to use tools like tweezers to
+                            reposition
+                            or flip the composite, ensuring uniform heating.</li>
+                        </p>
+                </div>
+                <div class="step-image">
+                    <img src="../../resources/img/Fabrication/Fab_7.jpg" alt="Heat" class="demo-image"
+                        style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+
+        <div style="margin-top: 10rem;"></div>
+    </div>
+
+    <!-- 绘制图标 -->
+    <script>
+        drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
+    </script>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true,
+            width: '320px'
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+    </script>
+</body>
+
+</html>
