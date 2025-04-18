@@ -225,7 +225,7 @@
             </div>
         </div>
 
-        <h2 id="materials" style="margin: 5rem 0 2rem 0;">Required Materials & Equipment</h2>
+        <h2 id="materials" style="margin: 3rem 0 2rem 0;">Required Materials & Equipment</h2>
 
         <div class="material-card">
             <p
@@ -542,10 +542,6 @@
         <div style="margin-top: 10rem;"></div>
     </div>
 
-    <!-- 绘制图标 -->
-    <script>
-        drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false);
-    </script>
 
     <!-- 渲染outline -->
     <script>
@@ -578,15 +574,18 @@
             }
         }
 
-        // 处理URL中的锚点，页面加载时自动调整滚动位置
-        window.addEventListener('load', function () {
-            if (window.location.hash) {
-                const targetId = window.location.hash.substring(1);
-                setTimeout(function () {
-                    scrollToElement(targetId);
-                }, 300); // 延迟执行，确保页面完全加载
-            }
-        });
+        // // 处理URL中的锚点，页面加载时自动调整滚动位置
+        // window.addEventListener('load', function () {
+        //     if (window.location.hash && window.location.hash.length > 1) {
+        //         const targetId = window.location.hash.substring(1);
+        //         setTimeout(function () {
+        //             scrollToElement(targetId);
+        //         }, 300); // 延迟执行，确保页面完全加载
+        //     } else {
+        //         // 如果没有锚点，确保页面滚动到顶部
+        //         window.scrollTo(0, 0);
+        //     }
+        // });
     </script>
 </body>
 
