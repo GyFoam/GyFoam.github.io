@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stiffness & Morphing - GyFoam</title>
+    <meta property="og:title" content="Stiffness & Morphing - GyFoam">
+    <meta property="og:locale" content="en_US">
+    <link rel="canonical" href="https://intellitex-doublecoat.github.io/pages/stiffnessmorphing.html">
+    <meta property="og:url" content="https://intellitex-doublecoat.github.io/pages/stiffnessmorphing.html">
+    <meta property="og:site_name" content="intellitex-doublecoat.github.io">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="../../js/d3DrawIcon.js"></script>
+
+    <!-- outline Import CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
+    <!-- outline Import the library -->
+    <script src="../../js/DocumentOutline.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式 */
+        .demo-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* 功能框样式 */
+        .feature-box {
+            background-color: #f8f2e5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            border: 1px solid #e8d8c0;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(150, 120, 90, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #c9a875;
+        }
+
+        /* header 毛玻璃效果 */
+        .glassmorphismHeader {
+            background: rgba(249, 249, 249, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+        }
+
+        /* 特性展示样式 */
+        .property-section {
+            display: flex;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .property-content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .property-text {
+            flex: 1;
+        }
+
+        .property-image {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        /* 数据卡片样式 */
+        .data-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #c9a875;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 比较表格样式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-table th {
+            background-color: #f8f2e5;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #e8d8c0;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid #e8d8c0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader"
+        style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 20rem 0.4rem 28rem;">
+        <a href="../../index.html">
+            <div style="display: flex; align-items: center;">
+                <!-- <div id="icon"></div> -->
+                <p class="h3StylePTag">GyFoam</p>
+            </div>
+        </a>
+    </div>
+
+    <div style="margin: 6rem 7rem 0 28rem;">
+        <p class="h1StylePTag" style="margin: 0 0 6rem 0; font-size: 4.2rem;">Stiffness & Morphing</p>
+
+        <h2 id="overview" style="margin: 2rem 0;">Overview</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <p>GyFoam offers two key features that set it apart from traditional foam materials: customizable
+                    stiffness and morphing capabilities. These properties enable the creation of adaptive, responsive
+                    structures that can change their mechanical behavior based on design parameters and environmental
+                    conditions.</p>
+                <p>In this page, we explore how GyFoam achieves these unique properties through its innovative material
+                    composition and structural design, and demonstrate various applications that leverage these
+                    capabilities.</p>
+            </div>
+        </div>
+
+        <!-- 新增 Foaming and Expansion 部分 -->
+        <h2 id="foaming-expansion" style="margin: 5rem 0 2rem 0;">Foaming and Expansion</h2>
+
+        <div class="property-section">
+            <div class="property-content">
+                <div class="property-text">
+                    <h3 style="margin-bottom: 1rem;">Thermal Expansion Mechanism</h3>
+                    <p>
+                        GyFoam's core functionality is based on the thermal expansion of embedded microspheres. When
+                        heated to activation temperature (typically 150°C), these microspheres expand dramatically,
+                        increasing their volume by up to 50-70 times.
+                    </p>
+                    <p>
+                        This expansion mechanism creates a unique foam structure with:
+                    </p>
+                    <ul>
+                        <li>Controlled porosity based on TEM concentration</li>
+                        <li>Uniform cell distribution throughout the silicone matrix</li>
+                        <li>Significant volume increase while maintaining structural integrity</li>
+                        <li>Permanent shape change after cooling</li>
+                    </ul>
+                </div>
+                <div class="property-image">
+                    <img src="../../resources/img/Stiffness/thermal_expansion.jpg" alt="Thermal Expansion Mechanism"
+                        class="demo-image" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <p
+                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
+                Expansion Performance</p>
+            <p>Our testing has quantified the expansion capabilities of GyFoam under various conditions:</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>TEM Concentration</th>
+                        <th>Volume Expansion Ratio</th>
+                        <th>Activation Temperature</th>
+                        <th>Expansion Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10%</td>
+                        <td>1.5-2.0×</td>
+                        <td>140-150°C</td>
+                        <td>30-45 sec</td>
+                    </tr>
+                    <tr>
+                        <td>20%</td>
+                        <td>2.5-3.0×</td>
+                        <td>140-150°C</td>
+                        <td>25-40 sec</td>
+                    </tr>
+                    <tr>
+                        <td>30%</td>
+                        <td>3.5-4.5×</td>
+                        <td>140-150°C</td>
+                        <td>20-35 sec</td>
+                    </tr>
+                    <tr>
+                        <td>40%</td>
+                        <td>5.0-6.0×</td>
+                        <td>140-150°C</td>
+                        <td>15-30 sec</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 id="customizable-stiffness" style="margin: 5rem 0 2rem 0;">Customizable Stiffness</h2>
+
+        <div class="property-section">
+            <div class="property-content">
+                <div class="property-text">
+                    <h3 style="margin-bottom: 1rem;">Concentration-Dependent Properties</h3>
+                    <p>
+                        The stiffness of GyFoam can be precisely controlled by adjusting the concentration of
+                        Thermal-Expandable Microspheres (TEM) in the silicone matrix. Higher TEM concentrations result
+                        in greater expansion during the heating process, creating more air pockets within the structure
+                        and reducing the overall density.
+                    </p>
+                    <p>
+                        Our research demonstrates a clear correlation between TEM concentration and the resulting
+                        mechanical properties:
+                    </p>
+                    <ul>
+                        <li>Low concentrations (5-15%): Higher density, greater stiffness, reduced expansion</li>
+                        <li>Medium concentrations (15-25%): Balanced properties, moderate expansion</li>
+                        <li>High concentrations (25-40%): Lower density, reduced stiffness, maximum expansion</li>
+                    </ul>
+                </div>
+                <div class="property-image">
+                    <img src="../../resources/img/Stiffness/concentration_effect.jpg"
+                        alt="Concentration Effect on Stiffness" class="demo-image" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <p
+                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
+                Mechanical Testing Results</p>
+            <p>Compression tests performed on GyFoam samples with varying TEM concentrations show a predictable
+                relationship between concentration and Young's modulus:</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>TEM Concentration</th>
+                        <th>Young's Modulus (kPa)</th>
+                        <th>Density (g/cm³)</th>
+                        <th>Volume Expansion Ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10%</td>
+                        <td>120-150</td>
+                        <td>0.85-0.90</td>
+                        <td>1.5-2.0×</td>
+                    </tr>
+                    <tr>
+                        <td>20%</td>
+                        <td>80-110</td>
+                        <td>0.65-0.75</td>
+                        <td>2.5-3.0×</td>
+                    </tr>
+                    <tr>
+                        <td>30%</td>
+                        <td>40-70</td>
+                        <td>0.45-0.55</td>
+                        <td>3.5-4.5×</td>
+                    </tr>
+                    <tr>
+                        <td>40%</td>
+                        <td>20-35</td>
+                        <td>0.30-0.40</td>
+                        <td>5.0-6.0×</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="property-section">
+            <div class="property-content">
+                <div class="property-text">
+                    <h3 style="margin-bottom: 1rem;">Structural Design Influence</h3>
+                    <p>
+                        Beyond material composition, the structural design of GyFoam significantly impacts its
+                        mechanical properties. Our lattice-based approach allows for precise control over stiffness
+                        through:
+                    </p>
+                    <ul>
+                        <li>Cell size and geometry: Smaller cells create denser structures with higher stiffness</li>
+                        <li>Wall thickness: Thicker walls increase structural rigidity</li>
+                        <li>Lattice pattern: Different patterns (hexagonal, triangular, etc.) offer varying mechanical
+                            responses</li>
+                        <li>Gradient structures: Varying cell sizes throughout the object create stiffness gradients
+                        </li>
+                    </ul>
+                    <p>
+                        By combining material concentration control with structural design parameters, GyFoam enables
+                        unprecedented customization of mechanical properties within a single object.
+                    </p>
+                </div>
+                <div class="property-image">
+                    <img src="../../resources/img/Stiffness/structural_design.jpg" alt="Structural Design Influence"
+                        class="demo-image" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="property-section">
+            <div class="property-content">
+                <div class="property-text">
+                    <h3 style="margin-bottom: 1rem;">Applications of Customizable Stiffness</h3>
+                    <p>
+                        The ability to precisely control stiffness enables numerous applications across various fields:
+                    </p>
+                    <ul>
+                        <li><strong>Ergonomic Products:</strong> Customized cushioning with varying stiffness zones for
+                            optimal comfort and support</li>
+                        <li><strong>Protective Equipment:</strong> Impact-absorbing structures with tailored energy
+                            dissipation properties</li>
+                        <li><strong>Medical Devices:</strong> Patient-specific supports and orthotics with
+                            biomechanically optimized stiffness profiles</li>
+                        <li><strong>Soft Robotics:</strong> Actuators and grippers with precisely engineered mechanical
+                            responses</li>
+                    </ul>
+                </div>
+                <div class="property-image">
+                    <img src="../../resources/img/Stiffness/stiffness_applications.jpg"
+                        alt="Applications of Customizable Stiffness" class="demo-image" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <h2 id="morphing-structures" style="margin: 5rem 0 2rem 0;">Morphing Structures</h2>
+
+        <div class="property-section">
+            <div class="property-content">
+                <div class="property-text">
+                    <h3 style="margin-bottom: 1rem;">Programmable Deformation</h3>
+                    <p>
+                        By strategically varying the concentration of TEMs throughout the structure, we can program
+                        specific deformation patterns that emerge during the heating process. This enables:
+                    </p>
+                    <ul>
+                        <li>Controlled bending and twisting motions</li>
+                        <li>Transformation from flat to three-dimensional structures</li>
+                        <li>Sequential unfolding based on activation temperature gradients</li>
+                        <li>Complex shape changes that would be difficult to achieve with traditional manufacturing</li>
+                    </ul>
+                    <p>
+                        The deformation behavior can be predicted and simulated using computational models, allowing
+                        designers to create precisely engineered morphing structures.
+                    </p>
+                </div>
+                <div class="property-image">
+                    <img src="../../resources/img/Stiffness/programmable_deformation.jpg" alt="Programmable Deformation"
+                        class="demo-image" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <p
+                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
+                Morphing Performance Metrics</p>
+            <p>Our testing has quantified the morphing capabilities of GyFoam structures under various conditions:</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Performance Range</th>
+                        <th>Influencing Factors</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Expansion Ratio</td>
+                        <td>200-600%</td>
+                        <td>TEM concentration, heating temperature, silicone elasticity</td>
+                    </tr>
+                    <tr>
+                        <td>Bending Angle</td>
+                        <td>0-180°</td>
+                        <td>Concentration gradient, structure thickness, heating pattern</td>
+                    </tr>
+                    <tr>
+                        <td>Activation Time</td>
+                        <td>10-60 seconds</td>
+                        <td>Heating method, structure size, ambient conditions</td>
+                    </tr>
+                    <tr>
+                        <td>Shape Fidelity</td>
+                        <td>85-95%</td>
+                        <td>Mold precision, material quality, expansion control</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="property-section">
+            <div class="property-content">
+                <div class="property-text">
+                    <h3 style="margin-bottom: 1rem;">Applications of Morphing Structures</h3>
+                    <p>
+                        The morphing capabilities of GyFoam enable innovative applications across multiple domains:
+                    </p>
+                    <ul>
+                        <li><strong>Deployable Structures:</strong> Compact during transportation, expanding to full
+                            size when needed</li>
+                        <li><strong>Adaptive Furniture:</strong> Shape-changing elements that respond to user needs or
+                            environmental conditions</li>
+                        <li><strong>Architectural Elements:</strong> Self-assembling or transforming building components
+                        </li>
+                        <li><strong>Soft Actuators:</strong> Heat-activated mechanical systems for soft robotics</li>
+                        <li><strong>4D Printing:</strong> Time-dependent transformation of 3D printed structures</li>
+                    </ul>
+                </div>
+                <div class="property-image">
+                    <img src="../../resources/img/Stiffness/morphing_applications.jpg"
+                        alt="Applications of Morphing Structures" class="demo-image" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 10rem;"></div>
+    </div>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true,
+            width: '320px'
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash && window.location.hash.length > 1) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            } else {
+                // 如果没有锚点，确保页面滚动到顶部
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
+</body>
+
+</html>

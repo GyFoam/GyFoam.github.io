@@ -254,18 +254,44 @@
                     Mold models can be exported directly for 3D printing.</p>
             </div>
         </div>
+
         <h3 style="margin: 2rem 0 1rem 0;">Basic Modeling Process</h3>
-        <p><i>Step 1: Create the initial model.</i> Users can create simple geometries in nTop or import their own model
-            files.</p>
-        <img src="../../resources/img/DesignTool/nTop_1.jpg" alt="Step1" class="demo-image" style="margin-top: 0.2rem;">
 
-        <p><i>Step 2: Customize Gyroid structure.</i> Users can generate different Gyroid structures parametrically and
-            preview them in real time.</p>
-        <img src="../../resources/img/DesignTool/nTop_2.jpg" alt="Step2" class="demo-image" style="margin-top: 0.2rem;">
+        <!-- 修改布局：左侧步骤，右侧图片 -->
+        <div style="display: flex; gap: 0rem; margin-bottom: 2rem;">
+            <!-- 左侧步骤说明和图片 -->
+            <div style="flex: 1;">
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-weight: bold;"><i>Step 1: Create the initial model</i></p>
+                    <p>Users can create simple geometries in nTop or import their own model files.</p>
+                </div>
 
-        <p><i>Step 3: Generate mold model and export.</i> Based on the generated lattice structures, users can perform
-            Boolean operations to create corresponding mold files and export them for 3D printing.</p>
-        <img src="../../resources/img/DesignTool/nTop_3.jpg" alt="Step3" class="demo-image" style="margin-top: 0.2rem;">
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-weight: bold;"><i>Step 2: Customize Gyroid structure</i></p>
+                    <p>Users can generate different Gyroid structures parametrically and preview them in real time.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-weight: bold;"><i>Step 3: Generate mold model and export</i></p>
+                    <p>Based on the generated lattice structures, users can perform Boolean operations to create
+                        corresponding mold files and export them for 3D printing.</p>
+                </div>
+
+                <!-- 图片移到文字下方 -->
+                <img src="../../resources/img/DesignTool/nTop_gyroidandmold.jpg" alt="Gyroid and mold"
+                    class="demo-image" style="width: 100%; height: auto;">
+                <img src="../../resources/img/DesignTool/nTop_rabbit.jpg" alt="Gyroid rabbit"
+                    class="demo-image" style="width: 100%; height: auto;">
+            </div>
+
+            <!-- 右侧图片 -->
+            <div style="flex: 1;">
+                <img src="../../resources/img/DesignTool/nTop_interface.jpg" alt="interface" class="demo-image"
+                    style="width: 85%; height: auto; margin-left: auto; display: block;">
+            </div>
+        </div>
+
+
 
         <h3 style="margin: 2rem 0 1rem 0;">Advanced Modeling 1: Gradient Gyroid modeling</h3>
         <p>Research in mechanical engineering
@@ -274,7 +300,8 @@
             and modeling of such gradient Gyroid structures in nTop and provided
             a sample file to help users better understand the process and
             support their own modeling efforts.</p>
-        <img src="../../resources/img/DesignTool/nTop_3.jpg" alt="Gradient" class="demo-image" style="margin-top: 0.2rem;">
+        <img src="../../resources/img/DesignTool/nTop_gradient.jpg" alt="Gradient" class="demo-image"
+            style="margin-top: 0.2rem;">
 
         <h3 style="margin: 2rem 0 1rem 0;">Advanced Modeling 2: Eggshell-structured mold modeling</h3>
         <p>To reduce PVA material usage, we optimized the mold design using an eggshell-inspired method.
@@ -282,9 +309,10 @@
             The thin PVA shell also increases water contact area, speeding up dissolution.
             Users can refer to the sample file to assess whether this method suits their needs.
             We recommend it especially for larger models.</p>
-        <img src="../../resources/img/DesignTool/nTop_3.jpg" alt="Eggshell" class="demo-image" style="margin-top: 0.2rem;">
+        <img src="../../resources/img/DesignTool/nTop_eggshell.jpg" alt="Eggshell" class="demo-image"
+            style="margin-top: 0.2rem;">
 
-        <h2 id="faq" style="margin: 6rem 0 2rem 0;">Q&A</h2>
+        <h2 id="faq" style="margin: 3rem 0 2rem 0;">Q&A</h2>
         <p style="margin: 2rem 0 1rem 0; font-weight: bold; font-size: 1.3rem;">1. Will there be any design
             templates or
             sample cases provided?</p>
@@ -294,7 +322,7 @@
             gradually
             open-sourced on GitHub.</p>
 
-        
+
         <p style="margin: 2rem 0 1rem 0; font-weight: bold; font-size: 1.3rem;">2. Can all deformation effects
             be
             previewed using our Rhino designtool?</p>
@@ -322,7 +350,7 @@
 
     <!-- 绘制图标 -->
     <!-- <script> -->
-        <!-- // drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false); -->
+    <!-- // drawIcon(50 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / 1728, "icon", false, false); -->
     <!-- </script> -->
 
     <!-- 渲染outline -->
