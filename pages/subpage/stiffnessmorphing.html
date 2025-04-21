@@ -278,7 +278,7 @@
                             <mi>Concentration</mi>
                             <mo>+</mo>
                             <mn>1</mn>
-                        </math> 
+                        </math>
                         <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
                             where K represents the Expansion Rate
                         </p>
@@ -290,6 +290,12 @@
                         alt="ExpansionRatio" class="demo-image" style="margin-top: 0.5rem;">
                 </div>
             </div>
+        </div>
+
+        <!-- 添加全宽图片 -->
+        <div style="margin: 0rem 0 0rem 0; text-align: center;">
+            <img src="../../resources/img/Stiffness&Morphing/Stiffness&Morphing_expansionsample.jpg"
+                alt="ExpansionSamples" class="demo-image" style="max-width: 100%;">
         </div>
 
 
@@ -501,45 +507,59 @@
 
 
                     <h3 style="margin: 2rem 0 1rem 0;">Variable 2: Gyroid Structural Parameters</h3>
-                    <p>
-                        The adjustable Gyroid structural parameters include cell size and wall thickness.
-                        Through controlled variable experiments, we studied how cell size and wall thickness
-                        independently affect material stiffness.
-                        Our findings show that stiffness gradually increases as the cell size decreases.
-                        Similarly, increasing wall thickness leads to higher stiffness.
-                        Based on our experimental data and research in mechanical engineering and materials science
-                        regarding lattice structures' mechanical properties, we fitted the data to establish a stiffness
-                        prediction model that correlates with both cell size and wall thickness.
-                    </p>
 
-                    <!-- 添加数学公式 -->
-                    <div style="text-align: center; margin: 1rem 0;">
-                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 1.5rem;">
-                            <msub>
-                                <mi>S</mi>
-                                <mo>*</mo>
-                            </msub>
-                            <mo>=</mo>
-                            <mi>2.96</mi>
-                            <mo>×</mo>
-                            <mn>E</mn>
-                            <mo>×</mo>
-                            <msup>
-                                <mrow>
-                                    <mo>(</mo>
-                                    <mfrac>
-                                        <mtext>thickness</mtext>
-                                        <mtext>cellsize</mtext>
-                                    </mfrac>
-                                    <mo>)</mo>
-                                </mrow>
-                                <mn>2.06</mn>
-                            </msup>
-                        </math>
-                        <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
-                            where S<sub>*</sub> represents predicted stiffness, E represents Young's modulus of material
-                            under selected concentration
-                        </p>
+                    <!-- 修改为两列布局 -->
+                    <div class="property-content" style="margin-bottom: 2rem;">
+                        <div class="property-text">
+                            <p>
+                                The Gyroid structural parameters include cell size and wall thickness.
+                                Through controlled variable experiments, we studied how cell size and wall thickness
+                                affect material stiffness.
+                                Our findings show that stiffness gradually increases as the cell size decreases.
+                                Similarly, increasing wall thickness leads to higher stiffness.
+                                Based on our experimental data and research in mechanical engineering and materials
+                                science
+                                regarding lattice structures' mechanical properties, we fitted the data to establish a
+                                stiffness
+                                prediction model that correlates with both cell size and wall thickness.
+                            </p>
+
+                            <!-- 添加数学公式 -->
+                            <div style="text-align: center; margin: 0.5rem 0;">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"
+                                    style="font-size: 1.5rem;">
+                                    <msub>
+                                        <mi>S</mi>
+                                        <mo>*</mo>
+                                    </msub>
+                                    <mo>=</mo>
+                                    <mi>2.96</mi>
+                                    <mo>×</mo>
+                                    <mn>E</mn>
+                                    <mo>×</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mfrac>
+                                                <mtext>thickness</mtext>
+                                                <mtext>cellsize</mtext>
+                                            </mfrac>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2.06</mn>
+                                    </msup>
+                                </math>
+                                <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
+                                    where S<sub>*</sub> represents predicted stiffness, E represents Young's modulus of
+                                    material
+                                    under selected concentration
+                                </p>
+                            </div>
+                        </div>
+                        <div class="property-image">
+                            <img src="../../resources/img/Stiffness&Morphing/Stiffness&Morphing_Gyroidparameters.jpg"
+                                alt="Gyroid Structural Parameters" class="demo-image" style="margin-top: 0.5rem;">
+                        </div>
                     </div>
 
 
