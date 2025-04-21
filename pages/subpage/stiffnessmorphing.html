@@ -422,26 +422,28 @@
                             const cellSize = parseFloat(cellSizeInput.value);
                             const wallThickness = parseFloat(wallThicknessInput.value);
 
-                            // 计算刚度值 (模拟的预测模型)
-                            // 这里使用一个简化的模型：刚度与浓度成反比，与壁厚成正比，与单元尺寸成反比
-                            const baseStiffness = 150; // 基础刚度值 (kPa)
-                            const concentrationFactor = 1 - (concentration - 5) / 50; // 浓度因子 (浓度越高，刚度越低)
-                            const cellSizeFactor = 1 - (cellSize - 1) / 15; // 单元尺寸因子 (尺寸越大，刚度越低)
-                            const wallThicknessFactor = 0.5 + wallThickness / 3; // 壁厚因子 (壁厚越大，刚度越高)
-
-                            // 计算最终刚度值
-                            let stiffness = baseStiffness * concentrationFactor * cellSizeFactor * wallThicknessFactor;
-                            stiffness = Math.round(stiffness * 10) / 10; // 保留一位小数
+                            // 计算Young's模量 (E) - 根据浓度计算
+                            // E = 1.03×10^5×Concentration + 9.428×10^4
+                            const E = 1.03 * Math.pow(10, 5) * (concentration / 100) + 9.428 * Math.pow(10, 4);
+                            
+                            // 计算刚度值 - 使用公式 S* = 2.96 × E × (thickness/cellsize)^2.06
+                            const thicknessToSizeRatio = wallThickness / cellSize;
+                            const stiffness = 2.96 * E * Math.pow(thicknessToSizeRatio, 2.06);
+                            
+                            // 转换为更友好的单位并保留一位小数
+                            const stiffnessInNmm = stiffness / 1000; // 转换为N/mm
+                            const displayStiffness = Math.round(stiffnessInNmm * 10) / 10;
 
                             // 计算原始材料的刚度值 (无TEM添加时的刚度)
-                            const originalStiffness = baseStiffness * (1 - (0 - 5) / 50) * cellSizeFactor * wallThicknessFactor;
+                            const E0 = 9.428 * Math.pow(10, 4); // 当浓度为0时的Young's模量
+                            const originalStiffness = 2.44;
 
                             // 计算比例
-                            const ratio = stiffness / originalStiffness;
+                            const ratio = displayStiffness / originalStiffness;
                             const ratioPercentage = Math.round(ratio * 100);
 
                             // 更新结果显示
-                            stiffnessResult.innerHTML = `${stiffness} N/mm<br><span style="font-size: 1rem; font-weight: normal; color: rgba(3,3,3,0.7);">(${ratioPercentage}% of Pure Silicone stiffness)</span>`;
+                            stiffnessResult.innerHTML = `${displayStiffness} N/mm<br><span style="font-size: 1rem; font-weight: normal; color: rgba(3,3,3,0.7);">(${ratioPercentage}% of Pure Silicone stiffness)</span>`;
                         }
 
                         // 初始计算
