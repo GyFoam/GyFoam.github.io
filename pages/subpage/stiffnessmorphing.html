@@ -223,13 +223,12 @@
         <h2 id="overview" style="margin: 2rem 0;">Overview</h2>
         <div class="row">
             <div class="col-md-12">
-                <p>GyFoam offers two key features that set it apart from traditional foam materials: customizable
-                    stiffness and morphing capabilities. These properties enable the creation of adaptive, responsive
-                    structures that can change their mechanical behavior based on design parameters and environmental
-                    conditions.</p>
-                <p>In this page, we explore how GyFoam achieves these unique properties through its innovative material
-                    composition and structural design, and demonstrate various applications that leverage these
-                    capabilities.</p>
+                <p>
+                    The most distinctive features of GyFoam is its ability to expand when heated. Building on
+                    this property, to further support personalized designs, we propose two stiffness tuning
+                    approaches—adjusting material concentration and lattice structural parameters-and three deformation
+                    control strategies—bending, wavy edges and internal doming.
+                </p>
             </div>
         </div>
 
@@ -239,170 +238,19 @@
         <div class="property-section">
             <div class="property-content">
                 <div class="property-text">
-                    <h3 style="margin-bottom: 1rem;">Thermal Expansion Mechanism</h3>
+                    <h3 style="margin-bottom: 1rem;">Foaming Mechanism</h3>
                     <p>
-                        GyFoam's core functionality is based on the thermal expansion of embedded microspheres. When
-                        heated to activation temperature (typically 150°C), these microspheres expand dramatically,
-                        increasing their volume by up to 50-70 times.
+                        We used a scanning electron microscope (SEM, SU-70, Hitachi, Japan; 150 kV) to acquire the
+                        morphology characterization of different samples before and after foaming. From a
+                        microscopic perspective, the TEMs are uniformly distributed throughout the silicone matrix, with
+                        no obvious signs of local agglomeration. After heating, the microspheres undergo significant
+                        volumetric expansion, occupying the space originally filled by pure silicone.
                     </p>
-                    <p>
-                        This expansion mechanism creates a unique foam structure with:
-                    </p>
-                    <ul>
-                        <li>Controlled porosity based on TEM concentration</li>
-                        <li>Uniform cell distribution throughout the silicone matrix</li>
-                        <li>Significant volume increase while maintaining structural integrity</li>
-                        <li>Permanent shape change after cooling</li>
-                    </ul>
+
                 </div>
                 <div class="property-image">
-                    <img src="../../resources/img/Stiffness/thermal_expansion.jpg" alt="Thermal Expansion Mechanism"
-                        class="demo-image" style="margin-top: 0.5rem;">
-                </div>
-            </div>
-        </div>
-
-        <div class="data-card">
-            <p
-                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
-                Expansion Performance</p>
-            <p>Our testing has quantified the expansion capabilities of GyFoam under various conditions:</p>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>TEM Concentration</th>
-                        <th>Volume Expansion Ratio</th>
-                        <th>Activation Temperature</th>
-                        <th>Expansion Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10%</td>
-                        <td>1.5-2.0×</td>
-                        <td>140-150°C</td>
-                        <td>30-45 sec</td>
-                    </tr>
-                    <tr>
-                        <td>20%</td>
-                        <td>2.5-3.0×</td>
-                        <td>140-150°C</td>
-                        <td>25-40 sec</td>
-                    </tr>
-                    <tr>
-                        <td>30%</td>
-                        <td>3.5-4.5×</td>
-                        <td>140-150°C</td>
-                        <td>20-35 sec</td>
-                    </tr>
-                    <tr>
-                        <td>40%</td>
-                        <td>5.0-6.0×</td>
-                        <td>140-150°C</td>
-                        <td>15-30 sec</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h2 id="customizable-stiffness" style="margin: 5rem 0 2rem 0;">Customizable Stiffness</h2>
-
-        <div class="property-section">
-            <div class="property-content">
-                <div class="property-text">
-                    <h3 style="margin-bottom: 1rem;">Concentration-Dependent Properties</h3>
-                    <p>
-                        The stiffness of GyFoam can be precisely controlled by adjusting the concentration of
-                        Thermal-Expandable Microspheres (TEM) in the silicone matrix. Higher TEM concentrations result
-                        in greater expansion during the heating process, creating more air pockets within the structure
-                        and reducing the overall density.
-                    </p>
-                    <p>
-                        Our research demonstrates a clear correlation between TEM concentration and the resulting
-                        mechanical properties:
-                    </p>
-                    <ul>
-                        <li>Low concentrations (5-15%): Higher density, greater stiffness, reduced expansion</li>
-                        <li>Medium concentrations (15-25%): Balanced properties, moderate expansion</li>
-                        <li>High concentrations (25-40%): Lower density, reduced stiffness, maximum expansion</li>
-                    </ul>
-                </div>
-                <div class="property-image">
-                    <img src="../../resources/img/Stiffness/concentration_effect.jpg"
-                        alt="Concentration Effect on Stiffness" class="demo-image" style="margin-top: 0.5rem;">
-                </div>
-            </div>
-        </div>
-
-        <div class="data-card">
-            <p
-                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
-                Mechanical Testing Results</p>
-            <p>Compression tests performed on GyFoam samples with varying TEM concentrations show a predictable
-                relationship between concentration and Young's modulus:</p>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>TEM Concentration</th>
-                        <th>Young's Modulus (kPa)</th>
-                        <th>Density (g/cm³)</th>
-                        <th>Volume Expansion Ratio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10%</td>
-                        <td>120-150</td>
-                        <td>0.85-0.90</td>
-                        <td>1.5-2.0×</td>
-                    </tr>
-                    <tr>
-                        <td>20%</td>
-                        <td>80-110</td>
-                        <td>0.65-0.75</td>
-                        <td>2.5-3.0×</td>
-                    </tr>
-                    <tr>
-                        <td>30%</td>
-                        <td>40-70</td>
-                        <td>0.45-0.55</td>
-                        <td>3.5-4.5×</td>
-                    </tr>
-                    <tr>
-                        <td>40%</td>
-                        <td>20-35</td>
-                        <td>0.30-0.40</td>
-                        <td>5.0-6.0×</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="property-section">
-            <div class="property-content">
-                <div class="property-text">
-                    <h3 style="margin-bottom: 1rem;">Structural Design Influence</h3>
-                    <p>
-                        Beyond material composition, the structural design of GyFoam significantly impacts its
-                        mechanical properties. Our lattice-based approach allows for precise control over stiffness
-                        through:
-                    </p>
-                    <ul>
-                        <li>Cell size and geometry: Smaller cells create denser structures with higher stiffness</li>
-                        <li>Wall thickness: Thicker walls increase structural rigidity</li>
-                        <li>Lattice pattern: Different patterns (hexagonal, triangular, etc.) offer varying mechanical
-                            responses</li>
-                        <li>Gradient structures: Varying cell sizes throughout the object create stiffness gradients
-                        </li>
-                    </ul>
-                    <p>
-                        By combining material concentration control with structural design parameters, GyFoam enables
-                        unprecedented customization of mechanical properties within a single object.
-                    </p>
-                </div>
-                <div class="property-image">
-                    <img src="../../resources/img/Stiffness/structural_design.jpg" alt="Structural Design Influence"
-                        class="demo-image" style="margin-top: 0.5rem;">
+                    <img src="../../resources/img/Stiffness&Morphing/Stiffness&Morphing_expansionmechanism.jpg"
+                        alt="ExpansionRatio" class="demo-image" style="margin-top: 0.5rem;">
                 </div>
             </div>
         </div>
@@ -410,24 +258,313 @@
         <div class="property-section">
             <div class="property-content">
                 <div class="property-text">
-                    <h3 style="margin-bottom: 1rem;">Applications of Customizable Stiffness</h3>
+                    <h3 style="margin-bottom: 1rem;">Expansion Ratio</h3>
                     <p>
-                        The ability to precisely control stiffness enables numerous applications across various fields:
+                        The SEM images clearly reveal that the macroscopic expansion of the GyFoam composite is
+                        primarily driven by the thermal expansion of TEM.
+                        We investigated the relationship between composite concentration and expansion ratio. The
+                        results showed a positive correlation between the expansion ratio of TEM-silicone composite and
+                        its concentration. Through data fitting, we obtained a linear relationship as shown in the
+                        figure. This study of expansion ratio helps us calibrate parameters in our software tools to
+                        match physical variables and control the final deformation results.
                     </p>
-                    <ul>
-                        <li><strong>Ergonomic Products:</strong> Customized cushioning with varying stiffness zones for
-                            optimal comfort and support</li>
-                        <li><strong>Protective Equipment:</strong> Impact-absorbing structures with tailored energy
-                            dissipation properties</li>
-                        <li><strong>Medical Devices:</strong> Patient-specific supports and orthotics with
-                            biomechanically optimized stiffness profiles</li>
-                        <li><strong>Soft Robotics:</strong> Actuators and grippers with precisely engineered mechanical
-                            responses</li>
-                    </ul>
+                    <!-- 插入数学公式 -->
+                    <div style="text-align: center; margin: 1rem 0;">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 1.5rem;">
+                            <mi>K</mi>
+                            <mo>=</mo>
+                            <mn>0.4684</mn>
+                            <mo>×</mo>
+                            <mi>Concentration</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                        </math>
+                        <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
+                            where K represents the Expansion Ratio
+                        </p>
+                    </div>
+
                 </div>
                 <div class="property-image">
-                    <img src="../../resources/img/Stiffness/stiffness_applications.jpg"
-                        alt="Applications of Customizable Stiffness" class="demo-image" style="margin-top: 0.5rem;">
+                    <img src="../../resources/img/Stiffness&Morphing/Stiffness&Morphing_expansionline.jpg"
+                        alt="ExpansionRatio" class="demo-image" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+        </div>
+
+
+        <h2 id="customizable-stiffness" style="margin: 5rem 0 0.5rem 0;">Customizable Stiffness</h2>
+        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 2rem;">
+            <p style="color: rgba(108, 108, 108, 0.701); font-size: 0.75rem; margin: 0;">
+                Through extensive experimentation, we have developed a more scientifically rigorous stiffness
+                prediction model that differs from the one presented in our paper. We have consulted domain experts and
+                conducted multiple iterations of experiments to continuously calibrate and optimize the model. Our goal
+                is to provide researchers and makers with a more reliable stiffness prediction model, enabling
+                customized
+                mechanical properties fabricated through GyFoam method.
+            </p>
+        </div>
+
+
+        <div class="property-section">
+            <div class="property-content" style="flex-direction: column;">
+                <div class="property-text" style="max-width: 100%;">
+                    <p style="margin-bottom: 2rem;">
+                        In this section, users can utilize our interactive features to adjust the concentration and
+                        Gyroid structural parameters of GyFoam material according to their needs, obtaining predicted
+                        stiffness
+                        values. We also provide detailed modeling approaches and methodologies in the following
+                        sections.
+                    </p>
+
+
+                    <h3 id="stiffness-prediction-model" ; style="margin-bottom: 0.3rem;">Stiffness Prediction Model</h3>
+                    <div
+                        style="display: inline-block; font-size: 0.9rem; background-color: #f0ad4e; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; vertical-align: middle; font-family: 'Noto Sans', sans-serif; font-weight: normal; margin-bottom: 1rem;">
+                        Under Continuous Improvement</div>
+                    <p>
+                        Our stiffness prediction model considers three key parameters: TEM concentration, cell size, and
+                        wall thickness. Using the interactive tool below, you can input these parameters to predict the
+                        stiffness value of GyFoam.
+                    </p>
+
+                    <!-- 交互式刚度预测工具 -->
+                    <div class="data-card" style="margin-top: 1.5rem; padding: 1.5rem;">
+                        <p style="font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">
+                            Stiffness Prediction Calculator</p>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="concentration"
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: bold;">TEM Concentration
+                                    (%)</label>
+                                <input type="range" id="concentration" min="0" max="40" value="20" step="1"
+                                    style="width: 100%;">
+                                <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                    <span>0%</span>
+                                    <span id="concentrationValue">20%</span>
+                                    <span>40%</span>
+                                </div>
+                            </div>
+
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="cellSize"
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Cell Size
+                                    (mm)</label>
+                                <input type="range" id="cellSize" min="5" max="20" value="8.5" step="0.5"
+                                    style="width: 100%;">
+                                <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                    <span>5mm</span>
+                                    <span id="cellSizeValue">8.5</span>
+                                    <span>20mm</span>
+                                </div>
+                            </div>
+
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="wallThickness"
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Wall Thickness
+                                    (mm)</label>
+                                <input type="range" id="wallThickness" min="1" max="5" value="2" step="0.1"
+                                    style="width: 100%;">
+                                <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                    <span>1mm</span>
+                                    <span id="wallThicknessValue">2mm</span>
+                                    <span>5mm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background-color: #f0f0f0; padding: 1rem; border-radius: 5px; text-align: center; margin-bottom: 1rem;">
+                            <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">Predicted Stiffness:</p>
+                            <p id="stiffnessResult"
+                                style="font-size: 1.5rem; font-weight: bold; color: #030303; margin: 0;">Calculating...
+                            </p>
+                        </div>
+
+                        <p style="font-size: 0.8rem; color: rgba(3,3,3,0.6); margin-top: 1rem;">
+                            Note: This model is based on experimental data fitting.
+                        </p>
+                        <p style="font-size: 0.8rem; color: rgba(3,3,3,0.6)">
+                            Additionally, the cell size and wall thickness must satisfy the inequality relationship:
+                            cell size - 2 * wall thickness > 2.
+                        </p>
+                    </div>
+
+                    <!-- 添加JavaScript代码计算刚度 -->
+                    <script>
+                        // 获取所有输入元素
+                        const concentrationInput = document.getElementById('concentration');
+                        const cellSizeInput = document.getElementById('cellSize');
+                        const wallThicknessInput = document.getElementById('wallThickness');
+
+                        // 获取显示值的元素
+                        const concentrationValue = document.getElementById('concentrationValue');
+                        const cellSizeValue = document.getElementById('cellSizeValue');
+                        const wallThicknessValue = document.getElementById('wallThicknessValue');
+                        const stiffnessResult = document.getElementById('stiffnessResult');
+
+                        // 更新显示值并计算刚度
+                        function updateValues() {
+                            // 更新显示值
+                            concentrationValue.textContent = concentrationInput.value + '%';
+                            cellSizeValue.textContent = cellSizeInput.value + 'mm';
+                            wallThicknessValue.textContent = wallThicknessInput.value + 'mm';
+
+                            // 获取输入值
+                            const concentration = parseFloat(concentrationInput.value);
+                            const cellSize = parseFloat(cellSizeInput.value);
+                            const wallThickness = parseFloat(wallThicknessInput.value);
+
+                            // 计算刚度值 (模拟的预测模型)
+                            // 这里使用一个简化的模型：刚度与浓度成反比，与壁厚成正比，与单元尺寸成反比
+                            const baseStiffness = 150; // 基础刚度值 (kPa)
+                            const concentrationFactor = 1 - (concentration - 5) / 50; // 浓度因子 (浓度越高，刚度越低)
+                            const cellSizeFactor = 1 - (cellSize - 1) / 15; // 单元尺寸因子 (尺寸越大，刚度越低)
+                            const wallThicknessFactor = 0.5 + wallThickness / 3; // 壁厚因子 (壁厚越大，刚度越高)
+
+                            // 计算最终刚度值
+                            let stiffness = baseStiffness * concentrationFactor * cellSizeFactor * wallThicknessFactor;
+                            stiffness = Math.round(stiffness * 10) / 10; // 保留一位小数
+
+                            // 计算原始材料的刚度值 (无TEM添加时的刚度)
+                            const originalStiffness = baseStiffness * (1 - (0 - 5) / 50) * cellSizeFactor * wallThicknessFactor;
+
+                            // 计算比例
+                            const ratio = stiffness / originalStiffness;
+                            const ratioPercentage = Math.round(ratio * 100);
+
+                            // 更新结果显示
+                            stiffnessResult.innerHTML = `${stiffness} N/mm<br><span style="font-size: 1rem; font-weight: normal; color: rgba(3,3,3,0.7);">(${ratioPercentage}% of Pure Silicone stiffness)</span>`;
+                        }
+
+                        // 初始计算
+                        updateValues();
+
+                        // 添加事件监听器
+                        concentrationInput.addEventListener('input', updateValues);
+                        cellSizeInput.addEventListener('input', updateValues);
+                        wallThicknessInput.addEventListener('input', updateValues);
+                    </script>
+
+                    <h3 style="margin: 2rem 0 1rem 0;">Variable 1: Material Concentration</h3>
+                    <div class="property-content" style="margin-bottom: 2rem;">
+                        <div class="property-text">
+                            <p>
+                                The expansion of TEM significantly alters the mechanical properties of GyFoam composite
+                                material
+                                by occupying space originally filled with silicone, thereby affecting its stiffness. As
+                                a
+                                result, the composite concentration directly influences material rigidity. We conducted
+                                research
+                                on composite concentration to explore the quantitative relationship between
+                                concentration and
+                                material stiffness. Using Young's modulus as a material-specific stiffness indicator
+                                independent
+                                of structure, we analyzed experimental data as shown in the figure and derived a
+                                quantitative
+                                relationship between concentration and Young's modulus.
+                            </p>
+
+                            <!-- 添加数学公式 -->
+                            <div style="text-align: center; margin: 1rem 0;">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"
+                                    style="font-size: 1.5rem;">
+                                    <mi>E</mi>
+                                    <mo>=</mo>
+                                    <mn>1.03</mn>
+                                    <mo>×</mo>
+                                    <msup>
+                                        <mn>10</mn>
+                                        <mn>5</mn>
+                                    </msup>
+                                    <mo>×</mo>
+                                    <mi>Concentration</mi>
+                                    <mo>+</mo>
+                                    <mn>9.428</mn>
+                                    <mo>×</mo>
+                                    <msup>
+                                        <mn>10</mn>
+                                        <mn>4</mn>
+                                    </msup>
+                                </math>
+                                <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
+                                    where E represents Young's modulus (Pa)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="property-image">
+                            <img src="../../resources/img/Stiffness&Morphing/Stiffness&Morphing_concentration.jpg"
+                                alt="Material Concentration Effect" class="demo-image" style="margin-top: 0.5rem;">
+                        </div>
+                    </div>
+
+
+                    <h3 style="margin: 2rem 0 1rem 0;">Variable 2: Gyroid Structural Parameters</h3>
+                    <p>
+                        The adjustable Gyroid structural parameters include cell size and wall thickness.
+                        Through controlled variable experiments, we studied how cell size and wall thickness
+                        independently affect material stiffness.
+                        Our findings show that stiffness gradually increases as the cell size decreases.
+                        Similarly, increasing wall thickness leads to higher stiffness.
+                        Based on our experimental data and research in mechanical engineering and materials science
+                        regarding lattice structures' mechanical properties, we fitted the data to establish a stiffness
+                        prediction model that correlates with both cell size and wall thickness.
+                    </p>
+
+                    <!-- 添加数学公式 -->
+                    <div style="text-align: center; margin: 1rem 0;">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 1.5rem;">
+                            <msub>
+                                <mi>S</mi>
+                                <mo>*</mo>
+                            </msub>
+                            <mo>=</mo>
+                            <mi>2.96</mi>
+                            <mo>×</mo>
+                            <mn>E</mn>
+                            <mo>×</mo>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mtext>thickness</mtext>
+                                        <mtext>cellsize</mtext>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2.06</mn>
+                            </msup>
+                        </math>
+                        <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
+                            where S<sub>*</sub> represents predicted stiffness, E represents Young's modulus of material
+                            under selected concentration
+                        </p>
+                    </div>
+
+
+                    <div style="display: flex; align-items: center; margin: 1.5rem 0 2rem 0; gap: 2.5rem;">
+                        <a href="#stiffness-prediction-model"
+                            onclick="scrollToElement('stiffness-prediction-model'); return false;" style="flex: 0 0 auto; background-color: #c9a875; color: white; padding: 0.8rem 1.2rem; 
+                                  border-radius: 4px; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center;
+                                  transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); height: 100%;">
+                            <span style="margin-right: 0.5rem;">↑</span>
+                            <span>Customize Stiffness</span>
+                        </a>
+                        <p style="margin: 0; flex: 1; line-height: 1.6;">
+                            We have developed an interactive stiffness prediction tool that allows users to predict
+                            stiffness values by adjusting lattice cell size and wall thickness parameters. This tool
+                            helps
+                            users better understand and control stiffness variations for different design and
+                            manufacturing
+                            applications.
+                        </p>
+                    </div>
+
+                    <!-- <div style="margin-top: 2rem; text-align: center;">
+                        <img src="../../resources/img/Stiffness/stiffness_applications.jpg"
+                            alt="Applications of Customizable Stiffness" class="demo-image" style="max-width: 80%;">
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -435,90 +572,42 @@
         <h2 id="morphing-structures" style="margin: 5rem 0 2rem 0;">Morphing Structures</h2>
 
         <div class="property-section">
-            <div class="property-content">
-                <div class="property-text">
-                    <h3 style="margin-bottom: 1rem;">Programmable Deformation</h3>
+            <div class="property-content" style="flex-direction: column;">
+                <div class="property-text" style="max-width: 100%;">
+                    <h3 style="margin-bottom: 1rem;">Bilayer-induced Bending</h3>
                     <p>
-                        By strategically varying the concentration of TEMs throughout the structure, we can program
-                        specific deformation patterns that emerge during the heating process. This enables:
+                        This deformation strategy utilizes differential expansion
+                        between two layers: upon heat activation, the higher-concentration layer undergoes greater
+                        expansion, serving as the driving layer, while the lower-concentration layer acts as a
+                        restricting layer, resisting deformation and generating controlled bending moments. Our
+                        deformation library illustrates how the concentration of the driving layer influences the degree
+                        of bending.
                     </p>
-                    <ul>
-                        <li>Controlled bending and twisting motions</li>
-                        <li>Transformation from flat to three-dimensional structures</li>
-                        <li>Sequential unfolding based on activation temperature gradients</li>
-                        <li>Complex shape changes that would be difficult to achieve with traditional manufacturing</li>
-                    </ul>
-                    <p>
-                        The deformation behavior can be predicted and simulated using computational models, allowing
-                        designers to create precisely engineered morphing structures.
-                    </p>
-                </div>
-                <div class="property-image">
-                    <img src="../../resources/img/Stiffness/programmable_deformation.jpg" alt="Programmable Deformation"
-                        class="demo-image" style="margin-top: 0.5rem;">
-                </div>
-            </div>
-        </div>
 
-        <div class="data-card">
-            <p
-                style="margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #030303; font-weight: bold;">
-                Morphing Performance Metrics</p>
-            <p>Our testing has quantified the morphing capabilities of GyFoam structures under various conditions:</p>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Performance Range</th>
-                        <th>Influencing Factors</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Expansion Ratio</td>
-                        <td>200-600%</td>
-                        <td>TEM concentration, heating temperature, silicone elasticity</td>
-                    </tr>
-                    <tr>
-                        <td>Bending Angle</td>
-                        <td>0-180°</td>
-                        <td>Concentration gradient, structure thickness, heating pattern</td>
-                    </tr>
-                    <tr>
-                        <td>Activation Time</td>
-                        <td>10-60 seconds</td>
-                        <td>Heating method, structure size, ambient conditions</td>
-                    </tr>
-                    <tr>
-                        <td>Shape Fidelity</td>
-                        <td>85-95%</td>
-                        <td>Mold precision, material quality, expansion control</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="property-section">
-            <div class="property-content">
-                <div class="property-text">
-                    <h3 style="margin-bottom: 1rem;">Applications of Morphing Structures</h3>
+                    <h3 style="margin: 2rem 0 1rem 0;">Concentric-induced Wavy Edges</h3>
                     <p>
-                        The morphing capabilities of GyFoam enable innovative applications across multiple domains:
+                        We present a structure in which the inner ring has a lower
+                        composite concentration, while the outer ring has a higher concentration. During expansion, the
+                        outer ring is constrained and stretched by the inner ring, resulting in periodic wavy edges. By
+                        adjusting the composite concentrations and geometric dimensions, we can achieve wavy edges with
+                        varying amplitudes and wave counts.
                     </p>
-                    <ul>
-                        <li><strong>Deployable Structures:</strong> Compact during transportation, expanding to full
-                            size when needed</li>
-                        <li><strong>Adaptive Furniture:</strong> Shape-changing elements that respond to user needs or
-                            environmental conditions</li>
-                        <li><strong>Architectural Elements:</strong> Self-assembling or transforming building components
-                        </li>
-                        <li><strong>Soft Actuators:</strong> Heat-activated mechanical systems for soft robotics</li>
-                        <li><strong>4D Printing:</strong> Time-dependent transformation of 3D printed structures</li>
-                    </ul>
-                </div>
-                <div class="property-image">
-                    <img src="../../resources/img/Stiffness/morphing_applications.jpg"
-                        alt="Applications of Morphing Structures" class="demo-image" style="margin-top: 0.5rem;">
+
+                    <h3 style="margin: 2rem 0 1rem 0;">Concentric-induced Internal Doming</h3>
+                    <p>
+                        In contrast to wavy edges, internal doming is achieved by
+                        reversing the concentration distribution. The inner region, with its higher expansion
+                        capability, is constrained by the surrounding structure, preventing lateral expansion and
+                        instead forcing upward deformation into a vertical dome shape. Our library showcases various
+                        internal doming effects resulting from different concentration gradients, illustrating a diverse
+                        range of dome heights and shapes.
+                    </p>
+
+                    <!-- 图片移到文字下方 -->
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <img src="../../resources/img/Stiffness&Morphing/Stiffness&Morphing_MorphLibrary.jpg"
+                            alt="Programmable Deformation" class="demo-image" style="max-width: 100%;">
+                    </div>
                 </div>
             </div>
         </div>
