@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - GyFoam</title>
+    <meta property="og:title" content="Applications - GyFoam">
+    <meta property="og:locale" content="en_US">
+    <link rel="canonical" href="https://intellitex-doublecoat.github.io/pages/application.html">
+    <meta property="og:url" content="https://intellitex-doublecoat.github.io/pages/application.html">
+    <meta property="og:site_name" content="intellitex-doublecoat.github.io">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="../../js/d3DrawIcon.js"></script>
+
+    <!-- outline Import CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
+    <!-- outline Import the library -->
+    <script src="../../js/DocumentOutline.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式 */
+        .demo-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* header 毛玻璃效果 */
+        .glassmorphismHeader {
+            background: rgba(249, 249, 249, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+        }
+
+        /* 应用卡片样式 */
+        .application-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 2.5rem;
+            border: 1px solid #f0f0f0;
+        }
+
+        .application-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .application-image {
+            width: 100%;
+            height: 320px; /* 将图片高度从240px增加到320px */
+            object-fit: cover;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .application-content {
+            padding: 1.8rem; /* 增加内容区域的内边距 */
+        }
+
+        .application-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin-bottom: 0.8rem;
+        }
+
+        .application-description {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .application-tag {
+            display: inline-block;
+            background-color: #f8f2e5;
+            color: #c9a875;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* 修改为2列布局 */
+            gap: 2.5rem;
+            /* 增加间距 */
+            margin-top: 2rem;
+        }
+
+        .category-section {
+            margin-bottom: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader"
+        style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 20rem 0.4rem 28rem;">
+        <a href="../../index.html">
+            <div style="display: flex; align-items: center;">
+                <!-- 添加图标 -->
+                <img src="../../resources/img/icon.png" alt="GyFoam Icon" style="height: 2.2rem; margin-right: 0.6rem;">
+                <p class="h3StylePTag">GyFoam</p>
+            </div>
+        </a>
+    </div>
+
+    <div style="margin: 6rem 7rem 0 28rem;">
+        <p class="h1StylePTag" style="margin: 0 0 6rem 0; font-size: 4.2rem;">Application Projects</p>
+
+        <h2 id="overview" style="margin: 0.2rem 0;">Overview</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <p style="background-color: #f5f5f5; padding: 0.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                    We are currently improving and developing new applications. Subsequently, all models, code,
+                    parameters, and other information will be displayed on each project's subpage.
+                </p>
+
+                <p>
+                    To illustrate the potential of GyFoam technique for prototyping and
+                    tangible interaction, we designed and produced several applications:
+                    large-scale products, soft tangible interfaces, and wearable products with
+                    Gyroid structure.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="category-section">
+            <h2 id="wearable-applications" style="margin: 5rem 0 2rem 0;">Large-scale Products</h2>
+            <p>
+                The expandability of GyFoam make it an ideal choice for creating
+                large-scale products. Users can produce products that exceed the size limitations of conventional 3D
+                printers.
+            </p>
+
+            <div class="application-grid">
+                <div class="application-card">
+                    <img src="../../resources/img/Application/app_pillow.jpg" alt="pillow" class="application-image">
+                    <div class="application-content">
+                        <h3 class="application-title">Gradient-Stiffness Pillow</h3>
+                        <p class="application-description">
+                            A pillow with gradient stiffness zones for customized head and neck support. Users can
+                            adjust Gyroid parameters to achieve different firmness levels for personalized comfort.
+                        </p>
+                        <div>
+                            <span class="application-tag">Large-scale</span>
+                            <span class="application-tag">Customizable Stiffness</span>
+                            <span class="application-tag">Product Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-card">
+                    <img src="../../resources/img/Application/app_bunny.jpg" alt="bunny" class="application-image">
+                    <div class="application-content">
+                        <h3 class="application-title">Scaled-Up Bunny Sculpture</h3>
+                        <p class="application-description">
+                            Based on the Stanford Bunny, we used GyFoam method to create a larger-scale bunny
+                            sculpture. The Gyroid structure also adds potential aesthetic value to the bunny.
+                        </p>
+                        <div>
+                            <span class="application-tag">Large-scale</span>
+                            <span class="application-tag">Product Prototyping</span>
+                            <span class="application-tag">Aesthetic Value</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="category-section">
+            <h2 id="home-applications" style="margin: 5rem 0 2rem 0;">Soft Tangible Interfaces</h2>
+            <p>
+                The silicone material used in GyFoam gives it unique potential and advantages in flexible interaction,
+                making it an ideal choice for soft tangible interface design and prototyping.
+            </p>
+
+            <div class="application-grid">
+                <div class="application-card">
+                    <img src="../../resources/img/Application/app_lamp.jpg" alt="lamp" class="application-image">
+                    <div class="application-content">
+                        <h3 class="application-title">Interactive Gyroid Lamp</h3>
+                        <p class="application-description">
+                            We created an interactive soft lampshade. Compared to traditional rigid lampshades, it
+                            offers natural and comfortable interactions, allowing users to control brightness and
+                            color through touch and squeeze gestures.
+                        </p>
+                        <div>
+                            <span class="application-tag">Soft Interaction</span>
+                            <span class="application-tag">Customization</span>
+                            <span class="application-tag">Aesthetic Value</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-card">
+                    <img src="../../resources/img/Application/app_keyboard.jpg" alt="keyboard"
+                        class="application-image">
+                    <div class="application-content">
+                        <h3 class="application-title">Modular Gaming Keyboard</h3>
+                        <p class="application-description">
+                            We created a modular gaming keyboard. Users can replace keys with different pressing
+                            resistance based on their comfort and functional needs. All keys are created through simple
+                            geometries via expansion or 3D deformation.
+                        </p>
+                        <div>
+                            <span class="application-tag">Soft Interaction</span>
+                            <span class="application-tag">Customizable Stiffness</span>
+                            <span class="application-tag">Morphing</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2 id="industrial-applications" style="margin: 5rem 0 2rem 0;">Wearble Products</h2>
+            <p>
+                Products made through GyFoam method feature breathability, lightweight construction, and high energy
+                absorption,
+                making them ideal for wearable applications.
+            </p>
+
+            <div class="application-grid">
+                <div class="application-card">
+                    <img src="../../resources/img/Application/app_midsole.jpg" alt="midsole" class="application-image">
+                    <div class="application-content">
+                        <h3 class="application-title">Customizable Lattice Midsoles with Tunable Stiffness and Shape
+                        </h3>
+                        <p class="application-description">
+                            Using our proposed stiffness and morphing control strategies, users can customize the
+                            shape and stiffness of midsoles. For Makers, we provide a new technical approach of personal
+                            fabrication of shoes.
+                        </p>
+                        <div>
+                            <span class="application-tag">Customizable Stiffness</span>
+                            <span class="application-tag">Morphing</span>
+                            <span class="application-tag">Maker Culture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-card">
+                    <img src="../../resources/img/Application/app_kneepad.jpg" alt="kneepad" class="application-image">
+                    <div class="application-content">
+                        <h3 class="application-title">Tailored Kneepad</h3>
+                        <p class="application-description">
+                            Using morphing control strategies, we developed a personal fabrication approach for
+                            kneepads that can transform from flat to knee-fitting shapes. The flexible material and
+                            Gyroid structure provide excellent energy absorption and impact protection.
+                        </p>
+                        <div>
+                            <span class="application-tag">Energy Absorption</span>
+                            <span class="application-tag">Personal Fabrication</span>
+                            <span class="application-tag">Morphing</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="margin-top: 10rem;"></div>
+    </div>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true,
+            width: '320px'
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash && window.location.hash.length > 1) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            } else {
+                // 如果没有锚点，确保页面滚动到顶部
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
+</body>
+
+</html>
