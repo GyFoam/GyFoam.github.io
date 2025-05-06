@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaled-Up Bunny Sculpture - GyFoam</title>
+    <meta property="og:title" content="Scaled-Up Bunny Sculpture - GyFoam">
+    <meta property="og:locale" content="en_US">
+    <link rel="canonical" href="https://intellitex-doublecoat.github.io/pages/subpage/sampleProj/bunny.html">
+    <meta property="og:url" content="https://intellitex-doublecoat.github.io/pages/subpage/sampleProj/bunny.html">
+    <meta property="og:site_name" content="intellitex-doublecoat.github.io">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="../../../js/d3DrawIcon.js"></script>
+
+    <!-- outline Import CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AngeloFaella/DocumentOutline@1.0/outline.css">
+    <!-- outline Import the library -->
+    <script src="../../../js/DocumentOutline.js"></script>
+
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: #fdfdfd;
+            font-size: calc(1728vw / 1728);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .h1StylePTag {
+            font-family: 'Montserrat', sans-serif;
+            color: #030303;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 580;
+            line-height: 1.2;
+        }
+
+        .h2StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        .h3StylePTag {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #030303;
+            margin: 0;
+        }
+
+        li,
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(229, 30, 243, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        figcaption {
+            font-family: 'Noto Sans', sans-serif;
+            color: rgba(3, 3, 3, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 图片样式 */
+        .demo-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(150, 120, 90, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* header 毛玻璃效果 */
+        .glassmorphismHeader {
+            background: rgba(249, 249, 249, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+        }
+
+        /* 参数卡片样式 */
+        .param-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #c9a875;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .param-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #030303;
+            margin-bottom: 1rem;
+        }
+
+        .param-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .param-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .param-name {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .param-value {
+            color: #888;
+        }
+
+        /* 代码区域样式 */
+        .code-section {
+            margin: 2rem 0;
+        }
+
+        pre {
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 视频容器样式 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* 下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            background-color: #c9a875;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #b89865;
+            color: white;
+        }
+
+        /* 分隔线样式 */
+        .section-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 3rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glassmorphismHeader"
+        style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 20rem 0.4rem 28rem;">
+        <a href="../../../index.html">
+            <div style="display: flex; align-items: center;">
+                <!-- 添加图标 -->
+                <img src="../../../resources/img/icon.png" alt="GyFoam Icon" style="height: 2.2rem; margin-right: 0.6rem;">
+                <p class="h3StylePTag">GyFoam</p>
+            </div>
+        </a>
+    </div>
+
+    <div style="margin: 6rem 7rem 0 28rem;">
+        <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 3.5rem;">Scaled-Up Bunny Sculpture</p>
+        
+        <div style="margin-bottom: 3rem;">
+            <a href="../application.html" style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-right: 0.5rem;">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                </svg>
+                返回应用项目列表
+            </a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <img src="../../../resources/img/Application/bunny_detail.jpg" alt="Scaled-Up Bunny Sculpture" class="demo-image">
+                
+                <p>
+                    项目简介内容将在这里展示...
+                </p>
+            </div>
+        </div>
+
+        <h2 id="parameters" style="margin: 3rem 0 1.5rem 0;">参数设置</h2>
+        <div class="param-card">
+            <p class="param-title">Gyroid结构参数</p>
+            <div class="param-row">
+                <span class="param-name">参数名称1</span>
+                <span class="param-value">参数值1</span>
+            </div>
+            <div class="param-row">
+                <span class="param-name">参数名称2</span>
+                <span class="param-value">参数值2</span>
+            </div>
+            <div class="param-row">
+                <span class="param-name">参数名称3</span>
+                <span class="param-value">参数值3</span>
+            </div>
+        </div>
+
+        <div class="param-card">
+            <p class="param-title">打印参数</p>
+            <div class="param-row">
+                <span class="param-name">参数名称1</span>
+                <span class="param-value">参数值1</span>
+            </div>
+            <div class="param-row">
+                <span class="param-name">参数名称2</span>
+                <span class="param-value">参数值2</span>
+            </div>
+            <div class="param-row">
+                <span class="param-name">参数名称3</span>
+                <span class="param-value">参数值3</span>
+            </div>
+        </div>
+
+        <a href="#" class="download-btn">
+            下载模型文件
+        </a>
+
+        <div class="section-divider"></div>
+
+        <h2 id="code" style="margin: 3rem 0 1.5rem 0;">实现代码</h2>
+        <p>代码说明将在这里展示...</p>
+
+        <div class="code-section">
+            <pre><code class="language-python">
+# 示例代码
+def example_function():
+    print("Hello, GyFoam!")
+            </code></pre>
+        </div>
+
+        <a href="#" class="download-btn">
+            下载完整代码包
+        </a>
+
+        <div class="section-divider"></div>
+
+        <h2 id="video" style="margin: 3rem 0 1.5rem 0;">视频展示</h2>
+        <p>视频说明将在这里展示...</p>
+
+        <div class="video-container">
+            <!-- 视频嵌入代码将在这里 -->
+            <iframe src="about:blank" title="项目视频演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <h3 style="margin: 2rem 0 1rem 0;">制作过程</h3>
+        <p>
+            制作过程说明将在这里展示...
+        </p>
+
+        <h3 style="margin: 2rem 0 1rem 0;">应用效果</h3>
+        <p>
+            应用效果说明将在这里展示...
+        </p>
+
+        <div style="margin-top: 10rem;"></div>
+    </div>
+
+    <!-- 渲染outline -->
+    <script>
+        let outline = new DocumentOutline({
+            backgroundColor: '#2c2c2c',
+            textColor: 'white',
+            textColorLight: 'lightgrey',
+            accentColor: '#858585',
+            defaultOpen: true,
+            width: '320px'
+        });
+        d3.select(".outline-nav")
+            .style("z-index", "99")
+
+        // 添加平滑滚动函数，考虑顶部导航栏高度
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // 获取顶部导航栏高度
+                const headerHeight = document.querySelector('.glassmorphismHeader').offsetHeight;
+                // 计算元素距离顶部的位置，并减去导航栏高度和额外的偏移量
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight - 20; // 额外20px的空间
+
+                // 平滑滚动
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // 处理URL中的锚点，页面加载时自动调整滚动位置
+        window.addEventListener('load', function () {
+            if (window.location.hash && window.location.hash.length > 1) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(function () {
+                    scrollToElement(targetId);
+                }, 300); // 延迟执行，确保页面完全加载
+            } else {
+                // 如果没有锚点，确保页面滚动到顶部
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
+</body>
+
+</html>

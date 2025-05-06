@@ -427,9 +427,10 @@
                             // E = 1.03×10^5×Concentration + 9.428×10^4
                             const E = 1.03 * Math.pow(10, 5) * (concentration / 100) + 9.428 * Math.pow(10, 4);
                             
-                            // 计算刚度值 - 使用公式 S* = 2.96 × E × (thickness/cellsize)^2.06
+                            // 计算刚度值 - 使用公式 K = 2.52 × (wt/cs)^1.70 × E × a
                             const thicknessToSizeRatio = wallThickness / cellSize;
-                            const stiffness = 2.96 * E * Math.pow(thicknessToSizeRatio, 2.06);
+                            const a = 25; // 假设a为常数1，如需调整请修改此值
+                            const stiffness = 2.52 * Math.pow(thicknessToSizeRatio, 1.70) * E * a * Math.pow(10, -6);
                             
                             // 转换为更友好的单位并保留一位小数
                             const stiffnessInNmm = stiffness / 1000; // 转换为N/mm
@@ -571,7 +572,7 @@
                             onclick="scrollToElement('stiffness-prediction-model'); return false;" style="flex: 0 0 auto; background-color: #c9a875; color: white; padding: 0.8rem 1.2rem; 
                                   border-radius: 4px; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center;
                                   transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); height: 100%;">
-                            <span style="margin-right: 0.5rem;">↑</span>
+                            <span style="margin-right: 0.5rem;">↑<  /span>
                             <span>Customize Stiffness</span>
                         </a>
                         <p style="margin: 0; flex: 1; line-height: 1.6;">
