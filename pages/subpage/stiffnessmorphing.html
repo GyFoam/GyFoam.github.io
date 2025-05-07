@@ -302,54 +302,55 @@
 
         <h2 id="customizable-stiffness" style="margin: 5rem 0 0.5rem 0;">Customizable Stiffness</h2>
 
-        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
-            <p style="color: rgba(3, 3, 0.7); font-size: 1rem;font-weight: bold; margin: 0.2;">
-                "STIFFNESS":
-            </p>
-            <p style="color: rgba(3, 3, 0.7); font-size: 0.85rem; margin: 0.1;">
-                Considering that users' most intuitive perception when interacting with materials is their hardness
-                level, we used a universal testing machine to conduct compression tests on GyFoam samples and obtained
-                force-displacement curve data.
-                To quantify the material's stiffness characteristics, in our work, we define "STIFFNESS" as the slope of
-                the most linear region within the first 5% displacement range of the force-displacement curve.
-                There are two reasons for this choice: First, this region most closely matches users' daily interaction
-                experience, making this stiffness characteristic most practically relevant. Second, considering that
-                silicone and TEM-silicone composite materials typically exhibit nonlinear stiffness characteristics,
-                we chose this relatively linear region to simplify calculations and obtain more universally applicable
-                patterns.
-            </p>
-            <p style="color: rgba(3, 3, 0.7); font-size: 0.85rem; margin: 0;">
-                We are continuously optimizing and iterating our prediction model. We are constantly consulting experts
-                and gaining deeper expertise in materials science, while also conducting more sample experiments, to
-                provide researchers and manufacturers with a more reliable prediction model for achieving customized
-                mechanical properties of materials manufactured through the GyFoam method.
-            </p>
-        </div>
-        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
-            <p style="color: rgba(108, 108, 108, 0.701); font-size: 0.75rem; margin: 0;">
-                Through extensive experimentation, we want to develop a more scientifically rigorous stiffness
-                prediction model that differs from the one presented in our paper. We have consulted domain experts and
-                conducted multiple iterations of experiments to continuously calibrate and optimize the model. Our goal
-                is to provide researchers and makers with a more reliable stiffness prediction model, enabling
-                customized
-                mechanical properties fabricated through GyFoam method.
-            </p>
-        </div>
-
-
-        <div class="property-section">
-            <div class="property-content" style="flex-direction: column;">
-                <div class="property-text" style="max-width: 100%;">
-                    <p style="margin-bottom: 2rem;">
-                        In this section, users can utilize our interactive features to adjust the concentration and
-                        Gyroid structural parameters of GyFoam material according to their needs, obtaining predicted
-                        stiffness
-                        values. We also provide detailed modeling approaches and methodologies in the following
-                        sections.
+                <h3 style="margin: 1rem 0 1rem 0;">Overview</h3>
+                
+                <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    <p style="color: rgba(3, 3, 0.7); font-size: 1rem;font-weight: bold; margin: 0.2;">
+                        "STIFFNESS":
                     </p>
+                    <p style="color: rgba(3, 3, 0.7); font-size: 0.85rem; margin: 0.1;">
+                        Considering that users' most intuitive perception when interacting with materials is their hardness
+                        level, we used a universal testing machine to conduct compression tests on GyFoam samples and obtained
+                        force-displacement curve data.
+                        To quantify the material's stiffness characteristics, in our work, we define "STIFFNESS" as the slope of
+                        the most linear region within the first 5% displacement range of the force-displacement curve.
+                        There are two reasons for this choice: First, this region most closely matches users' daily interaction
+                        experience, making this stiffness characteristic most practically relevant. Second, considering that
+                        silicone and TEM-silicone composite materials typically exhibit nonlinear stiffness characteristics,
+                        we chose this relatively linear region to simplify calculations and obtain more universally applicable
+                        patterns.
+                    </p>
+                    <p style="color: rgba(3, 3, 0.7); font-size: 0.85rem; margin: 0;">
+                        We are continuously optimizing and iterating our prediction model. We are constantly consulting experts
+                        and gaining deeper expertise in materials science, while also conducting more sample experiments, to
+                        provide researchers and manufacturers with a more reliable prediction model for achieving customized
+                        mechanical properties of materials manufactured through the GyFoam method.
+                    </p>
+                </div>
+                
+                <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    <p style="color: rgba(108, 108, 108, 0.701); font-size: 0.75rem; margin: 0;">
+                        Through extensive experimentation, we want to develop a more scientifically rigorous stiffness
+                        prediction model that differs from the one presented in our paper. We have consulted domain experts and
+                        conducted multiple iterations of experiments to continuously calibrate and optimize the model. Our goal
+                        is to provide researchers and makers with a more reliable stiffness prediction model, enabling
+                        customized
+                        mechanical properties fabricated through GyFoam method.
+                    </p>
+                </div>
+
+                <p style="margin-bottom: 2rem;">
+                    In this section, users can utilize our interactive features to adjust the concentration and
+                    Gyroid structural parameters of GyFoam material according to their needs, obtaining predicted
+                    stiffness values. We also provide detailed modeling approaches and methodologies in the following
+                    sections.
+                </p>
 
 
-                    <h3 id="stiffness-prediction-model" ; style="margin-bottom: 0.3rem;">Stiffness Prediction Model</h3>
+                <div class="property-section">
+                    <div class="property-content" style="flex-direction: column;">
+                        <div class="property-text" style="max-width: 100%;">
+                            <h3 id="stiffness-prediction-model" ; style="margin-bottom: 0.3rem;">Stiffness Prediction Model</h3>
                     <div
                         style="display: inline-block; font-size: 0.9rem; background-color: #f0ad4e; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; vertical-align: middle; font-family: 'Noto Sans', sans-serif; font-weight: normal; margin-bottom: 1rem;">
                         Under Continuous Improvement
