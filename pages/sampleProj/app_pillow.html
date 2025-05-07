@@ -25,7 +25,8 @@
     <script src="../../../js/DocumentOutline.js"></script>
 
     <!-- 代码高亮 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
@@ -182,7 +183,8 @@
         /* 视频容器样式 */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 比例 */
+            padding-bottom: 56.25%;
+            /* 16:9 比例 */
             height: 0;
             overflow: hidden;
             margin-bottom: 2rem;
@@ -233,7 +235,8 @@
         <a href="../../../index.html">
             <div style="display: flex; align-items: center;">
                 <!-- 添加图标 -->
-                <img src="../../../resources/img/icon.png" alt="GyFoam Icon" style="height: 2.2rem; margin-right: 0.6rem;">
+                <img src="../../../resources/img/icon.png" alt="GyFoam Icon"
+                    style="height: 2.2rem; margin-right: 0.6rem;">
                 <p class="h3StylePTag">GyFoam</p>
             </div>
         </a>
@@ -241,40 +244,37 @@
 
     <div style="margin: 6rem 7rem 0 28rem;">
         <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 3.5rem;">Gradient-Stiffness Pillow</p>
-        
+
         <div style="margin-bottom: 3rem;">
-            <a href="../application.html" style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-right: 0.5rem;">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                </svg>
-                返回应用项目列表
+            <a href="../subpage/application.html"
+                style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">
+                Back to Applications
             </a>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <img src="../../../resources/img/Application/pillow_detail.jpg" alt="Gradient-Stiffness Pillow" class="demo-image">
-                
+                <img src="../../../resources/img/Application/app_pillow.jpg" alt="Gradient-Stiffness Pillow"
+                    class="demo-image">
+
                 <p>
                     项目简介内容将在这里展示...
                 </p>
             </div>
         </div>
 
-        <h2 id="parameters" style="margin: 3rem 0 1.5rem 0;">参数设置</h2>
+        <h2 id="parameters" style="margin: 3rem 0 1.5rem 0;">Parameter Settings</h2>
         <div class="param-card">
-            <p class="param-title">Gyroid结构参数</p>
+            <p class="param-title">Gyroid Structural Parameters</p>
             <div class="param-row">
-                <span class="param-name">参数名称1</span>
-                <span class="param-value">参数值1</span>
+                <span class="param-name">Wall Thickness</span>
+                <span class="param-value">2.0mm</span>
             </div>
-            <div class="param-row">
-                <span class="param-name">参数名称2</span>
-                <span class="param-value">参数值2</span>
-            </div>
-            <div class="param-row">
-                <span class="param-name">参数名称3</span>
-                <span class="param-value">参数值3</span>
+            <div class="param-row" style="align-items: center;">
+                <span class="param-name">Gradient</span>
+                <span class="param-value" style="text-align: right;">
+                    <img src="../../../resources/img/Application/pillow_gradient.jpg" alt="Stiffness Gradient" style="max-width: 200px; border-radius: 4px;">
+                </span>
             </div>
         </div>
 
@@ -322,7 +322,9 @@ def example_function():
 
         <div class="video-container">
             <!-- 视频嵌入代码将在这里 -->
-            <iframe src="about:blank" title="项目视频演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="about:blank" title="项目视频演示" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
 
         <h3 style="margin: 2rem 0 1rem 0;">制作过程</h3>

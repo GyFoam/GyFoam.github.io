@@ -301,9 +301,33 @@
 
 
         <h2 id="customizable-stiffness" style="margin: 5rem 0 0.5rem 0;">Customizable Stiffness</h2>
-        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 2rem;">
+
+        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+            <p style="color: rgba(3, 3, 0.7); font-size: 1rem;font-weight: bold; margin: 0.2;">
+                "STIFFNESS":
+            </p>
+            <p style="color: rgba(3, 3, 0.7); font-size: 0.85rem; margin: 0.1;">
+                Considering that users' most intuitive perception when interacting with materials is their hardness
+                level, we used a universal testing machine to conduct compression tests on GyFoam samples and obtained
+                force-displacement curve data.
+                To quantify the material's stiffness characteristics, in our work, we define "STIFFNESS" as the slope of
+                the most linear region within the first 5% displacement range of the force-displacement curve.
+                There are two reasons for this choice: First, this region most closely matches users' daily interaction
+                experience, making this stiffness characteristic most practically relevant. Second, considering that
+                silicone and TEM-silicone composite materials typically exhibit nonlinear stiffness characteristics,
+                we chose this relatively linear region to simplify calculations and obtain more universally applicable
+                patterns.
+            </p>
+            <p style="color: rgba(3, 3, 0.7); font-size: 0.85rem; margin: 0;">
+                We are continuously optimizing and iterating our prediction model. We are constantly consulting experts
+                and gaining deeper expertise in materials science, while also conducting more sample experiments, to
+                provide researchers and manufacturers with a more reliable prediction model for achieving customized
+                mechanical properties of materials manufactured through the GyFoam method.
+            </p>
+        </div>
+        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
             <p style="color: rgba(108, 108, 108, 0.701); font-size: 0.75rem; margin: 0;">
-                Through extensive experimentation, we have developed a more scientifically rigorous stiffness
+                Through extensive experimentation, we want to develop a more scientifically rigorous stiffness
                 prediction model that differs from the one presented in our paper. We have consulted domain experts and
                 conducted multiple iterations of experiments to continuously calibrate and optimize the model. Our goal
                 is to provide researchers and makers with a more reliable stiffness prediction model, enabling
@@ -328,7 +352,14 @@
                     <h3 id="stiffness-prediction-model" ; style="margin-bottom: 0.3rem;">Stiffness Prediction Model</h3>
                     <div
                         style="display: inline-block; font-size: 0.9rem; background-color: #f0ad4e; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; vertical-align: middle; font-family: 'Noto Sans', sans-serif; font-weight: normal; margin-bottom: 1rem;">
-                        Under Continuous Improvement</div>
+                        Under Continuous Improvement
+                    </div>
+
+                    <div
+                        style="display: inline-block; font-size: 0.9rem; background-color: #5bc0de; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; vertical-align: middle; font-family: 'Noto Sans', sans-serif; font-weight: normal; margin-bottom: 1rem; margin-left: 0.5rem;">
+                        Last Updated: 2025-05-06
+                    </div>
+
                     <p>
                         Our stiffness prediction model considers three key parameters: TEM concentration, cell size, and
                         wall thickness. Using the interactive tool below, you can input these parameters to predict the
@@ -349,7 +380,8 @@
                                     style="width: 100%;">
                                 <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
                                     <span>>0%</span>
-                                    <span id="concentrationValue" style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">12%</span>
+                                    <span id="concentrationValue"
+                                        style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">12%</span>
                                     <span>40%</span>
                                 </div>
                             </div>
@@ -362,7 +394,8 @@
                                     style="width: 100%;">
                                 <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
                                     <span>5mm</span>
-                                    <span id="cellSizeValue" style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">8</span>
+                                    <span id="cellSizeValue"
+                                        style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">8</span>
                                     <span>20mm</span>
                                 </div>
                             </div>
@@ -375,7 +408,8 @@
                                     style="width: 100%;">
                                 <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
                                     <span>1mm</span>
-                                    <span id="wallThicknessValue" style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">2mm</span>
+                                    <span id="wallThicknessValue"
+                                        style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">2mm</span>
                                     <span>5mm</span>
                                 </div>
                             </div>
@@ -427,12 +461,12 @@
                             // 计算Young's模量 (E) - 根据浓度计算
                             // E = 1.03×10^5×Concentration + 9.428×10^4
                             const E = 1.03 * Math.pow(10, 5) * concentration + 9.428 * Math.pow(10, 4);
-                            
+
                             // 计算刚度值 - 使用公式 K = 2.52 × (wt/cs)^1.70 × E × a
                             const thicknessToSizeRatio = wallThickness / cellSize;
                             const a = 25; // 假设a为常数1，如需调整请修改此值
                             const stiffness = 2.52 * Math.pow(thicknessToSizeRatio, 1.70) * E * a * Math.pow(10, -6);
-                            
+
                             // 转换为更友好的单位并保留一位小数
                             const stiffnessInNmm = stiffness; // 转换为N/mm
                             const displayStiffness = Math.round(stiffnessInNmm * 10) / 10;
@@ -558,8 +592,10 @@
                                     <mn>L</mn>
                                 </math>
                                 <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
-                                    where S<sub>*</sub> represents predicted stiffness (N/mm), E represents Young's modulus (Pa) of
-                                    material under selected concentration, L represents the length (mm) of the boundingbox of the sample
+                                    where S<sub>*</sub> represents predicted stiffness (N/mm), E represents Young's
+                                    modulus (Pa) of
+                                    material under selected concentration, L represents the length (mm) of the
+                                    boundingbox of the sample
                                 </p>
                             </div>
                         </div>
