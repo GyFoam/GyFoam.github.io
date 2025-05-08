@@ -1,15 +1,16 @@
+<!-- kneepad -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transformable Toy - GyFoam</title>
-    <meta property="og:title" content="Transformable Toy - GyFoam">
+    <title>Customizable Knee Pad - GyFoam</title>
+    <meta property="og:title" content="Customizable Knee Pad - GyFoam">
     <meta property="og:locale" content="en_US">
-    <link rel="canonical" href="https://intellitex-doublecoat.github.io/pages/subpage/sampleProj/toy.html">
-    <meta property="og:url" content="https://intellitex-doublecoat.github.io/pages/subpage/sampleProj/toy.html">
-    <meta property="og:site_name" content="intellitex-doublecoat.github.io">
+    <link rel="canonical" href="https://gyfoam.github.io/pages/sampleProj/app_kneepad.html">
+    <meta property="og:url" content="https://gyfoam.github.io/pages/sampleProj/app_kneepad.html">
+    <meta property="og:site_name" content="gyfoam.github.io">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -25,7 +26,8 @@
     <script src="../../../js/DocumentOutline.js"></script>
 
     <!-- 代码高亮 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
@@ -134,8 +136,8 @@
         .param-card {
             background-color: #f8f8f8;
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             border-left: 4px solid #c9a875;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
@@ -182,7 +184,8 @@
         /* 视频容器样式 */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 比例 */
+            padding-bottom: 56.25%;
+            /* 16:9 比例 */
             height: 0;
             overflow: hidden;
             margin-bottom: 2rem;
@@ -233,116 +236,85 @@
         <a href="../../../index.html">
             <div style="display: flex; align-items: center;">
                 <!-- 添加图标 -->
-                <img src="../../../resources/img/icon.png" alt="GyFoam Icon" style="height: 2.2rem; margin-right: 0.6rem;">
+                <img src="../../../resources/img/icon.png" alt="GyFoam Icon"
+                    style="height: 2.2rem; margin-right: 0.6rem;">
                 <p class="h3StylePTag">GyFoam</p>
             </div>
         </a>
     </div>
 
     <div style="margin: 6rem 7rem 0 28rem;">
-        <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 3.5rem;">Transformable Toy</p>
-        
-        <div style="margin-bottom: 3rem;">
-            <a href="../application.html" style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-right: 0.5rem;">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                </svg>
-                返回应用项目列表
+        <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 3.5rem;">Customizable Knee Pad</p>
+
+        <div style="margin-bottom: 2rem;">
+            <a href="../subpage/application.html"
+                style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">
+                Back to Applications
             </a>
         </div>
 
+        <h2 id="overview" style="margin: 0rem 0 1.5rem 0;">Overview</h2>
         <div class="row">
             <div class="col-md-12">
-                <img src="../../../resources/img/Application/toy_detail.jpg" alt="Transformable Toy" class="demo-image">
-                
+                <img src="../../../resources/img/Application/app_kneepad.jpg" alt="Customizable Knee Pad"
+                    class="demo-image" style="width: 100%;">
+
                 <p>
-                    项目简介内容将在这里展示...
+                    We have designed a customizable knee pad that utilizes GyFoam method to provide excellent
+                    cushioning performance and comfort. This knee pad is particularly suitable for athletes and people
+                    who need to work in kneeling positions for extended periods.
+
+                    By adjusting the parameters of the Gyroid structure, we can achieve different levels of hardness and
+                    support in different areas of the knee pad to meet various user needs. For example, we provide more
+                    cushioning in the central knee area while offering better support around the edges.
+
+                    Furthermore, our method creates three-dimensional shapes through deformation, allowing the knee
+                    pad to conform to complex body contours and provide a personalized wearing experience. This approach
+                    is not only applicable to sports protective gear but also to industrial protective equipment,
+                    offering users a more comfortable and healthier wearing experience.
                 </p>
             </div>
         </div>
 
-        <h2 id="parameters" style="margin: 3rem 0 1.5rem 0;">参数设置</h2>
-        <div class="param-card">
-            <p class="param-title">Gyroid结构参数</p>
-            <div class="param-row">
-                <span class="param-name">参数名称1</span>
-                <span class="param-value">参数值1</span>
+        <h2 id="parameters" style="margin: 3rem 0 1.5rem 0;">Parameter Settings</h2>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start;">
+            <!-- 参数卡片部分 -->
+            <div class="param-card" style="flex: 1">
+                <p class="param-title">Gyroid Structural Parameters</p>
+                <div class="param-row">
+                    <span class="param-name">Wall Thickness</span>
+                    <span class="param-value">2.5mm</span>
+                </div>
+                <div class="param-row">
+                    <span class="param-name">Cell Size</span>
+                    <span class="param-value">10mm * 10mm * 8mm</span>
+                </div>
+                <p class="param-title" style="margin-top: 2rem;">Material</p>
+                <div class="param-row">
+                    <span class="param-name">TEM-silicone Concentration</span>
+                    <span class="param-value" style="text-align: right;">Inner side: 8%; Outer side: 12%</span>
+                </div>
             </div>
-            <div class="param-row">
-                <span class="param-name">参数名称2</span>
-                <span class="param-value">参数值2</span>
-            </div>
-            <div class="param-row">
-                <span class="param-name">参数名称3</span>
-                <span class="param-value">参数值3</span>
-            </div>
+
         </div>
 
-        <div class="param-card">
-            <p class="param-title">打印参数</p>
-            <div class="param-row">
-                <span class="param-name">参数名称1</span>
-                <span class="param-value">参数值1</span>
-            </div>
-            <div class="param-row">
-                <span class="param-name">参数名称2</span>
-                <span class="param-value">参数值2</span>
-            </div>
-            <div class="param-row">
-                <span class="param-name">参数名称3</span>
-                <span class="param-value">参数值3</span>
-            </div>
-        </div>
-
-        <a href="#" class="download-btn">
-            下载模型文件
+        <a href="https://1drv.ms/f/s!An8-vUiUUV3IgWvTFAU7oJjUs5Xb?e=kQSfzO" class="download-btn" target="_blank" style="margin: 0.5rem 0 2rem 0;">
+            Download Mold Model
         </a>
+
+
 
         <div class="section-divider"></div>
 
-        <h2 id="code" style="margin: 3rem 0 1.5rem 0;">实现代码</h2>
-        <p>代码说明将在这里展示...</p>
-
-        <div class="code-section">
-            <pre><code class="language-python">
-# 示例代码
-def example_function():
-    print("Hello, GyFoam!")
-            </code></pre>
-        </div>
-
-        <a href="#" class="download-btn">
-            下载完整代码包
-        </a>
-
-        <div class="section-divider"></div>
-
-        <h2 id="video" style="margin: 3rem 0 1.5rem 0;">视频展示</h2>
-        <p>视频说明将在这里展示...</p>
+        <h2 id="video" style="margin: 3rem 0 1.5rem 0;">Video Demonstration</h2>
 
         <div class="video-container">
-            <!-- 视频嵌入代码将在这里 -->
-            <iframe src="about:blank" title="项目视频演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" controls>
+                <source src="../../../resources/img/Application/Video/app_kneepad_video.mp4" type="video/mp4">
+                您的浏览器不支持HTML5视频
+            </video>
         </div>
-
-        <h3 style="margin: 2rem 0 1rem 0;">制作过程</h3>
-        <p>
-            制作过程说明将在这里展示...
-        </p>
-
-        <h3 style="margin: 2rem 0 1rem 0;">应用效果</h3>
-        <p>
-            应用效果说明将在这里展示...
-        </p>
-        <h3 style="margin: 2rem 0 1rem 0;">制作过程</h3>
-        <p>
-            制作过程说明将在这里展示...
-        </p>
-
-        <h3 style="margin: 2rem 0 1rem 0;">应用效果</h3>
-        <p>
-            应用效果说明将在这里展示...
-        </p>
 
         <div style="margin-top: 10rem;"></div>
     </div>

@@ -135,8 +135,8 @@
         .param-card {
             background-color: #f8f8f8;
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             border-left: 4px solid #c9a875;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
@@ -245,97 +245,80 @@
     <div style="margin: 6rem 7rem 0 28rem;">
         <p class="h1StylePTag" style="margin: 0 0 2rem 0; font-size: 3.5rem;">Gradient-Stiffness Pillow</p>
 
-        <div style="margin-bottom: 3rem;">
+        <div style="margin-bottom: 2rem;">
             <a href="../subpage/application.html"
                 style="display: inline-flex; align-items: center; color: #c9a875; text-decoration: none;">
                 Back to Applications
             </a>
         </div>
 
+        <h2 id="parameters" style="margin: 0rem 0 1.5rem 0;">Overview</h2>
         <div class="row">
             <div class="col-md-12">
                 <img src="../../../resources/img/Application/app_pillow.jpg" alt="Gradient-Stiffness Pillow"
-                    class="demo-image">
+                    class="demo-image" style="width: 100%;">
 
                 <p>
-                    项目简介内容将在这里展示...
+                    We have developed an innovative gradient-stiffness pillow. Using the entry-level desktop 3D printer
+                    Bamboo A1 mini to create the mold, combined with GyFoam technology, we successfully expanded a 12cm
+                    mold into a 30cm-long standard single pillow.
+                    In the product design, we cleverly incorporated gradient stiffness structures on both sides of the
+                    pillow. This unique design allows users to personalize their sleep experience by choosing either the
+                    firmer side for better head support or the softer side for a more comfortable, enveloping feel,
+                    based on their personal preferences.
                 </p>
             </div>
         </div>
 
         <h2 id="parameters" style="margin: 3rem 0 1.5rem 0;">Parameter Settings</h2>
+        <!-- <div class="param-card">
+            <p class="param-title">Material</p>
+            <div class="param-row">
+                <span class="param-name">TEM-silicone Concentration</span>
+                <span class="param-value">15%</span>
+            </div>
+        </div> -->
         <div class="param-card">
             <p class="param-title">Gyroid Structural Parameters</p>
-            <div class="param-row">
-                <span class="param-name">Wall Thickness</span>
-                <span class="param-value">2.0mm</span>
-            </div>
-            <div class="param-row" style="align-items: center;">
-                <span class="param-name">Gradient</span>
-                <span class="param-value" style="text-align: right;">
-                    <img src="../../../resources/img/Application/pillow_gradient.jpg" alt="Stiffness Gradient" style="max-width: 200px; border-radius: 4px;">
-                </span>
-            </div>
-        </div>
-
-        <div class="param-card">
-            <p class="param-title">打印参数</p>
-            <div class="param-row">
-                <span class="param-name">参数名称1</span>
-                <span class="param-value">参数值1</span>
-            </div>
-            <div class="param-row">
-                <span class="param-name">参数名称2</span>
-                <span class="param-value">参数值2</span>
-            </div>
-            <div class="param-row">
-                <span class="param-name">参数名称3</span>
-                <span class="param-value">参数值3</span>
+            <div style="display: flex;">
+                <div style="flex: 1;">
+                    <div class="param-row">
+                        <span class="param-name">Wall Thickness</span>
+                        <span class="param-value">Gradient thickness (right figure)</span>
+                    </div>
+                    <div class="param-row">
+                        <span class="param-name">Cell Size</span>
+                        <span class="param-value">25mm * 25mm * 18mm</span>
+                    </div>
+                    <p class="param-title" style="margin-top: 2rem;">Material</p>
+                    <div class="param-row">
+                        <span class="param-name">TEM-silicone Concentration</span>
+                        <span class="param-value">15%</span>
+                    </div>
+                </div>
+                <div
+                    style="flex: 1; display: flex; align-items: center; justify-content: center; padding-left: 2.5rem;">
+                    <img src="../../../resources/img/Application/app_pillow_gradient.jpg" alt="Pillow Structure"
+                        style="max-width: 85%; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                </div>
             </div>
         </div>
 
-        <a href="#" class="download-btn">
-            下载模型文件
-        </a>
+        <!-- <a href="../../../resources/img/Application/Model/smallpillow_mold.stl" class="download-btn" download>
+            Download Mold Model
+        </a> -->
+
 
         <div class="section-divider"></div>
 
-        <h2 id="code" style="margin: 3rem 0 1.5rem 0;">实现代码</h2>
-        <p>代码说明将在这里展示...</p>
-
-        <div class="code-section">
-            <pre><code class="language-python">
-# 示例代码
-def example_function():
-    print("Hello, GyFoam!")
-            </code></pre>
-        </div>
-
-        <a href="#" class="download-btn">
-            下载完整代码包
-        </a>
-
-        <div class="section-divider"></div>
-
-        <h2 id="video" style="margin: 3rem 0 1.5rem 0;">视频展示</h2>
-        <p>视频说明将在这里展示...</p>
+        <h2 id="video" style="margin: 3rem 0 1.5rem 0;">Video Demonstration</h2>
 
         <div class="video-container">
-            <!-- 视频嵌入代码将在这里 -->
-            <iframe src="about:blank" title="项目视频演示" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+            <video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" controls>
+                <source src="../../../resources/img/Application/Video/app_pillow_video.mp4" type="video/mp4">
+                您的浏览器不支持HTML5视频
+            </video>
         </div>
-
-        <h3 style="margin: 2rem 0 1rem 0;">制作过程</h3>
-        <p>
-            制作过程说明将在这里展示...
-        </p>
-
-        <h3 style="margin: 2rem 0 1rem 0;">应用效果</h3>
-        <p>
-            应用效果说明将在这里展示...
-        </p>
 
         <div style="margin-top: 10rem;"></div>
     </div>
