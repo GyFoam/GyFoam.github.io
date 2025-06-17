@@ -4,8 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GyFoam - Fabrication of Large and Lattice-structured Objects</title>
-    <meta property="og:title" content="Fabrication of Large and Lattice-structured Objects">
+    <title>GyFoam: A Fabrication Method Enabling Uniform Expansion for Foaming-driven Shaping and Customizable Stiffness
+    </title>
+    <meta name="description"
+        content="GyFoam: A Fabrication Method Enabling Uniform Expansion for Foaming-driven Shaping and Customizable Stiffness">
+    <meta name="keywords"
+        content="GyFoam, foam materials, large-scale objects, lattice-structured objects, customizable stiffness, fabrication, design tool, morphing">
+    <meta name="author" content="GyFoam Team">
+    <meta property="og:title"
+        content="GyFoam: A Fabrication Method Enabling Uniform Expansion for Foaming-driven Shaping and Customizable Stiffness">
+    <meta property="og:description"
+        content="GyFoam: A Fabrication Method Enabling Uniform Expansion for Foaming-driven Shaping and Customizable Stiffness">
     <meta property="og:locale" content="en_US">
     <!-- canonical链接用于指定网页的规范URL，告诉搜索引擎这是首选版本 -->
     <link rel="canonical" href="https://gyfoam.github.io">
@@ -13,6 +22,12 @@
     <meta property="og:url" content="https://gyfoam.github.io">
     <!-- og:site_name定义网站名称，用于社交媒体分享时显示 -->
     <meta property="og:site_name" content="gyfoam.github.io">
+    <!-- og:image用于社交媒体分享时显示的图片 -->
+    <meta property="og:image" content="https://gyfoam.github.io/resources/img/MainImage.jpg">
+    <!-- og:type定义内容类型 -->
+    <meta property="og:type" content="website">
+    <!-- 添加robots标签，允许搜索引擎索引和跟踪链接 -->
+    <meta name="robots" content="index, follow">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -22,7 +37,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
     <!-- 添加新字体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <style>
         html,
@@ -32,32 +49,40 @@
             font-size: calc(1728vw / 1728);
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* 防止水平滚动 */
+            overflow-x: hidden;
+            /* 防止水平滚动 */
         }
 
         /* 添加动画关键帧 */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideInRight {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateX(50px);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: translateX(0);
             }
         }
 
         @keyframes slideInUp {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateY(30px);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -66,50 +91,64 @@
         /* 背景图片动画 */
         .bg-image {
             opacity: 0;
-            animation: fadeIn 0.6s ease-in-out forwards;  /* 从1s改为0.6s */
+            animation: fadeIn 0.6s ease-in-out forwards;
+            /* 从1s改为0.6s */
         }
 
         /* 半透明背景动画 */
         .content-bg {
             opacity: 0;
-            animation: fadeIn 0.5s ease-in-out 0.1s forwards;  /* 从0.8s改为0.5s，延迟从0.2s改为0.1s */
+            animation: fadeIn 0.5s ease-in-out 0.1s forwards;
+            /* 从0.8s改为0.5s，延迟从0.2s改为0.1s */
         }
 
         /* 标题动画 */
         .title-animation {
             opacity: 0;
-            animation: slideInRight 0.4s ease-out 0.3s forwards;  /* 从0.7s改为0.4s，延迟从0.5s改为0.3s */
+            animation: slideInRight 0.4s ease-out 0.3s forwards;
+            /* 从0.7s改为0.4s，延迟从0.5s改为0.3s */
         }
 
         /* 描述文字动画 */
         .desc-animation {
             opacity: 0;
-            animation: slideInRight 0.4s ease-out 0.4s forwards;  /* 从0.7s改为0.4s，延迟从0.7s改为0.4s */
+            animation: slideInRight 0.4s ease-out 0.4s forwards;
+            /* 从0.7s改为0.4s，延迟从0.7s改为0.4s */
         }
 
         /* 菜单项动画 */
         .menu-item {
             opacity: 0;
         }
+
         .menu-item:nth-child(1) {
-            animation: slideInUp 0.3s ease-out 0.5s forwards;  /* 从0.5s改为0.3s，延迟从0.9s改为0.5s */
+            animation: slideInUp 0.3s ease-out 0.5s forwards;
+            /* 从0.5s改为0.3s，延迟从0.9s改为0.5s */
         }
+
         .menu-item:nth-child(2) {
-            animation: slideInUp 0.3s ease-out 0.6s forwards;  /* 从0.5s改为0.3s，延迟从1s改为0.6s */
+            animation: slideInUp 0.3s ease-out 0.6s forwards;
+            /* 从0.5s改为0.3s，延迟从1s改为0.6s */
         }
+
         .menu-item:nth-child(3) {
-            animation: slideInUp 0.3s ease-out 0.7s forwards;  /* 从0.5s改为0.3s，延迟从1.1s改为0.7s */
+            animation: slideInUp 0.3s ease-out 0.7s forwards;
+            /* 从0.5s改为0.3s，延迟从1.1s改为0.7s */
         }
+
         .menu-item:nth-child(4) {
-            animation: slideInUp 0.3s ease-out 0.8s forwards;  /* 从0.5s改为0.3s，延迟从1.2s改为0.8s */
+            animation: slideInUp 0.3s ease-out 0.8s forwards;
+            /* 从0.5s改为0.3s，延迟从1.2s改为0.8s */
         }
+
         .menu-item:nth-child(5) {
-            animation: slideInUp 0.3s ease-out 0.9s forwards;  /* 从0.5s改为0.3s，延迟从1.3s改为0.9s */
+            animation: slideInUp 0.3s ease-out 0.9s forwards;
+            /* 从0.5s改为0.3s，延迟从1.3s改为0.9s */
         }
 
         h1 {
             /* 更换标题字体为Raleway */
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: #030303;
             font-size: 4.5rem;
             margin: 0;
@@ -198,18 +237,21 @@
     <div class="row g-0" style="position: relative; width: 100%; margin: 0;">
         <!-- 背景图片 -->
         <div style="position: absolute; width: 100%; height: 100%; z-index: 0; overflow: hidden; left: 0; top: 0;">
-            <img src="resources/img/MainImage.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" class="bg-image">
+            <img src="resources/img/MainImage.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;"
+                class="bg-image">
         </div>
-        
+
         <div class="col">
             <div style="display: flex; align-items: center; height: 100%; position: relative; z-index: 1;">
-                <div style="padding: 0 2rem 0 4rem; background: linear-gradient(to right, rgba(240, 240, 240, 0.2), rgba(240, 240, 240, 0)); border-radius: 10px; height: 100%; display: flex; flex-direction: column; justify-content: center; width: 55%;" class="content-bg">
-                    <div style="margin-bottom: 4rem; padding-right: 2rem;">
-                        <h1 style="text-align: right; margin-bottom: 1rem; font-size: 5rem; font-weight: 580; line-height: 1.2;" class="title-animation">GyFoam Document</h1>
-                        <p style="text-align: right;margin-bottom: 2rem; font-size: 0.9rem;" class="desc-animation">Fabricating Foam Materials for Large-Scale and Lattice-structured Objects with Customizable Stiffness. </p>
+                <div style="padding: 0 2rem 0 4rem; background: linear-gradient(to right, rgba(240, 240, 240, 0.2), rgba(240, 240, 240, 0)); border-radius: 10px; height: 100%; display: flex; flex-direction: column; justify-content: center; width: 55%;"
+                    class="content-bg">
+                    <div style="margin-bottom: 4rem; padding-right: 2rem; margin-left: 2rem;"> <!-- 添加 margin-left 使其向右移动 -->
+                        <h1 style="text-align: right; margin-bottom: 1rem; font-size: 4.2rem; font-weight: 580; line-height: 1.2;"
+                            class="title-animation">GyFoam Document</h1>
+                        <p style="text-align: right;margin-bottom: 2rem; font-size: 0.8rem;" class="desc-animation">A Fabrication Method Enabling Uniform Expansion for Foaming-driven Shaping and Customizable Stiffness
                     </div>
                     <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 2rem;">
-                        <!-- 菜单项添加动画类 --> 
+                        <!-- 菜单项添加动画类 -->
                         <div style="display: flex; margin-bottom: 1rem;" class="menu-item">
                             <a href="pages/subpage/designtool.html">
                                 <h3 style="margin-right: 2rem;">DesignTool Demonstration</h3>
