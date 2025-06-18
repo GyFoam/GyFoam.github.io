@@ -148,6 +148,24 @@
             backdrop-filter: blur(10px);
             z-index: 99;
         }
+        
+        /* 下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            background-color: #c9a875;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #b89865;
+            color: white;
+        }
     </style>
 </head>
 
@@ -281,8 +299,8 @@
                 <!-- 图片移到文字下方 -->
                 <img src="../../resources/img/DesignTool/nTop_gyroidandmold.jpg" alt="Gyroid and mold"
                     class="demo-image" style="width: 100%; height: auto;">
-                <img src="../../resources/img/DesignTool/nTop_rabbit.jpg" alt="Gyroid rabbit"
-                    class="demo-image" style="width: 100%; height: auto;">
+                <img src="../../resources/img/DesignTool/nTop_rabbit.jpg" alt="Gyroid rabbit" class="demo-image"
+                    style="width: 100%; height: auto;">
             </div>
 
             <!-- 右侧图片 -->
@@ -312,6 +330,18 @@
             We recommend it especially for larger models.</p>
         <img src="../../resources/img/DesignTool/nTop_eggshell.jpg" alt="Eggshell" class="demo-image"
             style="margin-top: 0.2rem;">
+
+        <h3 style="margin: 2rem 0 1rem 0;">Open Source nTop Templates</h3>
+        <p>To help users master GyFoam modeling techniques more quickly, we have open source a series of nTop
+            template files.
+            These templates cover various application scenarios including basic Gyroid structure modeling, gradient
+            structure design, and eggshell mold modeling.
+            Users can download and directly use the template for their own project development, or modify and
+            innovate based on them.</p>
+        
+        <a href="https://1drv.ms/f/c/c85d519448bd3e7f/Erh7B0g-fttBp8gmSIpTwnsBvb43GAhmUrwmpYIMSYs4eg?e=MkMKNO" class="download-btn" target="_blank" style="margin: 0.5rem 0 2rem 0;">
+            Download nTop Templates
+        </a>
 
         <h2 id="faq" style="margin: 3rem 0 2rem 0;">Q&A</h2>
         <p style="margin: 2rem 0 1rem 0; font-weight: bold; font-size: 1.3rem;">1. Will there be any design
