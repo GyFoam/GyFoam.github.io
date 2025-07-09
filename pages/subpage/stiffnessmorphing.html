@@ -362,7 +362,7 @@
 
                     <div
                         style="display: inline-block; font-size: 0.9rem; background-color: #5bc0de; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; vertical-align: middle; font-family: 'Noto Sans', sans-serif; font-weight: normal; margin-bottom: 1rem; margin-left: 0.5rem;">
-                        Last Updated: 2025-05-06
+                        Last Updated: 2025-07-09
                     </div>
 
                     <p>
@@ -418,6 +418,21 @@
                                     <span>5mm</span>
                                 </div>
                             </div>
+                            
+                            <!-- 新增的Edge Length滑块 -->
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="edgeLength"
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Edge Length
+                                    (mm)</label>
+                                <input type="range" id="edgeLength" min="5" max="50" value="25" step="1"
+                                    style="width: 100%;">
+                                <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                                    <span>5mm</span>
+                                    <span id="edgeLengthValue"
+                                        style="font-weight: bold; color: #c9a875; background-color: #f8f2e5; padding: 0 8px; border-radius: 4px;">25mm</span>
+                                    <span>50mm</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div
@@ -430,7 +445,7 @@
 
                         <p style="font-size: 0.8rem; color: rgba(3,3,3,0.6); margin-top: 1rem;">
                             Note: This model is based on experimental data fitting.
-                            The bounding box dimensions of all samples are 25*25*25mm.
+                            The control sample, made of pure silicone, was a cube with each side measuring 25 mm.
                         </p>
                         <p style="font-size: 0.8rem; color: rgba(3,3,3,0.6)">
                             Additionally, the cell size and wall thickness must satisfy the inequality relationship:
@@ -444,11 +459,13 @@
                         const concentrationInput = document.getElementById('concentration');
                         const cellSizeInput = document.getElementById('cellSize');
                         const wallThicknessInput = document.getElementById('wallThickness');
+                        const edgeLengthInput = document.getElementById('edgeLength'); // 改为edgeLength
 
                         // 获取显示值的元素
                         const concentrationValue = document.getElementById('concentrationValue');
                         const cellSizeValue = document.getElementById('cellSizeValue');
                         const wallThicknessValue = document.getElementById('wallThicknessValue');
+                        const edgeLengthValue = document.getElementById('edgeLengthValue'); // 改为edgeLengthValue
                         const stiffnessResult = document.getElementById('stiffnessResult');
 
                         // 更新显示值并计算刚度
@@ -457,11 +474,13 @@
                             concentrationValue.textContent = concentrationInput.value + '%';
                             cellSizeValue.textContent = cellSizeInput.value + 'mm';
                             wallThicknessValue.textContent = wallThicknessInput.value + 'mm';
+                            edgeLengthValue.textContent = edgeLengthInput.value + 'mm'; // 改为edgeLengthValue
 
                             // 获取输入值
                             const concentration = parseFloat(concentrationInput.value);
                             const cellSize = parseFloat(cellSizeInput.value);
                             const wallThickness = parseFloat(wallThicknessInput.value);
+                            const a = parseFloat(edgeLengthInput.value); // 从Edge Length滑块获取值
 
                             // 计算Young's模量 (E) - 根据浓度计算
                             // E = 1.03×10^5×Concentration + 9.428×10^4
@@ -469,7 +488,7 @@
 
                             // 计算刚度值 - 使用公式 K = 2.52 × (wt/cs)^1.70 × E × a
                             const thicknessToSizeRatio = wallThickness / cellSize;
-                            const a = 25; // 假设a为常数1，如需调整请修改此值
+                            // const a = 25; // 已替换为从滑块获取的值
                             const stiffness = 2.52 * Math.pow(thicknessToSizeRatio, 1.70) * E * a * Math.pow(10, -6);
 
                             // 转换为更友好的单位并保留一位小数
@@ -496,6 +515,7 @@
                         concentrationInput.addEventListener('input', updateValues);
                         cellSizeInput.addEventListener('input', updateValues);
                         wallThicknessInput.addEventListener('input', updateValues);
+                        edgeLengthInput.addEventListener('input', updateValues); // 改为edgeLengthInput
                     </script>
 
                     <h3 style="margin: 2rem 0 1rem 0;">Variable 1: Material Concentration</h3>
@@ -527,7 +547,7 @@
                                     <mo>×</mo>
                                     <msup>
                                         <mn>10</mn>
-                                        <mn>5</mn>
+                                        <mn>7</mn>
                                     </msup>
                                     <mo>×</mo>
                                     <mi>Concentration</mi>
@@ -597,9 +617,9 @@
                                     <mn>L</mn>
                                 </math>
                                 <p style="font-size: 0.9rem; color: rgba(3,3,3,0.6); margin-top: 0.5rem;">
-                                    where S<sub>*</sub> represents predicted stiffness (N/mm), E represents Young's
+                                    where S<sub>*</sub> represents predicted stiffness (N/m), E represents Young's
                                     modulus (Pa) of
-                                    material under selected concentration, L represents the length (mm) of the
+                                    material under selected concentration, L represents the length (m) of the
                                     boundingbox of the sample
                                 </p>
                             </div>
